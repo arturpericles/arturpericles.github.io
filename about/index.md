@@ -1,5 +1,5 @@
 ---
-image: /media/avatar.jpeg
+image: /media/headshot.jpg
 about:
     template: marquee
     links:

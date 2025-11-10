@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/teaching/technology-security-power/index.html</loc>
+    <lastmod>2025-11-09T02:07:41.205Z</lastmod>
+  </url>
+  <url>
+    <loc>/teaching/global-law-policy-ai/index.html</loc>
+    <lastmod>2025-11-09T02:17:57.662Z</lastmod>
+  </url>
+  <url>
     <loc>/about/index.html</loc>
-    <lastmod>2025-11-09T01:44:30.046Z</lastmod>
+    <lastmod>2025-11-09T01:50:22.953Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/lawful-surveillance-protocols/index.html</loc>
+    <lastmod>2025-11-09T03:54:32.370Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/privacy-crossroads/index.html</loc>
+    <lastmod>2025-11-09T08:22:46.258Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/scalable-oversight-ai-regulation/index.html</loc>
+    <lastmod>2025-11-09T08:26:53.727Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/anonymity-identity-lies/index.html</loc>
+    <lastmod>2025-11-09T07:50:35.205Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/countervailing-platform-power/index.html</loc>
+    <lastmod>2025-11-09T02:34:53.486Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/last-breaths-marco-civil/index.html</loc>
+    <lastmod>2025-11-08T07:08:09.532Z</lastmod>
+  </url>
+  <url>
+    <loc>/publications/missing-bridges/index.html</loc>
+    <lastmod>2025-11-08T07:01:37.262Z</lastmod>
   </url>
   <url>
     <loc>/publications/index.html</loc>
     <lastmod>2025-11-09T08:19:01.132Z</lastmod>
-  </url>
-  <url>
-    <loc>/publications/anonymity-identity-lies/index.html</loc>
-    <lastmod>2025-11-09T07:50:35.206Z</lastmod>
-  </url>
-  <url>
-    <loc>/publications/scalable-oversight-ai-regulation/index.html</loc>
-    <lastmod>2025-11-09T08:26:53.726Z</lastmod>
-  </url>
-  <url>
-    <loc>/publications/privacy-crossroads/index.html</loc>
-    <lastmod>2025-11-09T09:10:50.506Z</lastmod>
-  </url>
-  <url>
-    <loc>/publications/lawful-surveillance-protocols/index.html</loc>
-    <lastmod>2025-11-09T02:34:34.414Z</lastmod>
-  </url>
-  <url>
-    <loc>/publications/missing-bridges/index.html</loc>
-    <lastmod>2025-11-08T07:01:37.261Z</lastmod>
-  </url>
-  <url>
-    <loc>/teaching/index.html</loc>
-    <lastmod>2025-11-09T05:04:35.536Z</lastmod>
-  </url>
-  <url>
-    <loc>/talks.html</loc>
-    <lastmod>2025-11-09T00:48:26.497Z</lastmod>
   </url>
   <url>
     <loc>/talks/index.html</loc>
@@ -43,5 +51,9 @@
   <url>
     <loc>/index.html</loc>
     <lastmod>2025-11-09T01:44:11.645Z</lastmod>
+  </url>
+  <url>
+    <loc>/teaching/index.html</loc>
+    <lastmod>2025-11-09T05:04:35.536Z</lastmod>
   </url>
 </urlset>

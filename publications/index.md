@@ -38,7 +38,7 @@ include-back-link: true
 featured: true
 ---
 
-### Featured
+### Highlights
 
 :::{#featured}
 :::

@@ -1,7 +1,7 @@
 ---
 image: /media/headshot.jpg
 about:
-    template: marquee
+    template: trestles
     links:
     - text: "{{< fa brands mastodon >}}"
       aria-label: Mastodon

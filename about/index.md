@@ -1,4 +1,8 @@
 ---
+format: 
+  html:
+    pagetitle: "About"
+title: "Artur Pericles<br/>L. Monteiro"
 image: /media/headshot.jpg
 about:
     template: trestles
@@ -15,9 +19,7 @@ about:
     - text: "{{< fa envelope >}}"
       aria-label: Email
       href: mailto:artur.monteiro@yale.edu    
-format: 
-  html:
-    pagetitle: "About"
+
 
 ---
 

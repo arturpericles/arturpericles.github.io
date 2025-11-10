@@ -1,8 +1,8 @@
 ---
+title: "Artur Pericles<br/>L. Monteiro"
 format: 
   html:
     pagetitle: "About"
-title: "Artur Pericles<br/>L. Monteiro"
 image: /media/headshot.jpg
 about:
     template: trestles

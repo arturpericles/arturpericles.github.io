@@ -1,22 +1,33 @@
 project:
   type: website
   output-dir: docs
-
+  preview:
+    port: 4200
+    browser: false
 website:
-  title: "arturpericles.github.io"
+  title: "Artur Pericles L. Monteiro"
+  site-url: "/"
+  # favicon: media/api-favicon.png
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
-format:
+    title: ARTUR PERICLES L. MONTEIRO
+    right:
+      - href: about/
+        text: About
+      - href: publications/
+        text: Publications
+      - href: teaching/
+        text: Teaching
+      - href: talks/
+        text: Talks              
+format: 
   html:
     theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true
-
+      light:
+        # - cosmo
+        - assets/theme.scss
+        # - assets/silvia/colors-light.scss
+        - assets/fonts.scss      
+    pagetitle: '{{< meta title >}}'
+    lightbox: true
 
 

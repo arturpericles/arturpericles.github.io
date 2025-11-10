@@ -1,0 +1,25 @@
+[
+  {
+    "listing": "/publications/index.html",
+    "items": [
+      "/publications/countervailing-platform-power/index.html",
+      "/publications/lawful-surveillance-protocols/index.html",
+      "/publications/scalable-oversight-ai-regulation/index.html",
+      "/publications/last-breaths-marco-civil/index.html",
+      "/publications/anonymity-identity-lies/index.html",
+      "/publications/privacy-crossroads/index.html",
+      "/publications/missing-bridges/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching/index.html",
+    "items": [
+      "/teaching/global-law-policy-ai/index.html",
+      "/teaching/technology-security-power/index.html"
+    ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": []
+  }
+]

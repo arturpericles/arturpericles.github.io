@@ -1,0 +1,46 @@
+<table class="talks-table">
+    <tbody>
+      <% for (const item of items) { %>
+        <%
+          // Format the date to match the "Month Day, Year" style
+          const dateParts = item.date.split('-');
+          const displayDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+          const formattedDate = displayDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+          
+          // Prepare the details, combining event and venue
+          const details = [];
+          if (item.talk && item.event) details.push(item.event); // Add event if there's a talk
+          if (item.venue) details.push(item.venue);
+        %>
+    
+        <tr>
+          <td class="talk-date">
+            <%= item.date %>
+            <% if (item.type === 'panel') { %>
+            <span>panel</span>
+            <% } %>
+          </td>
+          
+          <td class="talk-info">
+            <span class="talk-title">
+            <%= item.talk || item.event %>
+            </span>
+            <br>
+            <span class="talk-details">
+              <%= details.join(', ') %>
+            </span>
+          </td>
+          
+          <td class="talk-links">
+            <% if (item.video) { %>
+              <a href="<%- item.video %>" target="_blank">Video</a>
+            <% } %>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>

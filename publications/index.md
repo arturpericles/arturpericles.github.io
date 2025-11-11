@@ -38,22 +38,34 @@ include-back-link: true
 featured: true
 format: 
   html: 
-    page-layout: article
+    page-layout: full
     pagetitle: Publications
+    css: sticky.css 
 ---
 
 
+::::: {layout="[[60,-5,45], [100]]"} 
+
+::: {#first-column}
 
 # Highlights
 
 :::{#featured}
 :::
 
-![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for Britsh Art](/media/blake.jpg){.column-margin}
-
 # Publications
 
 :::{#publications}
 :::
 
+:::
 
+::: {#second-column .sticky-column}
+
+
+![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for Britsh Art](/media/blake.webp)
+
+
+:::
+
+:::::

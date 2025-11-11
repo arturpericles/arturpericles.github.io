@@ -63,7 +63,7 @@ format:
 ::: {#second-column .sticky-column}
 
 
-![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for Britsh Art](/media/blake.webp)
+![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for British Art](/media/blake.webp)
 
 
 :::

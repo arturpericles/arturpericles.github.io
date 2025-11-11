@@ -37,4 +37,4 @@ format:
     pagetitle: '{{< meta title >}}'
     lightbox: true
 resources:
-  - media/
+ - media/

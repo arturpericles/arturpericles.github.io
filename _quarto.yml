@@ -23,9 +23,11 @@ website:
         text: Talks    
   open-graph:
     image: /media/seymour-march-sm.webp
+    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
   twitter-card: 
     creator: "@arturpericles"     
     image: /media/seymour-march-sm.webp
+    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
 format: 
   html:
     theme:

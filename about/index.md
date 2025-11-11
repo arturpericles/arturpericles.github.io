@@ -3,8 +3,9 @@ title: "Artur Pericles<br/>L. Monteiro"
 format: 
   html:
     pagetitle: "About"
-image: /media/headshot.jpg
+
 about:
+    image: headshot2025.jpeg
     template: trestles
     links:
     - text: "{{< fa brands mastodon >}}"

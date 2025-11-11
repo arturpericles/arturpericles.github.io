@@ -6,11 +6,13 @@ project:
     browser: false
 website:
   title: "Artur Pericles L. Monteiro"
-  site-url: "/"
+  site-url: "https://www.arturpericles.art"
   # favicon: media/api-favicon.png
   navbar:
     title: ARTUR PERICLES L. MONTEIRO
     right:
+      # - href: index.md
+      #   text: Home
       - href: about/
         text: About
       - href: publications/

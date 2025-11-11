@@ -23,6 +23,9 @@
             <% if (item.type === 'panel') { %>
             <span>panel</span>
             <% } %>
+            <% if (item.video) { %>
+              <a href="<%- item.video %>" target="_blank">Video</a>
+            <% } %>
           </td>
           
           <td class="talk-info">
@@ -35,11 +38,7 @@
             </span>
           </td>
           
-          <td class="talk-links">
-            <% if (item.video) { %>
-              <a href="<%- item.video %>" target="_blank">Video</a>
-            <% } %>
-          </td>
+
         </tr>
       <% } %>
     </tbody>

@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://www.arturpericles.art/sitemap.xml

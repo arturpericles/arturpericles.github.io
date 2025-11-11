@@ -6,6 +6,10 @@ author:
    afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
 date: 2024-01-01
 citation:
+  author:
+  - given: Artur Pericles
+    family: Monteiro 
+    dropping-particle: L.
   title: 'Anonymity, identity, and lies'
   type: article-journal
   container-title: "Journal of Free Speech Law"

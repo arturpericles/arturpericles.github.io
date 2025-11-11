@@ -21,6 +21,8 @@
   padding: 0 2em 0 2em;
 }
 
+
+
 /* blurb */
 .about-contents {
   padding: 0 0 0 2em !important;
@@ -30,7 +32,7 @@
 .about-entity .about-links {
   justify-content: flex-end !important;
   column-gap: 0em !important;
-  font-size: 1.2em !important;
+  font-size: 2em !important;
 }
 
 /* social links: individual links */
@@ -50,23 +52,30 @@
 .about-image {
   margin-top: -2em;
   padding: 0 2em 0em 0;
+  
 }
 
-/* // Home
+/*
+  This styles the new caption element 
+  created by the script.
+*/
+.mycaption {
+/* Aligns text within the right-hand column */
+  text-align: right;
 
-// social links
-.about-entity {
-  // block of links
-  .about-links {
-    column-gap: 0em !important;
-    font-size: 1.2em;
-  }
-  // individual links
-  .about-link {
-    padding: 0.25em 0.25em !important;
-    border: none !important;
-  }
-} */
+  /* Matches the image's padding */
+  padding-right: 3em; 
+  
+  /* .small and .text-muted styles */
+  font-size: 0.7em;
+
+  
+  /* Pull it up closer to the image */
+  margin-top: 10px;
+}
+
+
+
 
 
 
@@ -108,3 +117,4 @@
       padding: 0 2em 0 2em !important;
     }
 }
+

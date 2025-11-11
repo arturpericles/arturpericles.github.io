@@ -193,6 +193,12 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
 }
 
 // listings
+
+/* Set default font for all listings */
+.quarto-listing {
+  font-family: $font-family-serif;
+}
+
 .listing-category {
   color: $secondary !important;
   border-color: $secondary !important;

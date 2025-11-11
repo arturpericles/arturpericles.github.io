@@ -1,5 +1,4 @@
 ---
-title: 'Research & Publications'
 listing:
 - id: publications
   contents: 
@@ -12,6 +11,7 @@ listing:
   filter-ui: false
   fields: [title,  date, citation.container-title, citation.publisher, citation.status]
   date-format: YYYY
+  template: publications.ejs            
   field-display-names: 
     citation.container-title: Venue
 - id: featured
@@ -36,17 +36,24 @@ listing:
     citation.status: ' '
 include-back-link: true
 featured: true
+format: 
+  html: 
+    page-layout: article
+    pagetitle: Publcations
 ---
 
-### Highlights
+
+
+# Highlights
 
 :::{#featured}
 :::
 
-### Publications
+![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for Britsh Art](/media/blake.jpg){.column-margin}
+
+# Publications
 
 :::{#publications}
 :::
 
 
-![](/media/blake.jpg)

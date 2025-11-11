@@ -1,5 +1,6 @@
 ---
 title: 'Lawful Surveillance Protocols, Crypto Wars, and the Limitations of Privacy as Security'
+description: Submitted to the ACM Symposium on Computer Science and the Law
 author:
  - given: Artur Pericles
    family: Lima Monteiro 

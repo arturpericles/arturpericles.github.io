@@ -1,84 +1,77 @@
-- paper: "Countervailing Platform Power"
-  talk:
-  #- {
-  #   venue: "Drexel University School of Law Faculty Workshop",
-  #   type: "invited",
-  #   date: "Fall 2025",
-  #  
- - venue: "New England IP Works in Progress Roundtable",
-     type: "peer review",
-     date: "Sept. 2025",
-    
- - venue: "Privacy Law Scholars Conference",
-     type: "blind peer review",
-     date: "May 30, 2025",
-    
- - venue: "Digital Life Initiative Seminar, Cornell Tech",
-     type: "invited",
-     date: "March 13, 2025",
-    
- - venue: "Annual Conference, International Society of Public Law (ICON-S)",
-     type: "blind peer review",
-     date: "July 9, 2024"
-    
- - venue: "University of Ottawa, Common Law Division, Faculty Workshop",
-     type: "invited",
-     date: "June 24, 2024"
-    
- - venue: "Lab-LEX Workshop, University of Western Brittany, France",
-     type: "invited",
-     date: "Nov. 29, 2023"
-     
- - venue: "XI Freedom of Expression Scholars Conference",
-     type: "peer review",
-     date: "Apr. 29, 2023"
-     
- - venue: "Platform Governance Research Network Conference",
-     type:  "blind peer review",
-     date: "Apr. 4, 2023"
-         
-
-- paper: "Anonymity, Identity, and Lies"
-  talk:
- - talk: "The Plurality of Anonymity and Identification on Social Media",
-     venue: "Digital Governance Research Colloquium, Hertie School",
-     type: "talk",
-     date: "Nov. 23, 2022",
-     url: "https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/"
-     
- - talk: "Anonymity, Identity, and Lies",
-     venue: "Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University",
-     type: "peer review",
-     date: "Apr. 8, 2022",
-     url: "https://youtu.be/D7MLqq6cGyY?t=2100"
-        
- - talk: "Curtaling Anonymity",
-     venue: "X Freedom of Expression Scholars Conference",
-     type: "plenary; peer review",
-     note: plenary session,
-     date: "Apr. 30, 2021"
-       
-
-#- paper: "Community-Shaping Anonymity and the First Amendment"
-#  talk:
-#  - {
-#     talk: "Online Anonymity as Expressive",
-#     venue: "XII Annual Constitutional Law Colloquium",
-#     type: "peer review",
-#     date: "Nov. 13, 2021"
-#     
-#
-#  - {
-#     talk: "Online Anonymity as Expressive",
-#     venue: "IX Freedom of Expression Scholars Conference",
-#     type: "peer review",
-#     date: "Oct. 24, 2020"
-#     
-
-- paper: "Lawful Surveillance Protocols"
-  talk:
- - talk: "Data Governance: Whither Privacy?",
-     venue: "Privacy Law Scholars Conference 2023",
-     type: "blind peer review",
-     date: "June 1, 2023"
-     
+- venue: 'New England IP Works in Progress Roundtable'
+  event: 'Countervailing Platform Power'
+  date: 'Sept. 26, 2025'
+  type: workshop
+  review: 'peer review'
+- venue: 'Annual Conference, International Society of Public Law (ICON-S)'
+  event: 'Social Media Governance in Brazil and Institutional Debt'
+  date: 'July 29, 2025'
+  type: workshop
+  review: 'peer review'
+- venue: 'Privacy Law Scholars Conference'
+  event: 'Countervailing Platform Power'
+  date: 'May 30, 2025'
+  type: workshop
+  review: 'blind peer review'
+- venue: 'Digital Life Initiative Seminar, Cornell Tech'
+  event: 'Countervailing Platform Power'
+  date: 'March 13, 2025'
+  type: workshop
+  review: 'invited'
+- venue: 'Annual Conference, International Society of Public Law (ICON-S)'
+  event: 'Social Media Federalism'
+  date: 'July 9, 2024'
+  type: workshop
+  review: 'blind peer review'
+# - venue: 'University of Ottawa, Common Law Division, Faculty Workshop'
+#   event: 'Social Media Federalism'
+#   date: 'June 24, 2024'
+#   type: workshop
+#   review: 'invited'
+- venue: 'Lab-LEX Workshop, University of Western Brittany, France'
+  event: 'Social Media Federalism'
+  date: 'Nov. 29, 2023'
+  type: workshop
+  review: 'invited'
+- venue: 'XI Freedom of Expression Scholars Conference'
+  event: 'Social Media Federalism'
+  date: 'Apr. 29, 2023'
+  type: workshop
+  review: 'peer review'
+- venue: 'Platform Governance Research Network Conference'
+  event: 'Social Media Federalism'
+  date: 'Apr. 4, 2023'
+  type: workshop
+  review: 'blind peer review'
+- venue: 'Digital Governance Research Colloquium, Hertie School'
+  event: 'The Plurality of Anonymity and Identification on Social Media'
+  date: 'Nov. 23, 2022'
+  type: workshop
+  review: 'talk'
+  video: 'https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/'
+- venue: 'Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University'
+  event: 'Anonymity, Identity, and Lies'
+  date: 'Apr. 8, 2022'
+  type: workshop
+  review: 'peer review'
+  video: 'https://youtu.be/D7MLqq6cGyY?t=2100'
+- venue: 'X Freedom of Expression Scholars Conference'
+  event: 'Curtaling Anonymity'
+  date: 'Apr. 30, 2021'
+  type: workshop
+  review: 'plenary; peer review'
+- venue: 'XII Annual Constitutional Law Colloquium'
+  event: 'Online Anonymity as Expressive'
+  date: 'Nov. 13, 2021'
+  type: workshop
+  review: 'peer review'
+- venue: 'X Freedom of Expression Scholars Conference, closing plenary'
+  event: 'Curtaling Anonymity'
+  date: 'Apr. 30, 2021'
+  type: workshop
+  review: 'peer review'
+- venue: 'IX Freedom of Expression Scholars Conference'
+  event: 'Online Anonymity as Expressive'
+  date: 'Oct. 24, 2020'
+  type: workshop
+  review: 'peer review'  

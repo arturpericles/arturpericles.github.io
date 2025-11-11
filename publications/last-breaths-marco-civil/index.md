@@ -13,7 +13,8 @@ citation:
     dropping-particle: L.
   title: The last breaths of Brazil's Marco Civil?
   type: chapter
-  container-title: "Defeating Disinformation: Digital Platform Responsibility, Regulation and Content Moderation on the Global Technological Commons"
+  container-title-short: Defeating Disinformation
+  container-title: 'Defeating Disinformation: Digital Platform Responsibility, Regulation and Content Moderation on the Global Technological Commons'
   doi: 10.1017/9781009438636.006
   editor:
    -  Bhaskar Chakravorti

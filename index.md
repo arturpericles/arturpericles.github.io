@@ -61,7 +61,7 @@ resources:
 
 ::: {#hero-heading}
 
-<br>
+
 
 [Learn more about me &rarr;](/about/){.about-links .subtitle}
 

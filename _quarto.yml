@@ -21,11 +21,11 @@ website:
         text: Teaching
       - href: talks/
         text: Talks    
-    open-graph:
-      image: media/seymour-march.jpg
-    twitter-card: 
-      creator: "@arturpericles"     
-      image: media/seymour-march.jpg         
+  open-graph:
+    image: media/seymour-march.jpg
+  twitter-card: 
+    creator: "@arturpericles"     
+    image: media/seymour-march.jpg         
 format: 
   html:
     theme:

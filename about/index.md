@@ -13,7 +13,7 @@ about:
       href: https://mastodon.social/@artp
     - text: "{{< fa brands bluesky >}}"
       aria-label: Bluesky
-      href: https://bsky.app/profile/arturpericles.bsky.social      
+      href: https://bsky.app/profile/arturpericles.art     
     - text: "{{< fa brands linkedin >}}"
       aria-label: LinkedIn
       href: https://www.linkedin.com/in/arturpericles/

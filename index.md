@@ -11,12 +11,13 @@ about:
   image-title: 'Robert Seymour, The March of Intellect, c. 1828, The British Museum'
   id: hero-heading
   links:
-    - text: "{{< fa brands mastodon >}}"
-      aria-label: Mastodon
-      href: https://mastodon.social/@artp
+    - text: |
+        <a href="https://mastodon.social/@artp" rel="me" aria-label="Mastodon">
+        <i class="fa-brands fa-mastodon" role="img" aria-hidden="true"></i>
+        </a>
     - text: "{{< fa brands bluesky >}}"
       aria-label: Bluesky
-      href: https://bsky.app/profile/arturpericles.bsky.social
+      href: https://bsky.app/profile/arturpericles.art
     - text: "{{< fa brands linkedin >}}"
       aria-label: LinkedIn
       href: https://www.linkedin.com/in/arturpericles/

@@ -24,6 +24,9 @@ about:
     - text: "{{< fa envelope >}}"
       aria-label: Email
       href: mailto:artur.monteiro@yale.edu
+    - text: "{{< fa key>}}"
+      aria-label: PGP Key
+      href: https://keys.openpgp.org/vks/v1/by-fingerprint/F6E4B34C3B2C537DC1DBF3FB41B9B8C46C9F6B37
 format: 
   html: 
     page-layout: full

@@ -1,5 +1,6 @@
 ---
 title: "Artur Pericles<br/>L. Monteiro"
+subtitle: Art
 format: 
   html:
     pagetitle: "About"
@@ -20,11 +21,14 @@ about:
     - text: "{{< fa envelope >}}"
       aria-label: Email
       href: mailto:artur.monteiro@yale.edu    
-
+    - text: "{{< fa key>}}"
+      aria-label: PGP Key
+      href: https://keys.openpgp.org/vks/v1/by-fingerprint/F6E4B34C3B2C537DC1DBF3FB41B9B8C46C9F6B37
 
 ---
 
 :::{#hero-heading}
+
 
 Art is a [Resident Fellow at Yale Law School's Information Society Project](https://law.yale.edu/artur-pericles-lima-monteiro) and the [Schmidt Visiting Scholar on AI and Lecturer in Global Affairs at the Yale Jackson School of Global Affairs](https://jackson.yale.edu/person/artur-pericles-lima-monteiro/).
  

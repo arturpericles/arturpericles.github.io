@@ -5,8 +5,8 @@ project:
     port: 4200
     browser: false
 website:
-  title: "Artur Pericles L. Monteiro"
-  site-url: "https://www.arturpericles.art"
+  title: 'Artur Pericles L. Monteiro'
+  site-url: 'https://www.arturpericles.art'
   # favicon: media/api-favicon.png
   navbar:
     title: ARTUR PERICLES L. MONTEIRO
@@ -20,7 +20,12 @@ website:
       - href: teaching/
         text: Teaching
       - href: talks/
-        text: Talks              
+        text: Talks    
+    open-graph:
+      image: media/seymour-march.jpg
+    twitter-card: 
+      creator: "@arturpericles"     
+      image: media/seymour-march.jpg         
 format: 
   html:
     theme:

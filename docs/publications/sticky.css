@@ -1,5 +1,0 @@
-.sticky-column {
-    position: sticky;
-    top: 150px;
-    align-self: start; /* Tells the grid to not stretch this column */
-  }

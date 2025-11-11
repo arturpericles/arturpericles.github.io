@@ -2,3 +2,7 @@
 /.quarto/
 **/*.quarto_ipynb
 docs/CNAME
+.DS_Store
+/docs
+/docs
+docs/CNAME

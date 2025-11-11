@@ -64,11 +64,7 @@ resources:
 <br><br><br><br><br><br>
 
 ::: {#hero-heading}
-
-
-
 [Learn more about me &rarr;](/about/){.about-links .subtitle}
-
 :::
 <!-- hero-heading -->
 

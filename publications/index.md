@@ -39,7 +39,7 @@ featured: true
 format: 
   html: 
     page-layout: article
-    pagetitle: Publcations
+    pagetitle: Publications
 ---
 
 

@@ -22,10 +22,10 @@ website:
       - href: talks/
         text: Talks    
   open-graph:
-    image: media/seymour-march-sm.webp
+    image: /media/seymour-march-sm.webp
   twitter-card: 
     creator: "@arturpericles"     
-    image: media/seymour-march-sm.webp
+    image: /media/seymour-march-sm.webp
 format: 
   html:
     theme:

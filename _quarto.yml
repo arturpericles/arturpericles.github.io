@@ -36,5 +36,6 @@ format:
         - assets/fonts.scss      
     pagetitle: '{{< meta title >}}'
     lightbox: true
-
+resources:
+  - media/
 

@@ -12,10 +12,9 @@ about:
   image-alt: 'Description from the British Museum: "Satire against corruption: a huge automaton representing the new London University (later University College, London) tramples over greedy clerics, doctors, lawyers and the crown. c.1828 Hand-coloured etching."'
   id: hero-heading
   links:
-    - text: |
-        <a href="https://mastodon.social/@artp" rel="me" aria-label="Mastodon">
-        <i class="fa-brands fa-mastodon" role="img" aria-hidden="true"></i>
-        </a>
+    - text: "{{< fa brands mastodon >}}"
+      aria-label: Mastodon
+      href: https://mastodon.social/@artp
     - text: "{{< fa brands bluesky >}}"
       aria-label: Bluesky
       href: https://bsky.app/profile/arturpericles.art
@@ -69,5 +68,5 @@ resources:
 :::
 <!-- hero-heading -->
 
-
+<a href="https://mastodon.social/@artp" rel="me"></a>
 

@@ -4,3 +4,6 @@
 
 # macOS system files
 .DS_Store
+
+# Other
+docs/CNAME

@@ -11,7 +11,7 @@ citation:
   - given: Artur Pericles
     family: Monteiro 
     dropping-particle: L.
-  title: The last breaths of Brazil's Marco Civil?
+  title: The last breaths of Brazil's <i>Marco Civil</i>?
   type: chapter
   container-title-short: Defeating Disinformation
   container-title: 'Defeating Disinformation: Digital Platform Responsibility, Regulation and Content Moderation on the Global Technological Commons'

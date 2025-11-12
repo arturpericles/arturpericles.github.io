@@ -16,14 +16,14 @@
   type: panel
   event: Making Platforms Safe
   date: 2023-12-07
-- venue: "Université de Bretagne Occidentale, France"
-  event: "guest lecture"
+- venue: Université de Bretagne Occidentale, France
+  event: guest lecture
   talk: Online Freedom of Speech in the U.S. and Brazil  
   type: talk
   date: 2023-12-04
-- talk: "U.S. Views on EU Tech Regulation"
-  event: "guest lecture"
-  venue: "Université de Bretagne Occidentale, France"
+- talk: U.S. Views on EU Tech Regulation
+  event: guest lecture
+  venue: Université de Bretagne Occidentale, France
   type: talk
   date: 2023-12-01
 - event: Lab-LEX Workshop
@@ -31,25 +31,24 @@
   venue: Université de Bretagne Occidentale, France
   type: talk
   date: 2023-11-23
-- talk: "AI Governance: An Overview"
-  venue: "Annual Conference, United States District Court for the District of Connecticut"
+- talk: 'AI Governance: An Overview'
+  venue: Annual Conference, United States District Court for the District of Connecticut
   type: talk
   date: 2023-11-03
 - talk: Information as a Public Good
-  venue: "UNESCO Internet Conference Day-0"
-  type: panelist
+  venue: UNESCO Internet Conference Day 0
+  type: panel
   date: 2023-02-21
   video: https://youtu.be/B36x3ZtMTEU?t=1466
 - talk: Briefing Series on Social Media
-  venue: "Mediation Support Unit, Departmental of Political and Peacebuilding Affairs, United Nations"
+  venue: Mediation Support Unit, Departmental of Political and Peacebuilding Affairs, United Nations
   type: talk
   date: 2022-03-10
-- event: "A Conversation on Content Moderation"
-  venue: "Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights"
-  type: talk
+- talk: A Conversation on Content Moderation 
+  venue: Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights  
   date: 2021-09-10
   video: https://youtu.be/HLLWkGq9-NU
-- event: "Symposium on Data Privacy and the Pandemic"
-  venue: "Fordham International Law Journal"
-  type: panelist
+- event: Symposium on Data Privacy and the Pandemic
+  venue: Fordham International Law Journal
+  type: panel
   date: 2023-02-21

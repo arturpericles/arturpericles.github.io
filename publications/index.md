@@ -54,4 +54,4 @@ format:
 :::{#publications}
 :::
 
-![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for British Art](/media/blake.webp)
+![William Blake, _Europe. A Prophecy_ (frontispiece), ca. 1820, Yale Center for British Art](/media/blake.webp){fig-alt="Description of another copy by the British Museum: a bearded nude male (probably Urizen) crouching in a heavenly sphere, its light partially covered by clouds; his left arm holding a pair of compasses and reaching down with them, measuring the surrounding darkness."}

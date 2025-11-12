@@ -34,23 +34,29 @@ format:
       - text: |
           <script>
           document.addEventListener("DOMContentLoaded", function() {
-            // Find the image by its class
+            
+            // 1. Find the original image
             const img = document.querySelector("img.about-image");
             
-            // If we find the image and it has a title (from image-title)
             if (img && img.title) {
               
-              // Create a new <figcaption> element
+              // 2. Create the new caption element
               const caption = document.createElement("figcaption");
-              
-              // Set its text to the image's title
               caption.textContent = img.title;
-              
-              // Add a class for styling
               caption.classList.add("mycaption");
+
+              // 3. Create a <figure> to wrap them
+              const figure = document.createElement("figure");
               
-              // Insert the caption after the image's <div> container
-              img.parentElement.insertAdjacentElement("afterend", caption);
+              // 4. Replace the <img> with the new <figure>
+              //    (This keeps it in the same grid position)
+              img.parentElement.replaceChild(figure, img);
+              
+              // 5. Move the <img> *inside* the <figure>
+              figure.appendChild(img);
+              
+              // 6. Add the caption *inside* the <figure>
+              figure.appendChild(caption);
             }
           });
           </script>
@@ -61,7 +67,6 @@ resources:
   - assets/index.css
 ---
 
-<br><br><br><br><br><br>
 
 ::: {#hero-heading}
 [Learn more about me &rarr;](/about/){.about-links .subtitle}
@@ -69,4 +74,10 @@ resources:
 <!-- hero-heading -->
 
 <a href="https://mastodon.social/@artp" rel="me"></a>
+
+
+
+
+
+
 

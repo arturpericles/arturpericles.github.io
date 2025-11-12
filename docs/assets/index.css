@@ -1,3 +1,9 @@
+#quarto-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* title */
 .title {
   color: #516DB0;
@@ -50,32 +56,45 @@
 
 /* image */
 .about-image {
-  margin-top: -2em;
+  margin-top: -1.5em;
   padding: 0 2em 0em 0;
   
 }
 
 /*
-  This styles the new caption element 
-  created by the script.
+  1. Add this new rule.
+  This removes the default browser spacing from the
+  new <figure> wrapper so it doesn't add extra gaps.
+*/
+figure {
+  margin: 0;
+}
+
+/*
+  2. This is your updated caption rule.
+  It's now inside the <figure> with the image.
 */
 .mycaption {
-/* Aligns text within the right-hand column */
+  /* Aligns text to the right */
   text-align: right;
 
-  /* Matches the image's padding */
+  /* This matches the padding of your .about-image rule */
   padding-right: 3em; 
   
   /* .small and .text-muted styles */
   font-size: 0.7em;
-
+  font-style: italic;
+  color: #6c757d; /* Standard muted color */
   
-  /* Pull it up closer to the image */
+  /* Space between image and caption */
   margin-top: 10px;
 }
 
 
-
+.quarto-about-solana {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
 
 
 

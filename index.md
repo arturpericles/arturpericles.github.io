@@ -8,7 +8,7 @@ about:
   template: solana
   image-width: 36em
   image: /media/seymour-march.webp
-  image-title: 'Robert Seymour, The March of Intellect (detail), c. 1828, The British Museum'
+  image-title: 'Robert Seymour, The March of Intellect (detail), ca. 1828, The British Museum'
   image-alt: 'Description from the British Museum: "Satire against corruption: a huge automaton representing the new London University (later University College, London) tramples over greedy clerics, doctors, lawyers and the crown. c.1828 Hand-coloured etching."'
   id: hero-heading
   links:

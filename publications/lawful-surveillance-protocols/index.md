@@ -1,15 +1,19 @@
 ---
 title: 'Lawful Surveillance Protocols, Crypto Wars, and the Limitations of Privacy as Security'
-description: Submitted to the ACM Symposium on Computer Science and the Law
 author:
  - given: Artur Pericles
    family: Lima Monteiro 
    afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
-date: 2025-10-01
+date: 2026-03-05
 citation:
+  author:
+  - given: Artur Pericles
+    family: Monteiro 
+    dropping-particle: L.
   title: 'Lawful surveillance protocols, crypto wars, and the limitations of privacy as security'
-  type: manuscript
-  status: under review
+  type: article-journal
+  container-title: Proceedings of the ACM Symposium on Computer Science & the Law
+  status: forthcoming
 slug: lawful-surveillance-protocols
 css-class: publication-page
 google-scholar: true

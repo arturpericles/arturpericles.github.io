@@ -12,7 +12,8 @@ citation:
     dropping-particle: L.
   title: 'Anonymity, identity, and lies'
   type: article-journal
-  container-title: "Journal of Free Speech Law"
+  container-title: Journal of Free Speech Law
+  container-title-short: J. Free Speech L.
   volume: 4
   issue: 1
   page-first: 551

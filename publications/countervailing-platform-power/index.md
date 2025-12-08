@@ -12,7 +12,8 @@ citation:
     dropping-particle: L.
   title: 'Countervailing platform power'
   type: article-journal
-  container-title: "Berkeley Technology Law Journal"
+  container-title: Berkeley Technology Law Journal
+  container-title-short: Berkeley Tech. L.J.
   volume: 41
   status: forthcoming
 slug: countervailing-platform-power

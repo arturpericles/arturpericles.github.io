@@ -1,3 +1,18 @@
+- venue: 'Internet Law Works in Progress'
+  event: 'Democratic Friction'
+  date: Mar. 6, 2026
+  type: workshop
+  review: 'peer review'    
+- venue: 'ACM Symposium on Computer Science & Law (CS&Law)'
+  event: 'Lawful Surveillance Protocols, Crypto Wars, and the Limitations of Privacy as security'
+  date: 'March 2026'
+  type: workshop
+  review: 'blind peer review'
+- venue: ' Accountable AI Research Conference'
+  event: 'Scalable Oversight for Regulators'
+  date: Feb. 6, 2026
+  type: workshop
+  review: 'peer review'
 - venue: 'New England IP Works in Progress Roundtable'
   event: 'Countervailing Platform Power'
   date: 'Sept. 26, 2025'

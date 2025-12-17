@@ -12,8 +12,8 @@ citation:
     dropping-particle: L.
   title: 'Lawful surveillance protocols, crypto wars, and the limitations of privacy as security'
   type: article-journal
-  container-title: Proceedings of the ACM Symposium on Computer Science & the Law
-  container-title-short: Proc. ACM Symp. Comput. Sci. & L.
+  container-title: Proceedings of the 2026 Symposium on Computer Science & Law
+  container-title-short: Proc. 2026 Symp. Comput. Sci. & L.
   status: forthcoming
 slug: lawful-surveillance-protocols
 css-class: publication-page

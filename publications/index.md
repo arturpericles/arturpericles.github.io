@@ -29,7 +29,7 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [title,  date, citation.container-title, citation.status]
+  fields: [title, title-short, date, citation.container-title, citation.status]
   date-format: YYYY
   field-display-names: 
     citation.container-title: ' '

@@ -1,5 +1,6 @@
 ---
 title: 'Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols'
+title-short: Security Is Not Enough
 author:
  - given: Artur Pericles
    family: Lima Monteiro 
@@ -10,6 +11,7 @@ citation:
   - given: Artur Pericles
     family: Monteiro 
     dropping-particle: L.
+  title-short: Security is not enough
   title: 'Security is not enough: privacy in encryption regulation and lawful-surveillance protocols'
   type: paper-conference
   event: 2026 Symposium on Computer Science & Law

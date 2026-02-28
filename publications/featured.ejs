@@ -13,7 +13,7 @@
           <div class="card-body post-contents">
 
             <% if (item.title) { %>
-            <h5 class="no-anchor card-title listing-title"><%- item.title %></h5>
+            <h5 class="no-anchor card-title listing-title"><%- item["title-short"] || item.title %></h5>
             <% } %>
 
             <% if (item.citation['container-title']) { %>

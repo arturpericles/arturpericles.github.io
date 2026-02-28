@@ -18,4 +18,5 @@ citation:
   publisher: Jota
   title: 'Como não regular a moderação de conteúdo: lições de uma tentativa fracassada'
   container-title: 'Liberdade de expressão: um conceito em disputa'
+fulltext: https://constituicao.direito.usp.br/wp-content/uploads/APLM-Como-nao-regular.pdf
 ---

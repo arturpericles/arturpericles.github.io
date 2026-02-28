@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/talks/index.html",
+    "items": []
+  },
+  {
     "listing": "/publications/index.html",
     "items": [
       "/publications/countervailing-platform-power/index.html",
@@ -21,8 +25,36 @@
     ]
   },
   {
-    "listing": "/talks/index.html",
+    "listing": "/arturpericles.github.io/publications/index.html",
+    "items": [
+      "/arturpericles.github.io/publications/countervailing-platform-power/index.html",
+      "/arturpericles.github.io/publications/security-not-enough/index.html",
+      "/arturpericles.github.io/publications/scalable-oversight-ai-regulation/index.html",
+      "/arturpericles.github.io/publications/last-breaths-marco-civil/index.html",
+      "/arturpericles.github.io/publications/fotn-2024/index.html",
+      "/arturpericles.github.io/publications/anonymity-identity-lies/index.html",
+      "/arturpericles.github.io/publications/privacy-crossroads/index.html",
+      "/arturpericles.github.io/publications/fotn-2023/index.html",
+      "/arturpericles.github.io/publications/moderacao-metaverso/index.html",
+      "/arturpericles.github.io/publications/nao-regular-moderacao/index.html",
+      "/arturpericles.github.io/publications/brazilians-desperately-fighting/index.html",
+      "/arturpericles.github.io/publications/armadilhas-moderacao/index.html",
+      "/arturpericles.github.io/publications/caminhos-moderacao/index.html",
+      "/arturpericles.github.io/publications/missing-bridges/index.html",
+      "/arturpericles.github.io/publications/horizonte-protocolos-clinicos/index.html",
+      "/arturpericles.github.io/publications/liberdade-ocupacao-multidao/index.html"
+    ]
+  },
+  {
+    "listing": "/arturpericles.github.io/talks/index.html",
     "items": []
+  },
+  {
+    "listing": "/arturpericles.github.io/teaching/index.html",
+    "items": [
+      "/arturpericles.github.io/teaching/global-law-policy-ai/index.html",
+      "/arturpericles.github.io/teaching/technology-security-power/index.html"
+    ]
   },
   {
     "listing": "/teaching/index.html",

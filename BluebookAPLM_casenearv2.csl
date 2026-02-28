@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US" page-range-format="minimal-two">
+  <info>
+    <title>Bluebook Style — Epps Variations with Monteiro adjustments</title>
+    <!--
+      This builds on Professor Epps' modifications and adds:
+      (a) Correct short citations for cases (previously rendered with "supra note", invalid for cases)
+          The short citation incorporated here is _Short Case Name_, [Volume] [Reporter].
+          ("Id." treatment was already correctly provided.)
+      (b) Full citations for cases where the previous citation is not within a distance of five notes.
+      (c) Alternative case names in short citations for cases that are commonly known by
+          a name in addition to the name contained in the reporter. R10.2.1(k). Ex: "(_Turner I_)"
+          Enter alternative case name as CSL custom field `alt-legal-title`.
+          (Note that the alternative name will be italicized, which should not be done for
+          cases that are not known by the reporter name. Ex: The Prize Cases.
+          Advice: As allowed by R10.2.1(k), enter the commonly known name in the title field
+          in such circumstances.)
+      (d) Correct full and short citations manuscripts, including manuscript page and
+          "on file with" (use `archive_location`), R17.2.1.
+      (e) Unreported cases include docket number after case name, if a docket number is given. R10.8.1.
+          Do not enter information into `reporter` field. Enter information into year and first-page as appropriate.
+          Ex: year: 2024; first-page: WL 4353049.
+          Does not support renumbered docket numbers. Does not support pincite to "slip opinion at X".
+      (f) Page ranges "retain the last two digits, but drop other repetitious digits" (R3.2.(a)).
+      (g) Locators are introduced by the corresponding label, e.g. "§", "¶", "n." (R3.3), except for pages. (R3.2(a)).
+          Implemented with new macro "smart-locator". Comments note where not implemented.
+      (h) Original publication date for works published before 1900. Use `original-date` (per CSL 1.0.2 specification). R15.4
+      (i) Year in place of volume "[i]f the periodical has no volume number but is nonetheless
+          consecutively paginated throughout each volume". Do not fill `volume`. R16.4
+      (j) Special issue (different pagination) —parenthetical after journal name. Add issue designation as `volume-title` (per CSL 1.0.2 specification). R16.4
+      (k) Notes and other specially-designated publications will have that designation preappended to title, in regular shape. Use `genre`. R16.7.1(a)-(b), R16.7.4.
+      (l) Journal articles not paginated by volume are treated like magazine articles. Add `article-locator`. R16.5. 
+        (Does not implement alternative treatment for when no date of isue is provided)
+      (m) Books and reports use title, not subtitle; enter `short-title` or leave blank 
+      to fallback on full title of "subtitle… it is particularly relevant." R15.3.
+      (n) Non-student-written book review treatment. R16.7.2.
+    -->
+    <link href="https://www.legalbluebook.com/" rel="documentation"/>
+    <author>
+      <name>Bruce D'Arcus</name>
+      <email>bdarcus@gmail.com</email>
+    </author>
+    <author>
+      <name>Nancy Sims</name>
+      <email>nsims@umich.edu</email>
+    </author>
+    <contributor>
+      <name>Patrick O'Brien</name>
+    </contributor>
+    <contributor>
+      <name>Dan Epps</name>
+      <email>epps@wustl.edu</email>
+    </contributor>
+        <contributor>
+      <name>Artur Pericles Lima Monteiro</name>
+      <email>artur.monteiro@yale.edu</email>
+    </contributor>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <summary>The Bluebook legal citation style for law reviews,
+      with modifications from Prof. Daniel Epps of Washington University School of Law.
+      Additions by Artur Pericles Lima Monteiro, Yale Law School.
+    </summary>
+    <updated>2025-02-02</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="editor" form="verb-short">ed.</term>
+      <term name="ibid">id.</term>
+      <term name="translator" form="verb-short">trans.</term>
+      <term name="and" form="symbol">&amp;</term>
+      <term name="section"  form="short">§</term>
+      <term name="section" form="short" plural="true">§§</term>
+      <term name="paragraph"  form="short">¶</term>
+      <term name="paragraph"  form="short" plural="true">¶¶</term>
+      <term name="review" form="verb">reviewing</term>
+      <term name="review" form="long">review</term>
+    </terms>
+  </locale>
+<!-- R.3.3. and 3.2(a): locators are introduced by the corresponding label, except for pages -->
+<macro name="smart‑locator">
+  <choose>
+    <if variable="locator">
+      <choose>
+        <!-- If the locator type is page, suppress the label -->
+        <if locator="page">
+          <text variable="locator"/>
+        </if>
+        <!-- Otherwise print the label then the numbers -->
+        <else>
+          <label variable="locator" form="short"/>
+          <text  variable="locator" prefix=" "/>
+        </else>
+      </choose>
+    </if>
+  </choose>
+</macro>
+  <macro name="name-macro">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never"/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <choose>
+      <if type="legal_case">
+      <choose>
+        <if variable="title-short">
+          <text variable="title-short" font-style="italic"/>
+        </if>
+        <else>
+          <text variable="title"/>
+        </else>
+       </choose>
+      </if>
+      <else-if type="bill legislation" match="any">
+        <text macro="name-macro"/>
+      </else-if>
+      <else-if type="book graphic motion_picture report song" match="any">
+        <text macro="name-short-macro" font-variant="small-caps"/>
+      </else-if>
+      <else>
+        <text macro="name-short-macro"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="name-short-macro">
+    <choose>
+          
+            <if type="legal_case" match="any">
+              <names variable="author">
+                <substitute>
+                <text variable="alt-legal-title" text-case="title" font-style="italic"/>
+                <text variable="title" form="short" font-style="italic"/>
+                  <text variable="title" font-style="italic"/>
+                </substitute>
+              </names>
+          </if>
+          <else>
+            <names variable="author">
+              <name form="short" and="symbol" delimiter=", "/>
+
+
+                  <substitute>
+                    <text variable="title" form="short"/>            
+                    <text variable="title"/>
+                    <text variable="genre" text-case="title"/>
+                  </substitute>
+            </names>
+          </else>
+    </choose>
+      
+
+</macro>
+  <macro name="author">
+    <choose>
+      <!--
+      Limitation: While CSL will replace the author for the title here,
+      it does not appear that title is fully treated as author in this case.
+      So, for in-line citations, where the citation should be broken down with
+      the author rendered in-line and the rest of the citation rendered on a note,
+      Pandoc (at least) will render the title-replacing-author in the footnote,
+      leaving the in-line citation blank.
+      -->
+      <if type="bill legal_case legislation" match="any">
+        <text macro="name-macro"/>
+      </if>
+      <else-if type="book graphic motion_picture report song" match="any">
+        <text macro="name-macro" font-variant="small-caps"/>
+      </else-if>
+      <else>
+        <text macro="name-macro"/>        
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor-translator">
+    <names variable="editor translator" delimiter=", ">
+      <name and="symbol" delimiter=", "/>
+      <label form="short" strip-periods="false" prefix=" "/>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" ">
+          <text variable="URL"/>
+          <choose>
+            <if type="webpage">
+              <choose>
+                <if variable="accessed">
+                  <group delimiter=" " prefix="(" suffix=")">
+                    <text value="last visited"/>
+                    <date variable="accessed">
+                      <date-part name="month" form="short" suffix=" " strip-periods="false"/>
+                      <date-part name="day" suffix=", "/>
+                      <date-part name="year"/>
+                    </date>
+                  </group>
+                </if>
+              </choose>
+            </if>
+          </choose>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="source">
+    <choose>
+      <!-- Incorporating R16.5 for journal articles that are not paginated by volume; uses extra field `nonvolume-pagination`. -->
+      <if type="article-newspaper article-magazine" variable="nonvolume-pagination" match="any">
+        <group delimiter=", ">
+          <text variable="title" text-case="title" font-style="italic"/>
+          <group delimiter=" ">
+            <!--
+            No volume for newspaper, magazines, and journals with pagination other than by volume
+            <text variable="volume"/>
+            -->
+            <text macro="container"/>
+          </group>
+          <text macro="issuance"/>
+          <group delimiter=" ">
+            <text value="at"/>
+            <text variable="page-first"/>
+          </group>
+        </group>
+      </if>
+      
+      <else-if type="article-journal paper-conference" match="any">
+        <group delimiter=" ">
+          <!-- 1) Container details in a comma-delimited group. -->
+          <group delimiter=", ">
+            <choose>
+              <if variable="genre" match="any">
+                <text variable="genre" text-case="title"/>
+              </if>
+            </choose>
+            <text variable="title" text-case="title" font-style="italic"/>
+            <group delimiter=" ">
+              <choose>
+                <!-- Year in place of volume: Implements R16.4 treatment for "If the periodical has no volume number but is nonetheless consecutively paginated throughout each volume" -->
+                <if variable="volume" match="none">
+                  <choose>
+                  <if variable="status" match="any">
+                  <!-- Don't use year as volume if forthcoming --->
+                  </if>
+                  
+                  <else>
+                  <text macro="issuance"/>
+                  </else>
+                  </choose>
+                </if>
+                <else>
+                <text variable="volume"/>
+                </else>
+              </choose>
+              <text macro="container"/>
+              <!-- Special issue treatment: "volume-title", not "issue", as per CSL 1.0.2. specifications -->
+              <text variable="volume-title" prefix="(" suffix=")" font-variant="small-caps" />
+              <text variable="article-locator" prefix="art. no. "/>
+              <text variable="page-first"/>
+            </group>
+          </group>
+          <!-- R.17.2.1. (manuscript) R.17.3 (forthcoming publications) -->
+          <!-- 2) Branch on 'status' to decide between forthcoming/manuscript or normal. -->
+          <choose>
+            <!-- Forthcoming/manuscript-like branch if 'status' is set. -->
+            <if variable="status" match="any">
+              <group delimiter=" ">
+                <!-- Issuance in parentheses, e.g. (forthcoming 2026) -->
+                <text macro="issuance" prefix="(" suffix=")"/>
+
+                <!-- Only show '(manuscript at ...)' if a locator is present. -->
+                <choose>
+                  <if variable="locator">
+                    <group prefix=" (" suffix=")">
+                      <!-- Not implementing locator labels -->
+                      <text variable="locator" prefix="manuscript at " />
+                    </group>
+                    <text macro="on-file"/>
+                  </if>
+                </choose>
+              </group>
+            </if>
+
+            <!-- 3) Normal article-journal branch (no 'status'). -->
+            <else>
+              <!-- If there's a locator, prepend it with ', '. If none, do nothing. -->
+              <choose>
+                <if variable="locator">
+                  <text value=", "/>
+                  <!-- Not implementing locator labels -->
+                  <text variable="locator"/>
+                </if>
+              </choose>
+
+              <!-- Then output issuance (year) with space + parentheses. -->
+              
+              <choose>
+               <if variable="volume" match="none">
+               <!-- Assumes year was used as volume -->
+                </if>
+                <else>
+                  <text macro="issuance" prefix=" (" suffix=")"/>
+                </else>
+              </choose>              
+            </else>
+          </choose>
+          <choose>
+         
+          <!--
+          R16.7.2. (non-student-written book reviews)
+          Infers book review from `reviewed-title` or `reviewed-genre`.
+          The Bluebook directs reviewed work information *not* be provided unless it is relevant and not immediately clear. 
+          Parenthetical will render "book review" if `reviewed-title` is not entered.
+          Use `event-date` extra field to enter the reviewed book's publication date.
+          -->
+   
+          <if variable="reviewed-title reviewed-genre" match="any">
+            <group prefix=" (" suffix=")" delimiter=" ">
+            <choose>
+                <if variable="reviewed-title" match="any">
+                  <text term="review" form="verb"/>
+
+                  <group suffix=",">
+                    <names variable="reviewed-author">
+                      <name and="symbol" delimiter=", " delimiter-precedes-last="never" font-variant="small-caps"/>
+                    </names>
+                  </group>
+
+                  <text variable="reviewed-title" font-variant="small-caps"/>
+
+                  <date variable="event-date" prefix="(" suffix=")">
+                    <date-part name="year"/>
+                  </date>
+                </if>
+
+                <else>
+                  <text variable="reviewed-genre" text-case="lowercase"/>
+                  <text term="review" form="long"/>
+                </else>
+              </choose>
+
+            </group>
+          </if>
+        </choose>
+        </group>
+      </else-if>
+      <else-if type="legal_case">
+        <group delimiter=" ">
+          <group delimiter=", ">
+            <group delimiter=" ">
+            <text variable="title"/>
+              <choose>
+              <if variable="alt-legal-title" match="any">
+              <text variable="title-short" prefix="(" suffix=")" font-style="italic"/>
+              </if>
+              </choose>
+            </group>
+              <!-- Unreported cases include docket number after case name, if a docket number is given. -->
+              <choose>
+                <if variable="reporter" match="none">
+                <text prefix="No. " variable="number"/>
+                </if>
+              </choose>
+            <text variable="volume"/>
+          </group>
+          <text macro="container"/>
+          <group delimiter=", ">
+            <text variable="page-first"/>
+            <!-- Not implementing locator labels -->
+            <text variable="locator"/>
+          </group>
+          <text macro="issuance" prefix="(" suffix=")"/>
+        </group>
+      </else-if>
+      <else-if type="article">
+        <group>
+          <text variable="title" text-case="title" font-style="italic"/>
+          <text macro="smart‑locator" prefix=" "/>
+          <group prefix=" (" suffix=")">
+            <group delimiter=", ">
+              <group delimiter=" ">
+              <text variable="collection-title"/>
+              <text variable="collection-number" prefix="No. "/>
+              </group>
+              <date variable="issued" form="text">
+                <date-part name="year"/>
+              </date>
+            </group>
+          </group>
+        </group>
+      </else-if>
+      <else-if type="report">
+        <group>
+          <group delimiter=", ">
+            <text variable="publisher" font-variant="small-caps"/>
+            <text variable="number"/>
+            <text variable="title" form="short" text-case="title" font-variant="small-caps"/>
+          </group>
+          <text macro="smart‑locator" prefix=" "/>
+          <group prefix=" (" suffix=")">
+            <group delimiter=", ">
+              <text variable="collection-title"/>
+              <date variable="issued" form="text" date-parts="year"/>
+            </group>
+          </group>
+        </group>
+      </else-if>
+      <!-- Incorporating R.17.2.1 (manuscripts) -->
+      <else-if type="manuscript" match="any">
+        <group>
+          <text variable="title" text-case="title" suffix=" "/>
+          <group prefix=" (" suffix=")">
+            <date variable="issued">
+              <date-part name="month" form="short" suffix=" "/>
+              <date-part name="day" suffix=", "/>
+              <date-part name="year"/>
+            </date>
+          </group>
+          <group prefix=" (" suffix=")">
+            <text value="unpublished manuscript"/>
+          </group>
+          <group prefix=" (" suffix=")">
+          <!-- Not implementing locator labels -->
+          <text variable="locator" prefix="manuscript at " />
+          </group>
+          <text macro="on-file"/>
+        </group>
+      </else-if>
+      <else-if type="thesis document" match="any">
+        <group>
+          <text variable="title" text-case="title" suffix=" "/>
+          <text macro="smart‑locator" prefix=" "/>
+          <group prefix=" (" suffix=")">
+            <date variable="issued">
+              <date-part name="month" form="short" suffix=" "/>
+              <date-part name="day" suffix=", "/>
+              <date-part name="year"/>
+            </date>
+          </group>
+          <group prefix=" (" suffix=")">
+            <text variable="genre" suffix=", "/>
+            <text variable="publisher"/>
+          </group>
+          <group prefix=" (" suffix=")">
+            <text variable="archive_location"/>
+          </group>
+        </group>
+      </else-if>
+
+      <else-if type="paper-conference" match="any">
+        <text variable="title" text-case="title" font-style="italic"/>
+        <group prefix=", " delimiter=" " suffix=" ">
+          <text variable="volume"/>
+          <text macro="container"/>
+        </group>
+        <text variable="page-first"/>
+        <text macro="smart‑locator" prefix=" "/>
+        <text macro="issuance" prefix=" (" suffix=")"/>
+      </else-if>
+      <else-if type="chapter" match="any">
+        <text variable="title" text-case="title" font-style="italic"/>
+        <group prefix=", " delimiter=" " suffix=" ">
+          <text variable="volume"/>
+          <text macro="container"/>
+        </group>
+        <text macro="smart‑locator" prefix=" "/>
+        <text macro="issuance" prefix=" (" suffix=")"/>
+      </else-if>
+      <else-if type="book report" match="any">
+        <text variable="title" form="short" text-case="title" font-variant="small-caps"/>
+        <text macro="smart‑locator" prefix=" "/>
+        <text macro="issuance" prefix=" (" suffix=")"/>
+        <!-- R15.4 for works published before 1900 -->
+        <date variable="original-date">
+        <date-part name="year" prefix=" (" suffix=")"/>
+        </date>
+      </else-if>
+      <else>
+        <group delimiter=", ">
+          <text variable="title" text-case="title" font-style="italic"/>
+          <group delimiter=" ">
+            <text variable="volume"/>
+            <text macro="container"/>
+            <text variable="page-first"/>
+            <text macro="smart‑locator" prefix=" "/>
+            <text macro="issuance" prefix="(" suffix=")"/>
+          </group>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <!-- Macro "on file with the author"-->
+  <macro name="on-file">
+      <group prefix=" (" suffix=")">
+        <choose>
+        <if variable="archive_location">
+          <text variable="archive_location"/>  
+        </if>
+        <else>
+          <text value="on file with the author" />
+        </else>
+        </choose>  
+      </group>
+  </macro>
+  
+  <macro name="issuance">
+    <choose>
+      <if type="article-journal article-magazine article-newspaper broadcast interview manuscript map patent personal_communication song speech thesis webpage post-weblog" match="any">
+        <choose>
+        <if variable="status" match="any">
+          <text variable="status" suffix=" "/>
+          </if>
+        </choose>
+        <group>
+          <choose>
+            <!-- Incorporating R16.5 for journal articles that are not paginated by volume; uses extra field `nonvolume-pagination`. -->
+            <if type="article-newspaper thesis post-weblog webpage article-magazine" variable="nonvolume-pagination" match="any">
+              <group suffix=" ">
+                <date variable="issued">
+                  <date-part name="month" form="short"/>
+                  <date-part name="day" prefix=" " suffix=","/>
+                </date>
+              </group>
+            </if>
+          </choose>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+            <choose>
+            <if variable="post-time" match="any">
+              <group prefix=", ">
+              <text variable="post-time"/>
+              </group>
+            </if>
+            </choose>
+        </group>
+      </if>
+      <else-if type="legal_case" match="any">
+        <group delimiter=" ">
+          <text variable="authority"/>
+          <date date-parts="year" form="text" variable="issued"/>
+        </group>
+      </else-if>
+      <else>
+        <group delimiter=", ">
+          <text macro="editor-translator"/>
+          <group delimiter=" ">
+            <group delimiter=" ">
+              <text variable="edition"/>
+              <label variable="edition" form="short"/>
+            </group>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+
+          </group>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="at_page">
+    <!-- Incorporating R.17.2.1 (manuscripts) -->
+    <choose>
+      <if type="manuscript" variable="locator" match="all">
+        
+        <text prefix ="(manuscript at " variable="locator" suffix=")"/>        
+      </if>
+      <else-if variable="locator" match="any">
+        <group delimiter=" ">
+          <text value="at"/>
+          <text macro="smart‑locator" prefix=" "/>
+        </group>
+      </else-if>
+      </choose>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <group>
+          <text term="in" font-style="italic" prefix=" "/>
+          <text variable="container-title" text-case="title" form="short" font-variant="small-caps" prefix=" "/>
+        </group>
+      </if>
+      <else-if type="legal_case">
+        <text variable="container-title" text-case="title" form="short" prefix=" "/>
+      </else-if>
+      <else-if type="article-journal">
+      <!--- Long form assumes journal abbreviations will be handled through other means -->
+        <text variable="container-title" text-case="title" form="long" font-variant="small-caps" prefix=" "/>
+      </else-if>
+      <else>
+        <text variable="container-title" text-case="title" font-variant="small-caps"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if position="ibid-with-locator">
+          <group delimiter=" ">
+            <text term="ibid" font-style="italic"/>
+            <text macro="at_page"/>
+          </group>
+        </if>
+        <else-if position="ibid">
+          <text term="ibid" font-style="italic"/>
+        </else-if>
+        <else-if position="subsequent">
+          <choose>
+            <if type="legal_case" match="any">
+              <choose>
+                <if position="near-note" match="any">
+                  <group delimiter=", ">
+                    <group delimiter=" ">
+                    <text macro="author-short"/>
+                    </group>
+                    <group delimiter=" ">
+                        <text variable="volume"/>
+                        <text variable="container-title" form="short"/>
+                        <choose>
+                        <if variable="locator" match="any">
+                        <group>
+                        <text value="at"/>
+                        <text macro="smart‑locator" prefix=" "/>
+                        </group>
+                        </if>
+                      </choose>
+                      </group>
+                  </group>  
+                </if>
+                <else>
+                <text macro="source"/>  
+                </else>
+              </choose>
+            </if>
+            <else>
+                <group delimiter=", ">
+                  <group delimiter=" ">
+                    <choose>
+                      <if type="book" match="any">
+                        <text variable="volume"/>
+                      </if>
+                    </choose>
+                    <text macro="author-short"/>
+                  </group>
+                  <choose>
+                    <if type="legal_case" match="none">
+                      <group delimiter=" ">
+                        <choose>
+                          <if match="all" disambiguate="true">
+                            <choose>
+                              <if match="any" variable="title-short">
+                                <text variable="title-short" form="short" text-case="title" suffix=","/>
+                              </if>
+                              <else>
+                                <text variable="title" text-case="title" suffix=","/>
+                              </else>
+                            </choose>
+                          </if>
+                        </choose>
+                        <text value="supra" font-style="italic"/>
+                        <text value="note"/>
+                        <!-- Incorporating R.17.2.1 (manuscripts) and R.17.3 (forthcoming publications) -->
+                        <choose>
+                          <if type="manuscript" match="any" variable="status">
+                          <group delimiter=" ">
+                            <text variable="first-reference-note-number"/>
+                            <text macro="at_page"/>
+                          </group>  
+                          </if>
+                          <else>
+                          <group delimiter=", ">
+                            <text variable="first-reference-note-number"/>
+                            <text macro="at_page"/>
+                          </group>
+                          </else>
+                        </choose>
+                        
+                      </group>
+                    </if>
+                  </choose>
+                </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if variable="author">
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <choose>
+                <if type="book" match="any">
+                  <text variable="volume"/>
+                </if>
+              </choose>
+              <text macro="author"/>
+            </group>
+            <text macro="source"/>
+            <!-- Forcing URL to be omitted for journal articles -->
+            <choose>
+            <if type="article-journal" match="any">
+            </if>
+            <else>
+            <text macro="access"/>
+            </else>
+            </choose>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <choose>
+                <if type="book" match="any">
+                  <text variable="volume"/>
+                </if>
+              </choose>
+            </group>
+            <text macro="source"/>
+            <text macro="access"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+</style>

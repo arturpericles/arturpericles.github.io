@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 4200
+    browser: false
+website:
+  title: 'Artur Pericles L. Monteiro'
+  site-url: 'https://www.arturpericles.art'
+  page-footer: "[Made with [Quarto](https://quarto.org) with a modified [Canelón-adapted](https://github.com/spcanelon/silvia) Hugo [Apero theme](https://github.com/hugo-apero)]{.small}"
+  # favicon: media/api-favicon.png
+  navbar:
+    title: ARTUR PERICLES L. MONTEIRO
+    right:
+      # - href: index.md
+      #   text: Home
+      - href: about/
+        text: About
+      - href: publications/
+        text: Publications
+      - href: teaching/
+        text: Teaching
+      - href: talks/
+        text: Talks    
+  open-graph:
+    image: /media/seymour-march-sm.webp
+    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
+  twitter-card: 
+    creator: "@arturpericles"     
+    image: /media/seymour-march-sm.webp
+    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
+format: 
+  html:
+    theme:
+      light:
+        # - cosmo
+        - assets/theme.scss
+        # - assets/silvia/colors-light.scss
+        - assets/fonts.scss      
+    pagetitle: '{{< meta title >}}'
+    lightbox: true
+csl: aplm-bluebook-law-review.csl

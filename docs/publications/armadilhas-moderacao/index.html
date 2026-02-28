@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default" data-citation-status="" data-citation-type="article-magazine">
 <div class="quarto-title">
 <h1 class="title">Armadilhas à liberdade de expressão na MP 1068/2021</h1>
 </div>
@@ -157,6 +157,24 @@ ul.task-list li input[type="checkbox"] {
     
   </div>
   
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('title-block-header');
+  if (!header) return;
+  var status = header.dataset.citationStatus;
+  var type = header.dataset.citationType;
+  var label = status ? status.charAt(0).toUpperCase() + status.slice(1)
+              : (type === 'manuscript' ? 'Manuscript' : null);
+  if (label) {
+    header.querySelectorAll('.quarto-title-meta-heading').forEach(function(h) {
+      if (h.textContent.trim() === 'Published') h.textContent = label;
+    });
+  }
+});
+</script>
 
 
 </header>

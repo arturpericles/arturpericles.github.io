@@ -24,4 +24,5 @@ citation:
   title: 'Armadilhas e caminhos na regulação da moderação de conteúdo'
   url: https://www.internetlab.org.br/wp-content/uploads/2021/09/internetlab_armadilhas-caminho-moderacao.pdf
   note: 'Policy paper on Brazilian legislation barring social media platforms from conducting content moderation.'
+fulltext: https://www.internetlab.org.br/wp-content/uploads/2021/09/internetlab_armadilhas-caminho-moderacao.pdf
 ---

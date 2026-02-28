@@ -3,23 +3,23 @@
 // This logic is based on the citation.type in your .yml files
 // and matches the groupings in publications_overview.md
 
-const bookChapters = items.filter(item => 
+const bookChapters = items.filter(item =>
 item.citation.type === 'chapter'
 );
 
-const policyReports = items.filter(item => 
-item.citation.type === 'report' || 
+const policyReports = items.filter(item =>
+item.citation.type === 'report' ||
 item.citation.type === 'article-magazine'
 );
 
-const researchArticles = items.filter(item => 
-item.citation.type === 'manuscript' || 
+const researchArticles = items.filter(item =>
+item.citation.type === 'manuscript' ||
 item.citation.type === 'article-journal'
 
 );
 %>
 
-<!-- 
+<!--
 ======================
 Research Articles
 ======================
@@ -40,7 +40,7 @@ Research Articles
 :::
 ::: {.metadata}
 <% if (item.date) { %>
-<div class="listing-date"><%= item.date %> 
+<div class="listing-date"><%= item.date %>
 <%if (item.citation.status) { %> (<%= item.citation.status %>) <% } else if (item.citation.type == 'manuscript') { %> (<%= item.citation.type %>)<% } %>
 </div>
 <% } %>
@@ -50,12 +50,15 @@ Research Articles
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
-if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
-if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
-%> (<%= item.citation.publisher %>)<% 
+<%= item.citation["container-title-short"] || item.citation["container-title"] %><%
+if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><%
+if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) {
+%> (<%= item.citation.publisher %>)<%
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">Full Text</a></div>
 <% } %>
 :::
 :::
@@ -66,7 +69,7 @@ if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.
 <% } %>
 
 
-<!-- 
+<!--
 ======================
 Book Chapters
 ======================
@@ -87,7 +90,7 @@ Book Chapters
 :::
 ::: {.metadata}
 <% if (item.date) { %>
-<div class="listing-date"><%= item.date %> 
+<div class="listing-date"><%= item.date %>
 <%if (item.citation.status) { %> (<%= item.citation.status %>) <% } else if (item.citation.type == 'manuscript') { %> (<%= item.citation.type %>)<% } %>
 </div>
 <% } %>
@@ -97,12 +100,15 @@ Book Chapters
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
-if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
-if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
-%> (<%= item.citation.publisher %>)<% 
+<%= item.citation["container-title-short"] || item.citation["container-title"] %><%
+if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><%
+if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) {
+%> (<%= item.citation.publisher %>)<%
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">Full Text</a></div>
 <% } %>
 :::
 :::
@@ -113,7 +119,7 @@ if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.
 <% } %>
 
 
-<!-- 
+<!--
 =====================================
 Policy Reports and Other Writing
 =====================================
@@ -134,7 +140,7 @@ Policy Reports and Other Writing
 :::
 ::: {.metadata}
 <% if (item.date) { %>
-<div class="listing-date"><%= item.date %> 
+<div class="listing-date"><%= item.date %>
 <%if (item.citation.status) { %> (<%= item.citation.status %>) <% } else if (item.citation.type == 'manuscript') { %> (<%= item.citation.type %>)<% } %>
 </div>
 <% } %>
@@ -144,12 +150,15 @@ Policy Reports and Other Writing
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
-if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
-if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
-%> (<%= item.citation.publisher %>)<% 
+<%= item.citation["container-title-short"] || item.citation["container-title"] %><%
+if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><%
+if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) {
+%> (<%= item.citation.publisher %>)<%
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">Full Text</a></div>
 <% } %>
 :::
 :::

@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default" data-citation-status="" data-citation-type="chapter">
 <div class="quarto-title">
 <h1 class="title">Liberdade de profissão e economia do compartilhamento: desafios do trabalho na multidão</h1>
 </div>
@@ -157,6 +157,27 @@ ul.task-list li input[type="checkbox"] {
     
   </div>
   
+
+
+<div class="publication-links mt-3">
+  <a href="https://www.internetlab.org.br/wp-content/uploads/2017/12/Economias_do_compartilhamento_e.pdf#page=218" class="btn btn-sm btn-secondary" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i> Full Text</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('title-block-header');
+  if (!header) return;
+  var status = header.dataset.citationStatus;
+  var type = header.dataset.citationType;
+  var label = status ? status.charAt(0).toUpperCase() + status.slice(1)
+              : (type === 'manuscript' ? 'Manuscript' : null);
+  if (label) {
+    header.querySelectorAll('.quarto-title-meta-heading').forEach(function(h) {
+      if (h.textContent.trim() === 'Published') h.textContent = label;
+    });
+  }
+});
+</script>
 
 
 </header>

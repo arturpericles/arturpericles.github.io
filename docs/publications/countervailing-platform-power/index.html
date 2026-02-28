@@ -142,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default" data-citation-status="forthcoming" data-citation-type="article-journal">
 <div class="quarto-title">
 <h1 class="title">Countervailing Platform Power</h1>
 </div>
@@ -170,6 +170,24 @@ ul.task-list li input[type="checkbox"] {
   
 
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('title-block-header');
+  if (!header) return;
+  var status = header.dataset.citationStatus;
+  var type = header.dataset.citationType;
+  var label = status ? status.charAt(0).toUpperCase() + status.slice(1)
+              : (type === 'manuscript' ? 'Manuscript' : null);
+  if (label) {
+    header.querySelectorAll('.quarto-title-meta-heading').forEach(function(h) {
+      if (h.textContent.trim() === 'Published') h.textContent = label;
+    });
+  }
+});
+</script>
+
+
 </header>
 
 
@@ -193,8 +211,8 @@ ul.task-list li input[type="checkbox"] {
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-monteiro2026" class="csl-entry quarto-appendix-citeas" role="listitem">
 Artur Pericles L. Monteiro, <em><a href="https://www.arturpericles.art/publications/countervailing-platform-power/">Countervailing
-Platform Power</a></em>, 41 <span class="smallcaps">Berkeley Technology
-Law Journal</span> (forthcoming 2026).
+Platform Power</a></em>, 41 <span class="smallcaps">Berkeley Tech.
+L.J.</span> (forthcoming 2026).
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

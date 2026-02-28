@@ -26,6 +26,7 @@ date-format: YYYY
 description: 'Anonymity is often seen as a source of pathologies for the public sphere, from misinformation to user abuse. A leading scholar sums it up: “If online anonymity is the cause of many of the democracy-related ills of social media, then disclosure might be the best disinfectant.” I argue this overlooks how, in an environment beset by affective polarization, instead of serving as a disinfectant, _identification_ can add fuel to the fire. Conversely, anonymity can be a device to create opportunities for divides-transcending conversation and avoid some of the identity-based mechanisms fueling maladies afflicting social media.'
 featured: true
 venue: "Journal of Free Speech Law"
+fulltext: https://www.journaloffreespeechlaw.org/monteiro.pdf
 ---
 
 ## Abstract

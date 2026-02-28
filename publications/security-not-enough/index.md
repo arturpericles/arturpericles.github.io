@@ -11,20 +11,21 @@ citation:
     family: Monteiro 
     dropping-particle: L.
   title: 'Security is not enough: privacy in encryption regulation and lawful-surveillance protocols'
-  type: paper-conference
+  type: article-journal
   event: 2026 Symposium on Computer Science & Law
   event-place: Berkeley, CA
-  event-date: 2026-03-03--2026-03-05
+  event-date: "2026-03-03/2026-03-05"
   container-title: Proceedings of the 2026 Symposium on Computer Science & Law
   container-title-short: Proc. 2026 Symp. Comput. Sci. & L.
   status: forthcoming
   doi: 10.1145/3788646.3789535
-  url: https://doi.org/10.1145/3788646.3789535
+  # url: https://doi.org/10.1145/3788646.3789535
 slug: security-not-enough
 css-class: publication-page
 google-scholar: true
 date-format: YYYY
 featured: true
+fulltext: /media/preprints/monteiro-security_is_not_enough.pdf
 ---
 
 ## Abstract

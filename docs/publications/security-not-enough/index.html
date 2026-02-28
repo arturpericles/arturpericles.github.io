@@ -87,10 +87,11 @@ ul.task-list li input[type="checkbox"] {
 <meta name="citation_cover_date" content="2026-03-03">
 <meta name="citation_year" content="2026">
 <meta name="citation_online_date" content="2026-03-03">
-<meta name="citation_fulltext_html_url" content="https://doi.org/10.1145/3788646.3789535">
+<meta name="citation_fulltext_html_url" content="https://www.arturpericles.art/publications/security-not-enough/">
 <meta name="citation_doi" content="10.1145/3788646.3789535">
 <meta name="citation_language" content="en">
-<meta name="citation_conference_title" content="Proceedings of the 2026 Symposium on Computer Science &amp;amp; Law">
+<meta name="citation_journal_title" content="Proceedings of the 2026 Symposium on Computer Science &amp;amp; Law">
+<meta name="citation_journal_abbrev" content="Proc. 2026 Symp. Comput. Sci. &amp;amp; L.">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -141,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default" data-citation-status="forthcoming" data-citation-type="article-journal">
 <div class="quarto-title">
 <h1 class="title">Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols</h1>
 </div>
@@ -169,6 +170,27 @@ ul.task-list li input[type="checkbox"] {
   
 
 
+<div class="publication-links mt-3">
+  <a href="../../media/preprints/monteiro-security_is_not_enough.pdf" class="btn btn-sm btn-secondary" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i> Full Text</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('title-block-header');
+  if (!header) return;
+  var status = header.dataset.citationStatus;
+  var type = header.dataset.citationType;
+  var label = status ? status.charAt(0).toUpperCase() + status.slice(1)
+              : (type === 'manuscript' ? 'Manuscript' : null);
+  if (label) {
+    header.querySelectorAll('.quarto-title-meta-heading').forEach(function(h) {
+      if (h.textContent.trim() === 'Published') h.textContent = label;
+    });
+  }
+});
+</script>
+
+
 </header>
 
 
@@ -179,23 +201,23 @@ ul.task-list li input[type="checkbox"] {
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@inproceedings{monteiro2026,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@article{monteiro2026,
   author = {Monteiro, Artur Pericles L.},
   title = {Security Is Not Enough: Privacy in Encryption Regulation and
     Lawful-Surveillance Protocols},
-  booktitle = {Proceedings of the 2026 Symposium on Computer Science \&amp;
+  journal = {Proceedings of the 2026 Symposium on Computer Science \&amp;
     Law},
   date = {2026-03-03},
-  eventdate = {},
-  url = {https://doi.org/10.1145/3788646.3789535},
+  eventdate = {2026-03-03/2026-03-05},
+  url = {https://www.arturpericles.art/publications/security-not-enough/},
   doi = {10.1145/3788646.3789535},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-monteiro2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Artur Pericles L. Monteiro, <em>Security Is Not Enough: Privacy in
-Encryption Regulation and Lawful-Surveillance Protocols</em>,
-<em>in</em> <span class="smallcaps">Proc. 2026 Symp. Comput. Sci. &amp;
-L.</span> (2026), <a href="https://doi.org/10.1145/3788646.3789535">https://doi.org/10.1145/3788646.3789535</a>.
+Artur Pericles L. Monteiro, <em><a href="https://doi.org/10.1145/3788646.3789535">Security Is Not Enough:
+Privacy in Encryption Regulation and Lawful-Surveillance
+Protocols</a></em>, <span class="smallcaps">Proc. 2026 Symp. Comput.
+Sci. &amp; L.</span> (forthcoming 2026).
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

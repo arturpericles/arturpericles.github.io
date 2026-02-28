@@ -206,6 +206,12 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
   font-family: $font-family-serif;
 }
 
+// venue/journal name in listing cards
+.quarto-listing .metadata-value {
+  font-family: $font-family-sans-serif;
+  font-size: .875em;
+}
+
 .listing-category {
   color: $secondary !important;
   border-color: $secondary !important;

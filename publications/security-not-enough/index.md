@@ -25,6 +25,7 @@ css-class: publication-page
 google-scholar: true
 date-format: YYYY
 featured: true
+fulltext: /media/preprints/monteiro-security_is_not_enough.pdf
 ---
 
 ## Abstract

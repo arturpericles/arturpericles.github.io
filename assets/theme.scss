@@ -164,6 +164,12 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
   border-radius: 5px;
 }
 
+// full text button in publication listings
+.listing-preprint .btn {
+  font-size: 0.75em;
+  padding: 0.1rem 0.4rem;
+}
+
 // contact form
 .btn-primary:hover {
   background-color: $secondary;

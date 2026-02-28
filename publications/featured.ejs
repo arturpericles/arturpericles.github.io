@@ -2,7 +2,6 @@
 <%
   const P = templateParams || {};
   const cols = P.cols || 3;
-  const abs = (p) => (!p ? '' : (p.startsWith('/') || /^(?:[a-z]+:)?\/\//i.test(p)) ? p : '/' + p.replace(/^\.\//,''));
 %>
 ```{=html}
 
@@ -12,37 +11,24 @@
       <a class="quarto-grid-link" href="<%- item.path %>">
         <div class="quarto-grid-item card h-100 card-left">
           <div class="card-body post-contents">
-          
-          <% if (item.title) { %>
+
+            <% if (item.title) { %>
             <h5 class="no-anchor card-title listing-title"><%- item.title %></h5>
-          <% } %>
+            <% } %>
 
-          <% if ("item.citation.container-title") { %>
-            <div ><%= item.citation['container-title'] %></div>
-            <% } %> 
-        <div>
-        <div class="card-attribution card-text-small">
-          <% if (item.date) { %>
-            <div class="listing-date"><%- item.date %></div>
-          <% } %>
+            <% if (item.citation['container-title']) { %>
+            <div class="metadata-value"><%= item.citation['container-title'] || item.citation['container-title-short'] %></div>
+            <% } %>
+
+            <% if (item.date) { %>
+            <div class="card-attribution card-text-small"><%= item.date %></div>
+            <% } %>
+            <% if (item.citation.status) { %>
+            <div class="card-text-small text-muted">(<%= item.citation.status %>)</div>
+            <% } %>
+
+          </div>
         </div>
-        <div class="card-text-small card-other-values">
-          <% if (item.citation.status) { %>
-        
-            <%- item.citation.status %>
-        
-          <% } %>
-
-          <!-- <% if (item.citation.type) { %>
-        
-              <%- item.citation.type %>
-        
-          <% } %> -->
-        </div>
-      </div>
-      </div>  
-
-    </div>
       </a>
     </div>
   <% } %>

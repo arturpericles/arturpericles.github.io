@@ -17,4 +17,5 @@ citation:
   publisher: ITS Rio
   title: 'Desafios e oportunidades da moderação de conteúdo no metaverso'
   url: https://itsrio.org/wp-content/uploads/2023/02/relatorio-diVerso_Desafiosoportunidades-moderação-conteudo-V5.pdf
+fulltext: https://itsrio.org/wp-content/uploads/2023/02/relatorio-diVerso_Desafiosoportunidades-moderação-conteudo-V5.pdf
 ---

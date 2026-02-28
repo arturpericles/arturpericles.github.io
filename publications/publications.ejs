@@ -12,10 +12,10 @@ item.citation.type === 'report' ||
 item.citation.type === 'article-magazine'
 );
 
-const researchArticles = items.filter(item => 
-item.citation.type === 'manuscript' || 
-item.citation.type === 'article-journal'
-
+const researchArticles = items.filter(item =>
+item.citation.type === 'manuscript' ||
+item.citation.type === 'article-journal' ||
+item.citation.type === 'paper-conference'
 );
 %>
 
@@ -50,12 +50,15 @@ Research Articles
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
+<%= item.citation["container-title"] || item.citation["container-title-short"] %><% 
 if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
 if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
 %> (<%= item.citation.publisher %>)<% 
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">full text</a></div>
 <% } %>
 :::
 :::
@@ -97,12 +100,15 @@ Book Chapters
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
+<%= item.citation["container-title"] || item.citation["container-title-short"] %><% 
 if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
 if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
 %> (<%= item.citation.publisher %>)<% 
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">full text</a></div>
 <% } %>
 :::
 :::
@@ -144,12 +150,15 @@ Policy Reports and Other Writing
 <% if ( (item.citation?.["container-title-short"] || item.citation?.["container-title"]) || (item.citation?.type === 'report' && item.citation?.publisher) ) { %>
 <div class="metadata-value"><% if (item.citation?.type === 'report' && item.citation?.publisher) { %>
 <%= item.citation.publisher %><% } else { %>
-<%= item.citation["container-title-short"] || item.citation["container-title"] %><% 
+<%= item.citation["container-title"] || item.citation["container-title-short"] %><% 
 if (item["container-title-short_en"]) { %> [<%= item["container-title-short_en"] %>]<% } else if (item["container-title_en"]) { %> [<%= item["container-title_en"] %>]<% } %><% 
 if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.type === 'chapter')) { 
 %> (<%= item.citation.publisher %>)<% 
 } %><% } %>
 </div>
+<% } %>
+<% if (item.fulltext) { %>
+<div class="listing-preprint"><a href="<%= item.fulltext %>" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">full text</a></div>
 <% } %>
 :::
 :::

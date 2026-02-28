@@ -27,4 +27,5 @@ slug: last-breath-marco-civil
 css-class: publication-page
 google-scholar: true
 date-format: YYYY
+fulltext: https://www.cambridge.org/core/services/aop-cambridge-core/content/view/8182F7983557A1D408750BD16B92B8FB/9781009438629c6_85-104.pdf/the-last-breaths-of-brazils-marco-civil.pdf
 ---

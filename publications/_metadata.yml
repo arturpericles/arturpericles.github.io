@@ -12,8 +12,8 @@ date-format: "YYYY"
 
 include-back-link: true
 
-# format:
-#   html:
-#     template-partials:
-#       - ../html/research/title-block.html
+format:
+  html:
+    template-partials:
+      - ../_partials/pub-links/title-block.html
 

@@ -26,5 +26,4 @@ citation:
   title: 'Liberdade de profissão e economia do compartilhamento: desafios do trabalho na multidão'
   container-title: 'Economias do compartilhamento e o direito'
   url: https://www.internetlab.org.br/wp-content/uploads/2017/12/Economias_do_compartilhamento_e.pdf#page=218
-fulltext: https://www.internetlab.org.br/wp-content/uploads/2017/12/Economias_do_compartilhamento_e.pdf#page=218
 ---

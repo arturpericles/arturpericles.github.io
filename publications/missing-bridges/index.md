@@ -24,5 +24,5 @@ citation:
   title: "Missing bridges: a comparative analysis of legal frameworks governing personal data in political campaigning in Latin America"
   url: https://www.internetlab.org.br/wp-content/uploads/2021/02/Missing-bridges-2.pdf  
 type: report
-fulltext: https://www.internetlab.org.br/wp-content/uploads/2021/02/Missing-bridges-2.pdf  
+
 ---

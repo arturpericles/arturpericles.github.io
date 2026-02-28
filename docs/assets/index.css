@@ -1,3 +1,8 @@
+/* hide navbar title on home page — name already appears in the body */
+.navbar-title {
+  display: none;
+}
+
 #quarto-content {
   display: flex;
   flex-direction: column;
@@ -100,6 +105,16 @@ figure {
 
 /* mobile query up for screens up to ~992px wide */
 @media screen and (max-width: 991.98px) {
+    /* fix horizontal overflow: collapse Quarto's page-columns grid (min 500px) to block on mobile */
+    .page-columns {
+      display: block !important;
+    }
+
+    /* smaller name heading on mobile */
+    .title {
+      font-size: 2.5rem;
+    }
+
     /* move text up & center */
     .entity-contents {
       order: 2 !important;

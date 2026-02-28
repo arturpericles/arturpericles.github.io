@@ -29,14 +29,25 @@ website:
     creator: "@arturpericles"     
     image: /media/seymour-march-sm.webp
     description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
-format: 
+format:
   html:
     theme:
       light:
         # - cosmo
         - assets/theme.scss
         # - assets/silvia/colors-light.scss
-        - assets/fonts.scss      
+        - assets/fonts.scss
     pagetitle: '{{< meta title >}}'
     lightbox: true
+    include-in-header:
+      - text: '<meta name="navbar-short-title" content="A.P.L. Monteiro">'
+    include-after-body:
+      - text: |
+          <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var meta = document.querySelector('meta[name="navbar-short-title"]');
+            var el = document.querySelector('.navbar-title');
+            if (meta && el) el.setAttribute('data-short-title', meta.content);
+          });
+          </script>
 csl: aplm-bluebook-law-review.csl

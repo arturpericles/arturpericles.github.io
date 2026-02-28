@@ -1,8 +1,9 @@
 ---
-title: | 
- Artur Pericles
+title: |
+ Artur Pericles\
  L. Monteiro
 subtitle: "Law & technology scholar at Yale"
+pagetitle: 'Artur Pericles L. Monteiro'
 toc: false
 about: 
   template: solana

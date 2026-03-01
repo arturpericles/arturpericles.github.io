@@ -26,7 +26,7 @@ slug: privacy-crossroads
 css-class: publication-page
 google-scholar: true
 date-format: YYYY
-
+fulltext: /media/preprints/monteiro-privacy_crossroads.pdf
 ---
 
 ## Abstract

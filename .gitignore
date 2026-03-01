@@ -1,9 +1,14 @@
+# CNAME
+docs/CNAME
+
 # Quarto cache and intermediate files
 /.quarto/
 **/*.quarto_ipynb
 
 # macOS system files
 .DS_Store
+**/.DS_Store
 
 # Other
 aplm-bluebook-law-review.csl
+

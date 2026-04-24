@@ -1,6 +1,6 @@
 ---
-title: Platform Federalism
-subtitle: How to Countervail Platform Power
+title: 'Platform Federalism: How to Countervail Platform Power'
+title-short: Platform Federalism
 author:
  - given: Artur Pericles
    family: Lima Monteiro 
@@ -12,6 +12,7 @@ citation:
     family: Monteiro 
     dropping-particle: L.
   title: 'Platform federalism: how to countervail platform power'
+  title-short: Platform federalism
   type: article-journal
   container-title: Berkeley Technology Law Journal
   container-title-short: Berkeley Tech. L.J.

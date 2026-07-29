@@ -1,0 +1,56 @@
+<header id="title-block-header" class="quarto-title-block default" data-citation-status="$citation.status$" data-citation-type="$citation.type$">
+<div class="quarto-title">
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+$if(categories)$
+$if(quarto-template-params.title-block-categories)$
+<div class="quarto-categories">
+  $for(categories)$
+  <div class="quarto-category">$categories$</div>
+  $endfor$
+</div>
+$endif$
+$endif$
+</div>
+
+$if(description)$
+<div class="description">
+  $description$
+</div>
+$endif$
+
+$title-metadata.html()$
+
+$if(fulltext)$
+<div class="publication-links mt-3">
+  <a href="$fulltext$" class="btn btn-sm btn-secondary" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i> full text</a>
+</div>
+$endif$
+
+$if(links)$
+<div class="publication-links mt-3 d-flex flex-row flex-wrap gap-1">
+$for(links)$
+<a href="$links.url$" class="btn btn-sm btn-secondary"><i class="bi bi-$links.icon$ me-1"></i> $links.name$</a>
+$endfor$
+</div>
+$endif$
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('title-block-header');
+  if (!header) return;
+  var status = header.dataset.citationStatus;
+  var type = header.dataset.citationType;
+  var label = status ? status.charAt(0).toUpperCase() + status.slice(1)
+              : (type === 'manuscript' ? 'Manuscript' : null);
+  if (label) {
+    header.querySelectorAll('.quarto-title-meta-heading').forEach(function(h) {
+      if (h.textContent.trim() === 'Published') h.textContent = label;
+    });
+  }
+});
+</script>
+
+</header>

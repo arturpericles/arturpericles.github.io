@@ -1,9 +1,17 @@
 ---
 title: "Artur Pericles<br/>L. Monteiro"
 subtitle: Art
+aliases:
+  - /about/index.html
+open-graph:
+  title: "Bio — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
+twitter-card:
+  title: "Bio — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
 format:
   html:
-    pagetitle: "About"
+    pagetitle: "Bio"
 
 about:
     image: headshot2025.jpeg

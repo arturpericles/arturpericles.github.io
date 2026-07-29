@@ -30,6 +30,12 @@ listing:
         talk: "Talk"
     fields: [title, talk, event, venue, type, date, display_date]
     field-links: [event]
+open-graph:
+  title: "Talks — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
+twitter-card:
+  title: "Talks — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
 format:
   html:
     page-layout: full
@@ -60,7 +66,6 @@ format:
 :::::
 
 ![Sybil Andrews, *The New Cable*, 1931, Internet Archive](/media/andrews-new-cable.webp){fig-alt="LLM-created description verified by Art: A dynamic, stylized print of three muscular workers, rendered in reddish-brown, hauling a thick, massive cable. Their bodies are bent in unison along a strong diagonal line, conveying a powerful sense of rhythmic, collective labor."}
-
 
 
 

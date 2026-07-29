@@ -8,10 +8,6 @@
     ]
   },
   {
-    "listing": "/talks/index.html",
-    "items": []
-  },
-  {
     "listing": "/publications/index.html",
     "items": [
       "/publications/security-not-enough/index.html",
@@ -31,5 +27,9 @@
       "/publications/horizonte-protocolos-clinicos/index.html",
       "/publications/liberdade-ocupacao-multidao/index.html"
     ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": []
   }
 ]

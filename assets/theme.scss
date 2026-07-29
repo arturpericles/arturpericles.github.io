@@ -341,6 +341,29 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
 
 // Mobile
 
+// Keep the trestles portrait inside narrow phone viewports while preserving
+// its preferred 340px size everywhere that has room for it.
+@media screen and (max-width: 360px) {
+  .quarto-about-trestles .about-image {
+    height: auto;
+    max-width: none !important;
+    width: calc(100vw - 2rem) !important;
+  }
+
+  // Long author affiliations do not fit Quarto's two-column title grid on
+  // narrow phones. Stack the fields in their existing document order.
+  .quarto-title-meta-author {
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 0.75rem;
+  }
+
+  .quarto-title-meta-author .quarto-title-meta-contents,
+  .quarto-title-meta-author .affiliation {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
 // Short navbar title on small screens (value set from _quarto.yml via data attribute)
 @media screen and (max-width: 576px) {
   .navbar-title[data-short-title] {

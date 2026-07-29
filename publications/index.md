@@ -36,6 +36,12 @@ listing:
     citation.status: ' '
 include-back-link: true
 featured: true
+open-graph:
+  title: "Publications — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
+twitter-card:
+  title: "Publications — Artur Pericles L. Monteiro"
+  description: "Law Professor, AI & Technology"
 format:
   html:
     page-layout: article

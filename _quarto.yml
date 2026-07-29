@@ -10,7 +10,7 @@ project:
     - scripts/post-render.sh
 website:
   title: 'Artur Pericles L. Monteiro'
-  description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+  description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
   site-url: 'https://www.arturpericles.art'
   page-footer: "[Made with [Quarto](https://quarto.org) with a modified [Canelón-adapted](https://github.com/spcanelon/silvia) Hugo [Apero theme](https://github.com/hugo-apero)]{.small}"
   # favicon: media/api-favicon.png
@@ -19,8 +19,8 @@ website:
     right:
       # - href: index.md
       #   text: Home
-      - href: about/
-        text: About
+      - href: bio/
+        text: Bio
       - href: publications/
         text: Publications
       - href: teaching/
@@ -29,11 +29,11 @@ website:
         text: Talks
   open-graph:
     image: /media/seymour-march-sm.webp
-    description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+    description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
   twitter-card:
     creator: "@arturpericles"
     image: /media/seymour-march-sm.webp
-    description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+    description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
 format:
   html:
     theme:
@@ -43,7 +43,7 @@ format:
         # - assets/silvia/colors-light.scss
         - assets/fonts.scss
     pagetitle: '{{< meta title >}}'
-    description-meta: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+    description-meta: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
     canonical-url: true
     lightbox: true
     include-in-header:
@@ -54,7 +54,9 @@ format:
           document.addEventListener('DOMContentLoaded', function() {
             var meta = document.querySelector('meta[name="navbar-short-title"]');
             var el = document.querySelector('.navbar-title');
+            var brand = document.querySelector('.navbar-brand');
             if (meta && el) el.setAttribute('data-short-title', meta.content);
+            if (brand) brand.setAttribute('aria-label', 'Artur Pericles L. Monteiro — Home');
           });
           </script>
 csl: aplm-bluebook-law-review.csl

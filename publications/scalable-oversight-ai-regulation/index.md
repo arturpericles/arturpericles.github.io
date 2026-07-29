@@ -2,20 +2,22 @@
 title: 'Scalable Oversight for AI Regulation'
 author:
  - given: Artur Pericles
-   family: Lima Monteiro 
-   afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
+   family: Lima Monteiro
+   affiliations:
+     - name: 'Yale Law School & Jackson School of Global Affairs'
  - given: Tim
    family: Rudner
-   afffiliation: 'University of Toronto' 
+   affiliations:
+     - name: 'University of Toronto'
 date: 2025-09-01
 citation:
   author:
   - given: Artur Pericles
-    family: Monteiro 
+    family: Monteiro
     dropping-particle: L.
   - given: Tim
     family: Rudner
-    dropping-particle: G. J.    
+    dropping-particle: G. J.
   title: 'Scalable oversight for AI regulation'
   type: manuscript
 description: Explores computer science research on scalable oversight as a tool for AI regulation that is less dependent on industry self- or co-governance. Discusses scalable oversight as a form of satisfying human-in-the-loop requirements.

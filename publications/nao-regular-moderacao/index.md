@@ -6,7 +6,8 @@ container-title_en: 'Freedom of Expression: A Contested Concept'
 author:
   - given: Artur Pericles
     family: Lima Monteiro
-    afffiliation: 'Yale Law School & Jackson School of Global Affairs'
+    affiliations:
+      - name: 'Yale Law School & Jackson School of Global Affairs'
 citation:
   type: chapter
   language: pt-BR

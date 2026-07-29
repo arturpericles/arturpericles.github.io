@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - CNAME
   preview:
     port: 4200
     browser: false
@@ -8,6 +10,7 @@ project:
     - scripts/post-render.sh
 website:
   title: 'Artur Pericles L. Monteiro'
+  description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
   site-url: 'https://www.arturpericles.art'
   page-footer: "[Made with [Quarto](https://quarto.org) with a modified [Canelón-adapted](https://github.com/spcanelon/silvia) Hugo [Apero theme](https://github.com/hugo-apero)]{.small}"
   # favicon: media/api-favicon.png
@@ -23,14 +26,14 @@ website:
       - href: teaching/
         text: Teaching
       - href: talks/
-        text: Talks    
+        text: Talks
   open-graph:
     image: /media/seymour-march-sm.webp
-    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
-  twitter-card: 
-    creator: "@arturpericles"     
+    description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+  twitter-card:
+    creator: "@arturpericles"
     image: /media/seymour-march-sm.webp
-    description: 'Artur Pericles L. Monteiro, Law & Technology Scholar @ Yale'
+    description: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
 format:
   html:
     theme:
@@ -40,6 +43,8 @@ format:
         # - assets/silvia/colors-light.scss
         - assets/fonts.scss
     pagetitle: '{{< meta title >}}'
+    description-meta: 'Artur Pericles L. Monteiro | Law Professor, Technology & AI'
+    canonical-url: true
     lightbox: true
     include-in-header:
       - text: '<meta name="navbar-short-title" content="A.P.L. Monteiro">'

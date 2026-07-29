@@ -1,5 +1,17 @@
 [
   {
+    "listing": "/teaching/index.html",
+    "items": [
+      "/teaching/torts/index.html",
+      "/teaching/technology-security-power/index.html",
+      "/teaching/global-law-policy-ai/index.html"
+    ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": []
+  },
+  {
     "listing": "/publications/index.html",
     "items": [
       "/publications/security-not-enough/index.html",
@@ -18,17 +30,6 @@
       "/publications/missing-bridges/index.html",
       "/publications/horizonte-protocolos-clinicos/index.html",
       "/publications/liberdade-ocupacao-multidao/index.html"
-    ]
-  },
-  {
-    "listing": "/talks/index.html",
-    "items": []
-  },
-  {
-    "listing": "/teaching/index.html",
-    "items": [
-      "/teaching/global-law-policy-ai/index.html",
-      "/teaching/technology-security-power/index.html"
     ]
   }
 ]

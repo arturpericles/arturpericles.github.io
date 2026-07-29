@@ -29,3 +29,7 @@ cat > "$OLD_PATH/index.html" <<HTML
 </body>
 </html>
 HTML
+
+# Keep generated HTML clean so affiliation metadata does not introduce
+# trailing whitespace on otherwise blank lines.
+find "$OUTPUT_DIR" -type f -name '*.html' -exec perl -pi -e 's/[ \t]+$//' {} +

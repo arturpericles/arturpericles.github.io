@@ -2,20 +2,21 @@
 title: Privacy at a Crossroads
 author:
  name: Artur Pericles L. Monteiro
- afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
+ affiliations:
+   - name: 'Yale Law School & Jackson School of Global Affairs'
 date: 2023-12-05
 citation:
   title: Privacy at a crossroads
   author:
   - given: Artur Pericles
-    family: Monteiro 
+    family: Monteiro
     dropping-particle: L.
   type: chapter
   container-title: "Research Handbook on Law and Technology"
   editor:
   - Bartosz Brożek
   - Olia Kanevskaia
-  - Przemysław Pałka 
+  - Przemysław Pałka
   publisher: 'Edward Elgar Publishing'
   doi: 10.4337/9781803921327.00021
   isbn: '9781803921310'

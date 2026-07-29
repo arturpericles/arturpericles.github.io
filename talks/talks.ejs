@@ -4,13 +4,13 @@
       <%
         // QUARTO FIX: Regex to strip the <p>...</p> tags
         const re = /^<p>|<\/p>$/g;
-  
+
         // Clean the date
-        const cleanDate = item.date.replace(re, '');
-  
+        const cleanDate = (item.display_date || item.date).replace(re, '');
+
         // Clean the title field
         const title = (item.talk || item.event).replace(re, '');
-  
+
         // Prepare the details array, cleaning each part
         const details = [];
         if (item.talk && item.event) {
@@ -21,12 +21,12 @@
         }
         const detailsString = details.join(', ');
       %>
-  
+
       <tr>
         <td class="talk-date align-top">
-          <span class="talk-date-text"><%- cleanDate %></span><% if (item.type == 'panel') { %><br><span class="talk-details">panel</span><% } %><% if (item.video) { %><br><span class="talk-details"><a href="<%- item.video %>" target="_blank">video</a></span><% } %>
+          <span class="talk-date-text"><%- cleanDate %></span><% if (item.type == 'panel') { %><br><span class="talk-details">panel</span><% } %><% if (item.video) { %><br><span class="talk-details"><a href="<%- item.video %>" target="_blank" rel="noopener">video</a></span><% } %>
         </td>
-        
+
         <td class="talk-info align-top">
           <span class="talk-title"><%- title %></span><% if (detailsString) { %><br><span class="talk-details"><%- detailsString %></span><% } %>
         </td>

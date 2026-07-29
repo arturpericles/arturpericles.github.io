@@ -5,7 +5,8 @@ title_en: 'Freedom of Expression Pitfalls in Provisional Measure 1068/2021'
 author:
   - given: Artur Pericles
     family: Lima Monteiro
-    afffiliation: 'Yale Law School & Jackson School of Global Affairs'
+    affiliations:
+      - name: 'Yale Law School & Jackson School of Global Affairs'
 citation:
   type: article-magazine
   language: pt-BR

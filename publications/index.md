@@ -1,7 +1,7 @@
 ---
 listing:
 - id: publications
-  contents: 
+  contents:
     - "**/index.qmd"
     - "**/index.markdown"
     - "**/index.md"
@@ -11,11 +11,11 @@ listing:
   filter-ui: false
   fields: [title,  date, citation.container-title, citation.publisher, citation.status]
   date-format: YYYY
-  template: publications.ejs            
-  field-display-names: 
+  template: publications.ejs
+  field-display-names:
     citation.container-title: Venue
 - id: featured
-  contents: 
+  contents:
     - "**/index.qmd"
     - "**/index.markdown"
     - "**/index.md"
@@ -31,13 +31,13 @@ listing:
   filter-ui: false
   fields: [title, title-short, date, citation.container-title, citation.status]
   date-format: YYYY
-  field-display-names: 
+  field-display-names:
     citation.container-title: ' '
     citation.status: ' '
 include-back-link: true
 featured: true
-format: 
-  html: 
+format:
+  html:
     page-layout: article
     pagetitle: Publications
 ---

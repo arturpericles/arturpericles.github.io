@@ -3,13 +3,14 @@ title: 'Platform Federalism: How to Countervail Platform Power'
 title-short: Platform Federalism
 author:
  - given: Artur Pericles
-   family: Lima Monteiro 
-   afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
+   family: Lima Monteiro
+   affiliations:
+     - name: 'Mississippi Christian University School of Law'
 date: 2026-05-01
 citation:
   author:
   - given: Artur Pericles
-    family: Monteiro 
+    family: Monteiro
     dropping-particle: L.
   title: 'Platform federalism: how to countervail platform power'
   title-short: Platform federalism

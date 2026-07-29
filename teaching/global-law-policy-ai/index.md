@@ -1,5 +1,6 @@
 ---
 title: 'Global Law & Policy of Artificial Intelligence'
+order: 3
 code:
  - LAW
  - GLBL

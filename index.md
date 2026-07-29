@@ -2,10 +2,10 @@
 title: |
  Artur Pericles\
  L. Monteiro
-subtitle: "Law & technology scholar at Yale"
+subtitle: "Law Professor, Technology & AI"
 pagetitle: 'Artur Pericles L. Monteiro'
 toc: false
-about: 
+about:
   template: solana
   image-width: 36em
   image: /media/seymour-march.webp
@@ -24,23 +24,23 @@ about:
       href: https://www.linkedin.com/in/arturpericles/
     - text: "{{< fa envelope >}}"
       aria-label: Email
-      href: mailto:artur.monteiro@yale.edu
+      href: mailto:amonteiro@mc.edu
     - text: "{{< fa key>}}"
       aria-label: PGP Key
       href: https://keys.openpgp.org/vks/v1/by-fingerprint/F6E4B34C3B2C537DC1DBF3FB41B9B8C46C9F6B37
-format: 
-  html: 
+format:
+  html:
     page-layout: full
     include-after-body:
       - text: |
           <script>
           document.addEventListener("DOMContentLoaded", function() {
-            
+
             // 1. Find the original image
             const img = document.querySelector("img.about-image");
-            
+
             if (img && img.title) {
-              
+
               // 2. Create the new caption element
               const caption = document.createElement("figcaption");
               caption.textContent = img.title;
@@ -48,14 +48,14 @@ format:
 
               // 3. Create a <figure> to wrap them
               const figure = document.createElement("figure");
-              
+
               // 4. Replace the <img> with the new <figure>
               //    (This keeps it in the same grid position)
               img.parentElement.replaceChild(figure, img);
-              
+
               // 5. Move the <img> *inside* the <figure>
               figure.appendChild(img);
-              
+
               // 6. Add the caption *inside* the <figure>
               figure.appendChild(caption);
             }
@@ -75,8 +75,6 @@ resources:
 <!-- hero-heading -->
 
 <a href="https://mastodon.social/@artp" rel="me"></a>
-
-
 
 
 

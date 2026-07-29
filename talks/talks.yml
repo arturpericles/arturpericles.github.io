@@ -1,10 +1,10 @@
-- venue: Virginia Military Academy
+- venue: Virginia Military Institute
   type: talk
   event: 'The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism'
   date: 2026-04-27
 - venue: 'Université de Bretagne Occidentale, France (remote)'
   type: panel
-  event: "A Global Look at Tech 'Deregulation'"
+  event: 'A Global Look at Tech “Deregulation”'
   date: 2026-04-14
 - venue: Freedom House
   event: 2024 Freedom on the Net Report Launch
@@ -26,7 +26,7 @@
   date: 2023-12-07
 - venue: Université de Bretagne Occidentale, France
   event: guest lecture
-  talk: Online Freedom of Speech in the U.S. and Brazil  
+  talk: Online Freedom of Speech in the U.S. and Brazil
   type: talk
   date: 2023-12-04
 - talk: U.S. Views on EU Tech Regulation
@@ -49,11 +49,11 @@
   date: 2023-02-21
   video: https://youtu.be/B36x3ZtMTEU?t=1466
 - talk: Briefing Series on Social Media
-  venue: Mediation Support Unit, Departmental of Political and Peacebuilding Affairs, United Nations
+  venue: Mediation Support Unit, Department of Political and Peacebuilding Affairs, United Nations
   type: talk
   date: 2022-03-10
-- talk: A Conversation on Content Moderation 
-  venue: Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights  
+- talk: A Conversation on Content Moderation
+  venue: Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights
   date: 2021-09-10
   video: https://youtu.be/HLLWkGq9-NU
 - event: Symposium on Data Privacy and the Pandemic

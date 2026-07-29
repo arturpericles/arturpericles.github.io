@@ -4,7 +4,8 @@ date: 2021-12-02
 author:
   - given: Artur Pericles
     family: Lima Monteiro
-    afffiliation: 'Yale Law School & Jackson School of Global Affairs'
+    affiliations:
+      - name: 'Yale Law School & Jackson School of Global Affairs'
 citation:
   type: article-magazine
   author:

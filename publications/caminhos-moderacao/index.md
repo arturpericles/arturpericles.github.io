@@ -5,7 +5,8 @@ title_en: 'Pitfalls and Paths in the Regulation of Content Moderation'
 author:
   - given: Artur Pericles
     family: Lima Monteiro
-    afffiliation: 'Yale Law School & Jackson School of Global Affairs'
+    affiliations:
+      - name: 'Yale Law School & Jackson School of Global Affairs'
 citation:
   type: report
   language: pt-BR

@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Artur Pericles L. Monteiro | Law Professor, Technology &amp; AI">
 
 <title>Talks – Artur Pericles L. Monteiro</title>
 <style>
@@ -20,7 +21,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 </style>
@@ -41,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1d7782fe8219706d67ed97fdfc0d89c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-cad3c076bfcc671fc53733afef69da86.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-707c8eeea6cc38bd78b1cbc0903bcc68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -81,12 +82,12 @@ ul.task-list li input[type="checkbox"] {
     const listingTargetEl = window.document.querySelector('#listing-talks .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
-      return; 
+      return;
     }
 
     const options = {
-      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
-      
+      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date','listing-display_date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
+
       searchColumns: ["listing-venue","listing-type","listing-event","listing-date","listing-video","listing-talk"],
     };
 
@@ -103,19 +104,19 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
-  
+
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-conferences .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
-      return; 
+      return;
     }
 
     const options = {
-      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-venue","listing-event","listing-date","listing-type","listing-review","listing-video"],
+      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date','listing-display_date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
+
+      searchColumns: ["listing-venue","listing-event","listing-date","listing-display_date","listing-type","listing-review","listing-video"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -165,14 +166,15 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="Talks">
-<meta property="og:description" content="Artur Pericles L. Monteiro, Law &amp; Technology Scholar @ Yale">
+<meta property="og:description" content="Artur Pericles L. Monteiro | Law Professor, Technology &amp; AI">
 <meta property="og:image" content="https://www.arturpericles.art/media/seymour-march-sm.webp">
 <meta property="og:site_name" content="Artur Pericles L. Monteiro">
 <meta name="twitter:title" content="Talks">
-<meta name="twitter:description" content="Artur Pericles L. Monteiro, Law &amp; Technology Scholar @ Yale">
+<meta name="twitter:description" content="Artur Pericles L. Monteiro | Law Professor, Technology &amp; AI">
 <meta name="twitter:image" content="https://www.arturpericles.art/media/seymour-march-sm.webp">
 <meta name="twitter:creator" content="@arturpericles">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.arturpericles.art/talks/">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -193,21 +195,21 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about/"> 
+    <a class="nav-link" href="../about/">
 <span class="menu-text">About</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../publications/"> 
+    <a class="nav-link" href="../publications/">
 <span class="menu-text">Publications</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../teaching/"> 
+    <a class="nav-link" href="../teaching/">
 <span class="menu-text">Teaching</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../talks/"> 
+    <a class="nav-link" href="../talks/">
 <span class="menu-text">Talks</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -219,7 +221,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+
 <!-- main -->
 <main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -234,6 +236,14 @@ window.Quarto = {
 <div id="listing-conferences" class="quarto-listing quarto-listing-container-custom">
 <table class="talks-table  table-borderless">
 <tbody>
+<tr>
+<td class="talk-date align-top">
+<span class="talk-date-text">Nov.&nbsp;2026</span>
+</td>
+<td class="talk-info align-top">
+<span class="talk-title">Platform Interoperability and the First Amendment</span><br><span class="talk-details">XVII Annual Constitutional Law Colloquium</span>
+</td>
+</tr>
 <tr>
 <td class="talk-date align-top">
 <span class="talk-date-text">Apr.&nbsp;24, 2026</span>
@@ -332,7 +342,7 @@ window.Quarto = {
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;23, 2022</span><br><span class="talk-details"><a href="https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/" target="_blank">video</a></span>
+<span class="talk-date-text">Nov.&nbsp;23, 2022</span><br><span class="talk-details"><a href="https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">The Plurality of Anonymity and Identification on Social Media</span><br><span class="talk-details">Digital Governance Research Colloquium, Hertie School</span>
@@ -340,7 +350,7 @@ window.Quarto = {
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;8, 2022</span><br><span class="talk-details"><a href="https://youtu.be/D7MLqq6cGyY?t=2100" target="_blank">video</a></span>
+<span class="talk-date-text">Apr.&nbsp;8, 2022</span><br><span class="talk-details"><a href="https://youtu.be/D7MLqq6cGyY?t=2100" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">Anonymity, Identity, and Lies</span><br><span class="talk-details">Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University</span>
@@ -359,7 +369,7 @@ window.Quarto = {
 <span class="talk-date-text">Apr.&nbsp;30, 2021</span>
 </td>
 <td class="talk-info align-top">
-<span class="talk-title">Curtaling Anonymity</span><br><span class="talk-details">IX Freedom of Expression Scholars Conference, closing plenary</span>
+<span class="talk-title">Curtailing Anonymity</span><br><span class="talk-details">IX Freedom of Expression Scholars Conference, closing plenary</span>
 </td>
 </tr>
 <tr>
@@ -387,7 +397,7 @@ window.Quarto = {
 <span class="talk-date-text">Apr.&nbsp;27, 2026</span>
 </td>
 <td class="talk-info align-top">
-<span class="talk-title">The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism</span><br><span class="talk-details">Virginia Military Academy</span>
+<span class="talk-title">The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism</span><br><span class="talk-details">Virginia Military Institute</span>
 </td>
 </tr>
 <tr>
@@ -395,12 +405,12 @@ window.Quarto = {
 <span class="talk-date-text">Apr.&nbsp;14, 2026</span><br><span class="talk-details">panel</span>
 </td>
 <td class="talk-info align-top">
-<span class="talk-title">A Global Look at Tech 'Deregulation'</span><br><span class="talk-details">Université de Bretagne Occidentale, France (remote)</span>
+<span class="talk-title">A Global Look at Tech “Deregulation”</span><br><span class="talk-details">Université de Bretagne Occidentale, France (remote)</span>
 </td>
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Oct.&nbsp;16, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/yf3ttfcl3Ww?t=2054" target="_blank">video</a></span>
+<span class="talk-date-text">Oct.&nbsp;16, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/yf3ttfcl3Ww?t=2054" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">2024 Freedom on the Net Report Launch</span><br><span class="talk-details">Freedom House</span>
@@ -408,7 +418,7 @@ window.Quarto = {
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Sep.&nbsp;19, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/_X6rUoB1V9g?t=6984" target="_blank">video</a></span>
+<span class="talk-date-text">Sep.&nbsp;19, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/_X6rUoB1V9g?t=6984" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">Book Launch, <em>Disinformation, Misinformation, and Democracy</em> (Ronald Krotoszynski, Jr., András Koltay &amp; Charlotte Garden eds., 2025)</span><br><span class="talk-details">Columbia Global Freedom of Expression</span>
@@ -464,7 +474,7 @@ window.Quarto = {
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Feb.&nbsp;21, 2023</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/B36x3ZtMTEU?t=1466" target="_blank">video</a></span>
+<span class="talk-date-text">Feb.&nbsp;21, 2023</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/B36x3ZtMTEU?t=1466" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">Information as a Public Good</span><br><span class="talk-details">UNESCO Internet Conference Day 0</span>
@@ -483,12 +493,12 @@ window.Quarto = {
 <span class="talk-date-text">Mar.&nbsp;10, 2022</span>
 </td>
 <td class="talk-info align-top">
-<span class="talk-title">Briefing Series on Social Media</span><br><span class="talk-details">Mediation Support Unit, Departmental of Political and Peacebuilding Affairs, United Nations</span>
+<span class="talk-title">Briefing Series on Social Media</span><br><span class="talk-details">Mediation Support Unit, Department of Political and Peacebuilding Affairs, United Nations</span>
 </td>
 </tr>
 <tr>
 <td class="talk-date align-top">
-<span class="talk-date-text">Sep.&nbsp;10, 2021</span><br><span class="talk-details"><a href="https://youtu.be/HLLWkGq9-NU" target="_blank">video</a></span>
+<span class="talk-date-text">Sep.&nbsp;10, 2021</span><br><span class="talk-details"><a href="https://youtu.be/HLLWkGq9-NU" target="_blank" rel="noopener">video</a></span>
 </td>
 <td class="talk-info align-top">
 <span class="talk-title">A Conversation on Content Moderation</span><br><span class="talk-details">Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights</span>
@@ -524,7 +534,7 @@ window.Quarto = {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -544,11 +554,11 @@ window.Quarto = {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -625,7 +635,7 @@ window.Quarto = {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -700,7 +710,7 @@ window.Quarto = {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -728,7 +738,7 @@ window.Quarto = {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -752,7 +762,7 @@ window.Quarto = {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -792,7 +802,7 @@ window.Quarto = {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -918,7 +928,7 @@ window.Quarto = {
   <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
-    </div>   
+    </div>
     <div class="nav-footer-center">
 <p><span class="small">Made with <a href="https://quarto.org">Quarto</a> with a modified <a href="https://github.com/spcanelon/silvia">Canelón-adapted</a> Hugo <a href="https://github.com/hugo-apero">Apero theme</a></span></p>
 </div>
@@ -952,18 +962,18 @@ document.addEventListener('DOMContentLoaded', function() {
             slideConfig.href = srcAttr;
           }
         }
-      } 
+      }
     });
-  
+
     lightboxQuarto.on('slide_after_load', (data) => {
       const { slideIndex, slideNode, slideConfig, player, trigger } = data;
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(slideNode);
       }
     });
-  
+
   };
-  
+
 })();
           </script>
 

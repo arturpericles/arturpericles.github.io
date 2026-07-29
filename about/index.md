@@ -1,12 +1,13 @@
 ---
 title: "Artur Pericles<br/>L. Monteiro"
 subtitle: Art
-format: 
+format:
   html:
     pagetitle: "About"
 
 about:
     image: headshot2025.jpeg
+    image-alt: Portrait of Artur Pericles L. Monteiro
     template: trestles
     links:
     - text: "{{< fa brands mastodon >}}"
@@ -14,13 +15,13 @@ about:
       href: https://mastodon.social/@artp
     - text: "{{< fa brands bluesky >}}"
       aria-label: Bluesky
-      href: https://bsky.app/profile/arturpericles.art     
+      href: https://bsky.app/profile/arturpericles.art
     - text: "{{< fa brands linkedin >}}"
       aria-label: LinkedIn
       href: https://www.linkedin.com/in/arturpericles/
     - text: "{{< fa envelope >}}"
       aria-label: Email
-      href: mailto:artur.monteiro@yale.edu    
+      href: mailto:amonteiro@mc.edu
     - text: "{{< fa key>}}"
       aria-label: PGP Key
       href: https://keys.openpgp.org/vks/v1/by-fingerprint/F6E4B34C3B2C537DC1DBF3FB41B9B8C46C9F6B37
@@ -30,12 +31,10 @@ about:
 :::{#hero-heading}
 
 
-Art is a [Resident Fellow at Yale Law School's Information Society Project](https://law.yale.edu/artur-pericles-lima-monteiro) and the [Schmidt Visiting Scholar on AI and Lecturer in Global Affairs at the Yale Jackson School of Global Affairs](https://jackson.yale.edu/person/artur-pericles-lima-monteiro/).
- 
-He has researched AI and platform governance, as well as privacy and data protection. His articles have been selected for publication by the *Berkeley Technology Law Journal*, the *Proceedings of the ACM Symposium on Computer Science & the Law* and the *Journal of Free Speech Law*. He has presented his research at the Privacy Law Scholars Conference, the ACM Symposium on CS & the Law, the Freedom of Expression Scholars Conference, the Platform Governance Network Conference, and Columbia University's Knight First Amendment Institute's symposium on free speech and misinformation.
+Artur Pericles L. Monteiro is Assistant Professor of Law and the Mary & John Brock Professor of AI Law & Policy at [Mississippi Christian University School of Law](https://law.mc.edu/). He is an Affiliated Fellow at [Yale Law School's Information Society Project](https://law.yale.edu/isp). Professor Monteiro currently researches how constitutional structures can respond to the concentration of power in AI companies and platforms. He also writes on free speech, privacy, and encryption.
 
-At Yale, he has taught Global Law and Policy of AI (Yale Law School & Jackson School of Global Affairs) and Technology, Security, and Power (Yale College, Computer Science). He advises graduate and undergraduate students working on AI governance, and served as a Faculty Delegation Leader for the Yale–Renmin Student Dialogue on AI, Emerging Technology, and U.S.-China Relations. Art edits YLS's [ISP Digital Future Whitepaper Series](https://law.yale.edu/isp/publications/isp-digital-future-whitepapers), and convened the Governing Algorithms Workshop and the AI Workshop.
+His publications appear or are forthcoming in the *Berkeley Technology Law Journal*, the ACM *Proceedings of the Symposium on Computer Science and Law*, and the *Journal of Free Speech Law*. He has served as an independent expert for nonprofits, technology companies, and international organizations, including the United Nations and the Organization of American States, and contributes to Freedom House's *Freedom on the Net* report.
 
-Before Yale, Art was Head of Research at InternetLab. He continues collaborating with civil society.  An independent legal opinion he authored for nonprofit Ekō informs the [largest-ever case on data protection in Brazil](https://valorinternational.globo.com/business/news/2024/08/15/court-prohibits-whatsapp-from-sharing-data-in-brazil.ghtml). He has served as an expert for Freedom House's [Freedom on the Net report](https://freedomhouse.org/country/brazil/freedom-net/2024). He has been invited to address the United Nation's Department of Political and Peacebuilding Affairs and the Organization of American States' Office of the Rapporteur on Freedom of Expression. Previously, he was a law clerk and practiced in Brazil, advising technology companies on data protection and intellectual property.
+Professor Monteiro joins MC Law after teaching and researching law and technology at Yale, where he was a Resident Fellow at Yale Law School's Information Society Project and the Schmidt Visiting Scholar on AI at the Yale Jackson School of Global Affairs. He was previously a law clerk, a practicing attorney, and head of research at digital rights think tank InternetLab. Professor Monteiro earned his law degree and his PhD at the University of São Paulo.
 
 :::

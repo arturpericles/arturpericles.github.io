@@ -3,13 +3,14 @@ title: 'Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surv
 title-short: Security Is Not Enough
 author:
  - given: Artur Pericles
-   family: Lima Monteiro 
-   afffiliation: 'Yale Law School & Jackson School of Global Affairs' 
+   family: Lima Monteiro
+   affiliations:
+     - name: 'Yale Law School & Jackson School of Global Affairs'
 date: 2026-05-22
 citation:
   author:
   - given: Artur Pericles
-    family: Monteiro 
+    family: Monteiro
     dropping-particle: L.
   title-short: Security is not enough
   title: 'Security is not enough: privacy in encryption regulation and lawful-surveillance protocols'
@@ -33,4 +34,4 @@ fulltext: https://doi.org/10.1145/3788646.3789535
 
 ## Abstract
 
- This article argues that security is not enough to fully capture what is at stake in government exceptional access to encrypted data. A conception of privacy as security has little to say about "lawful-surveillance protocols"—an active research agenda in cryptography that aims to enable government exceptional access without compromising systemic security. But the limitations are not contingent on the success of this agenda. The normative landscape today cannot be explained if security is all there is to privacy. And fundamental objections to Apple's abandoned client-side scanning system gesture beyond security. This article's contribution is modest: to show that there must be more to privacy than the security mold it has taken. A richer understanding is needed both to assess policy and to guide research on lawful-surveillance protocols. 
+ This article argues that security is not enough to fully capture what is at stake in government exceptional access to encrypted data. A conception of privacy as security has little to say about "lawful-surveillance protocols"—an active research agenda in cryptography that aims to enable government exceptional access without compromising systemic security. But the limitations are not contingent on the success of this agenda. The normative landscape today cannot be explained if security is all there is to privacy. And fundamental objections to Apple's abandoned client-side scanning system gesture beyond security. This article's contribution is modest: to show that there must be more to privacy than the security mold it has taken. A richer understanding is needed both to assess policy and to guide research on lawful-surveillance protocols.

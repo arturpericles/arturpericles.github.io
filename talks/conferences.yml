@@ -1,3 +1,7 @@
+- venue: XVII Annual Constitutional Law Colloquium
+  event: Platform Interoperability and the First Amendment
+  date: 2026-11-01
+  display_date: Nov. 2026
 - venue: XIV Freedom of Expression Scholars Conference
   event: Platform Interoperability and the First Amendment
   date: Apr. 24, 2026
@@ -5,7 +9,7 @@
   event: 'Countervailing Platform Power'
   date: Mar. 7, 2026
   type: workshop
-  review: 'peer review'    
+  review: 'peer review'
 - venue: 'Symposium on Computer Science & Law (CS&Law)'
   event: 'Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols'
   date: 'Mar. 4, 2026'
@@ -79,7 +83,7 @@
   type: workshop
   review: 'peer review'
 - venue: 'IX Freedom of Expression Scholars Conference, closing plenary'
-  event: 'Curtaling Anonymity'
+  event: 'Curtailing Anonymity'
   date: 'Apr. 30, 2021'
   type: workshop
   review: 'peer review'
@@ -87,4 +91,4 @@
   event: 'Online Anonymity as Expressive'
   date: 'Oct. 24, 2020'
   type: workshop
-  review: 'peer review'  
+  review: 'peer review'

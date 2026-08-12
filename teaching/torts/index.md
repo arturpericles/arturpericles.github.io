@@ -9,7 +9,7 @@ instructor: Artur Pericles L. Monteiro
 
 ## Welcome!
 
-I can't wait to meet you in Torts! It will be my first day at MC too. I would like to get to know something about you before our first class, so complete the informal survey that I will share by the end of August 10. You can check back here on Tuesday morning; I will also send out an announcement on Canvas. The syllabus will also be posted soon.
+I can't wait to meet you in Torts! It will be my first day at MC too. I would like to get to know something about you before our first class, so complete the [informal survey available here](https://forms.gle/jJ83hymwy6mPUSPr9). The syllabus will be posted soon.
 
 "But what is a tort," I hear you say, "and why do I need to go to class three times a week to learn about it?" Great questions! Please come to class having read:
 

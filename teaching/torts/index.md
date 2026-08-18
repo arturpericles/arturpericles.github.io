@@ -9,9 +9,7 @@ toc: true
 ---
 
 ::: {.course-intro}
-Welcome to Torts. This site accompanies the PDF syllabus with the current
-schedule, navigable course policies, and optional pages for individual class
-meetings.
+Welcome to Torts! This website is the online version of the course syllabus.
 :::
 
 ::: {.course-section source="course-description"}

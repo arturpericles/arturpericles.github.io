@@ -45,7 +45,7 @@ website:
         - href: teaching/torts/policies.md
           text: Course Policies
         - href: /teaching/torts/syllabus.pdf
-          text: Syllabus
+          text: 'Syllabus <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>'
   open-graph:
     image: /media/seymour-march-sm.webp
     description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'

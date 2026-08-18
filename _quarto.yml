@@ -12,7 +12,12 @@ website:
   title: 'Artur Pericles L. Monteiro'
   description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
   site-url: 'https://www.arturpericles.art'
-  page-footer: "[Made with [Quarto](https://quarto.org) with a modified [Canelón-adapted](https://github.com/spcanelon/silvia) Hugo [Apero theme](https://github.com/hugo-apero)]{.small}"
+  page-navigation: true
+  page-footer:
+    center: "[Made with [Quarto](https://quarto.org) with a modified [Canelón-adapted](https://github.com/spcanelon/silvia) Hugo [Apero theme](https://github.com/hugo-apero)]{.small}"
+    right:
+      - href: accessibility.md
+        text: Accessibility
   # favicon: media/api-favicon.png
   navbar:
     title: ARTUR PERICLES L. MONTEIRO
@@ -27,6 +32,20 @@ website:
         text: Teaching
       - href: talks/
         text: Talks
+  sidebar:
+    - id: torts
+      title: "Torts · Fall 2026"
+      style: floating
+      collapse-level: 1
+      contents:
+        - href: teaching/torts/index.md
+          text: Overview
+        - href: teaching/torts/schedule.md
+          text: Schedule
+        - href: teaching/torts/policies.md
+          text: Course Policies
+        - href: /teaching/torts/syllabus.pdf
+          text: Syllabus
   open-graph:
     image: /media/seymour-march-sm.webp
     description: 'Artur Pericles L. Monteiro | Law Professor, AI & Technology'
@@ -57,6 +76,15 @@ format:
             var brand = document.querySelector('.navbar-brand');
             if (meta && el) el.setAttribute('data-short-title', meta.content);
             if (brand) brand.setAttribute('aria-label', 'Artur Pericles L. Monteiro — Home');
+            if (document.body.classList.contains('course-page')) {
+              var secondaryNav = document.querySelector('.quarto-secondary-nav');
+              var courseMenuLabel = secondaryNav && secondaryNav.querySelector('.breadcrumb-item');
+              var courseMenuToggle = secondaryNav && secondaryNav.querySelector('.quarto-btn-toggle');
+              var courseMenuBreadcrumbs = secondaryNav && secondaryNav.querySelector('.quarto-page-breadcrumbs');
+              if (courseMenuLabel) courseMenuLabel.textContent = 'Course Menu';
+              if (courseMenuToggle) courseMenuToggle.setAttribute('aria-label', 'Toggle course menu');
+              if (courseMenuBreadcrumbs) courseMenuBreadcrumbs.setAttribute('aria-label', 'Course menu');
+            }
           });
           </script>
 csl: aplm-bluebook-law-review.csl

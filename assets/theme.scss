@@ -98,6 +98,70 @@ $gray-200:                    lighten($primary, 60%);
 
 /*-- scss:rules --*/
 
+// Keyboard access
+
+.skip-link {
+  background: $body-bg;
+  border: 2px solid $primary-dark;
+  color: $primary-dark;
+  font-weight: 600;
+  left: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  position: fixed;
+  top: 0.75rem;
+  transform: translateY(calc(-100% - 1rem));
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  box-shadow: none !important;
+  outline: 3px solid #0c2340 !important;
+  outline-offset: 3px !important;
+}
+
+// Semantic heading corrections retain the existing listing typography.
+h2.listing-section-heading,
+h3.listing-category-heading {
+  font-weight: $headings-font-weight;
+}
+
+h2.listing-section-heading {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+h3.listing-category-heading {
+  font-size: calc(1.325rem + 0.9vw);
+}
+
+#listing-featured .listing-title,
+#listing-publications .listing-title {
+  font-size: 1.25rem;
+}
+
+.course-listing-title,
+.class-listing-title {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+  h2.listing-section-heading {
+    font-size: 2.5rem;
+  }
+
+  h3.listing-category-heading {
+    font-size: 2rem;
+  }
+
+  .course-listing-title,
+  .class-listing-title {
+    font-size: 1.75rem;
+  }
+}
+
 // Code
 
 // code block

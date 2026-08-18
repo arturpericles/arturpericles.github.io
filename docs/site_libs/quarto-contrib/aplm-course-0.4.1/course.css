@@ -1,0 +1,236 @@
+.course-page {
+  --course-blue: #0c2340;
+  --course-gold: #c99700;
+  --course-celestial: #69b3e7;
+  --course-blue-soft: rgb(105 179 231 / 14%);
+  --course-muted: var(--bs-secondary-color);
+  --course-rule: var(--bs-border-color);
+}
+
+/* The course inherits Commissioner and Fraunces from the parent site. */
+.course-page h1,
+.course-page h2 {
+  color: var(--course-blue);
+  font-weight: 600;
+}
+
+.course-page h1 {
+  letter-spacing: -0.02em;
+}
+
+.course-page h2 {
+  border-bottom: 1px solid var(--course-rule);
+  padding-bottom: 0.25rem;
+}
+
+.course-page main.content a {
+  color: var(--course-blue);
+  overflow-wrap: anywhere;
+}
+
+.course-page .quarto-title .subtitle,
+.course-eyebrow {
+  color: var(--course-blue);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.course-page .quarto-title .subtitle {
+  margin-top: 0.6rem;
+}
+
+.course-instructor {
+  font-size: 1rem;
+  margin: 0.15rem 0 1.4rem;
+}
+
+.course-intro {
+  border-left: 0.28rem solid var(--course-gold);
+  font-size: 1.2rem;
+  margin: 1.5rem 0 2rem;
+  max-width: 46rem;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+}
+
+.course-usage {
+  font-size: 0.9rem;
+}
+
+.course-usage h2 {
+  border-bottom: 1px solid var(--course-rule);
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+.course-usage ul {
+  padding-left: 1.1rem;
+}
+
+.course-facts-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.course-fact {
+  background: var(--course-blue-soft);
+  padding: 1rem 1.2rem;
+}
+
+.course-fact p {
+  margin: 0;
+}
+
+.course-fact > p:first-child {
+  color: var(--course-muted);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.course-materials-list > ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.course-materials-list > ul > li {
+  border-top: 1px solid var(--course-rule);
+  padding: 1rem 0;
+}
+
+.course-material-note {
+  color: var(--course-muted);
+  font-size: 0.94rem;
+  margin-top: 0.35rem;
+}
+
+section.course-policy {
+  border-top: 0.32rem solid var(--course-blue);
+  box-shadow: 0 0.25rem 1.25rem rgb(12 35 64 / 9%);
+  margin: 1.75rem 0;
+  padding: 1.25rem 1.4rem;
+}
+
+.course-policy > h2 {
+  border: 0;
+  margin-top: 0;
+}
+
+.course-policy-summary {
+  background: var(--course-blue-soft);
+  font-weight: 600;
+  margin: 0.7rem 0 1.1rem;
+  padding: 0.8rem 1rem;
+}
+
+.course-policy-rationale h3 {
+  color: var(--course-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.course-policy-rationale {
+  margin-top: 1.25rem;
+}
+
+.course-meeting-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 2.5rem;
+}
+
+.course-meeting {
+  border: 1px solid var(--course-rule);
+  border-radius: 0.2rem;
+  padding: 1rem 1.15rem;
+}
+
+.course-meeting h3 {
+  font-size: 1.35rem;
+  margin: 0.35rem 0 0.65rem;
+}
+
+.course-meeting h3 a {
+  color: var(--course-blue);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.15em;
+}
+
+.course-meeting-kicker {
+  color: var(--course-blue);
+  font-size: 0.73rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.course-meeting-on-deck {
+  display: block;
+  font-weight: 600;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+}
+
+.course-meeting-status {
+  color: var(--course-muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.course-meeting ul,
+.class-preparation-rendered ul {
+  font-size: 0.96rem;
+  margin-bottom: 0;
+  padding-left: 1.15rem;
+}
+
+.course-meeting-noncounting {
+  background: rgb(105 179 231 / 8%);
+  border-style: dashed;
+}
+
+.class-preparation-rendered {
+  background: var(--course-blue-soft);
+  border-top: 0.25rem solid var(--course-blue);
+  margin: 1.5rem 0 2rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.class-preparation-rendered h2 {
+  border: 0;
+  font-size: 1.2rem;
+  margin-top: 0.45rem;
+}
+
+.course-page .sidebar-title {
+  color: var(--course-blue);
+  font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+  .course-facts-grid,
+  .course-meeting-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  section.course-policy {
+    padding: 1rem;
+  }
+}

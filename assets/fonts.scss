@@ -19,6 +19,24 @@
        url('assets/fonts/Fraunces9ptSoft-ThinItalic.woff2')  format('woff2');
 }
 
+/* fraunces-semibold - latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+       url('assets/fonts/Fraunces9ptSoft-SemiBold.woff2') format('woff2');
+}
+
+/* fraunces-semibolditalic - latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  src: local(''),
+       url('assets/fonts/Fraunces9ptSoft-SemiBoldItalic.woff2') format('woff2');
+}
+
 /* Metropolis-regular - latin */
 @font-face {
   font-family: 'Metropolis';
@@ -153,5 +171,4 @@
 //        url('assets/fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2') format('woff2'),
 //        url('assets/fonts/Atkinson-Hyperlegible-BoldItalic-102.woff2') format('woff');
 // }
-
 

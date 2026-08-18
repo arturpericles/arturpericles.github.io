@@ -1,0 +1,349 @@
+%%%
+%%% Identity-aware syllabus template based on Kieran Healy's syllabus template.
+%%% Yale remains the default. Enable the MC Law identity with any of:
+%%%
+%%%   mc-law: true
+%%%   identity: mc-law
+%%%   global-template: mc-law
+%%%
+%%% Structured metadata is also supported:
+%%%
+%%%   identity:
+%%%     mc-law: true
+%%%   global-template:
+%%%     mc-law: true
+%%%
+%%% Optional MC Law controls:
+%%%   mclaw-logo: /path/to/MC-Law-CMYK_horizontal_blue.pdf
+%%%   mclaw-logo-width: 1.10in
+%%%
+
+$-- PDF standard support must precede \documentclass. This mirrors Quarto's
+$-- built-in document-metadata partial so custom templates honor pdf-standard.
+$if(pdfstandard)$
+\DocumentMetadata{
+$if(pdfstandard.version)$
+  pdfversion=$pdfstandard.version$,
+$endif$
+$if(pdfstandard.standards)$
+  pdfstandard={$for(pdfstandard.standards)$$it$$sep$,$endfor$},
+$endif$
+$if(pdfstandard.tagging)$
+  tagging=on,
+$endif$
+$if(lang)$
+  lang=$lang$,
+$endif$
+  xmp=true}
+$endif$
+
+\documentclass[11pt,article,oneside]{memoir}
+
+$if(pdfstandard)$
+%% The syllabus contains no mathematics, so avoid loading a MathML conversion
+%% stack solely for PDF tagging.
+\tagpdfsetup{math/mathml/luamml/load=false}
+$endif$
+
+\usepackage{iftex}
+\ifPDFTeX
+  \PackageError{healy-syllabus}{This template requires LuaLaTeX or XeLaTeX}{Use --pdf-engine=lualatex (preferred) or --pdf-engine=xelatex.}
+\fi
+
+%% Engine-neutral replacement for the historical org-preamble-xelatex package.
+%% The former package forced Hyperref's XeTeX driver and could not compile
+%% reliably under LuaLaTeX.
+\usepackage{fontspec}
+\usepackage{xurl}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{memoir-article-styles}
+\usepackage[american]{babel}
+\usepackage[babel]{csquotes}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{soul}
+\usepackage{etoolbox}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{ragged2e}
+\usepackage{needspace}
+%% Pandoc 3.10 uses an internal `none` caption type for uncaptioned tables.
+\newcounter{none}
+\usepackage[
+  unicode,
+  colorlinks=true,
+  urlcolor=DarkSlateBlue,
+  citecolor=DarkSlateBlue,
+  filecolor=DarkSlateBlue,
+  plainpages=false,
+  pdfpagelabels,
+  bookmarksnumbered
+]{hyperref}
+\hypersetup{
+  pdftitle={$coursetitle$ Syllabus},
+  pdfauthor={$instructor$},
+  pdfsubject={Torts course syllabus for Fall 2026},
+  pdfkeywords={torts, syllabus, law, Fall 2026}
+}
+\urlstyle{same}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{3em}
+
+%% Script-based version control (requires vc package)
+% \input{vc}
+
+%% Identity selection. The scalar forms make the setting convenient in a
+%% document-wide metadata file; the boolean forms remain useful per document.
+\newif\ifmclawidentity
+\mclawidentityfalse
+
+$if(mc-law)$
+\mclawidentitytrue
+$endif$
+$if(mclaw)$
+\mclawidentitytrue
+$endif$
+$if(identity.mc-law)$
+\mclawidentitytrue
+$endif$
+$if(global-template.mc-law)$
+\mclawidentitytrue
+$endif$
+$if(identity)$
+\def\syllabusidentity{$identity$}
+\ifdefstring{\syllabusidentity}{mc-law}{\mclawidentitytrue}{}
+\ifdefstring{\syllabusidentity}{mclaw}{\mclawidentitytrue}{}
+\ifdefstring{\syllabusidentity}{MC Law}{\mclawidentitytrue}{}
+$endif$
+$if(global-template)$
+\def\syllabusglobaltemplate{$global-template$}
+\ifdefstring{\syllabusglobaltemplate}{mc-law}{\mclawidentitytrue}{}
+\ifdefstring{\syllabusglobaltemplate}{mclaw}{\mclawidentitytrue}{}
+\ifdefstring{\syllabusglobaltemplate}{MC Law}{\mclawidentitytrue}{}
+$endif$
+
+%% Definitions
+\def\myauthor{Author}
+\def\mytitle{Title}
+\def\mycopyright{\myauthor}
+\def\mykeywords{}
+\def\mybibliostyle{plain}
+\def\mybibliocommand{}
+\def\mysubtitle{}
+\def\myaddress{$address$}
+\def\myemail{$email$}
+\def\myweb{$website$}
+\def\myversion{}
+\def\myrevision{}
+
+\ifmclawidentity
+  $if(mclaw-logo)$
+  \def\mylogo{\detokenize{$mclaw-logo$}}
+  $else$
+    $if(logo)$
+    \def\mylogo{\detokenize{$logo$}}
+    $else$
+    \def\mylogo{\detokenize{MC-Law-CMYK_horizontal_blue.pdf}}
+    $endif$
+  $endif$
+\else
+  \def\mylogo{\detokenize{$logo$}}
+\fi
+
+\def\myaffiliation{$affiliation$}
+\def\myauthor{$instructor$}
+\def\mysubtitle{Syllabus}
+
+\ifmclawidentity
+  \def\mytitle{{\normalsize\sffamily\bfseries\MakeUppercase{$coursenumber$}\par}\vspace{0.15em}{\HUGE\sffamily\bfseries $coursetitle$}}
+\else
+  \def\mytitle{{\normalsize \textsc{$coursenumber$} \newline} \HUGE $coursetitle$}
+\fi
+
+\definecolor{MCBlue}{HTML}{0C2340}
+\definecolor{MCGold}{HTML}{C99700}
+
+%% MC Law masthead dimensions. The logo PDF is tightly cropped to its visible
+%% vector artwork, so the width below is the visible logo width. Academic-unit
+%% lockups have their own proportions and clearance rules; no primary-logo
+%% minimum is imposed on this approved horizontal lockup.
+\newlength{\MCLawLogoWidth}
+$if(mclaw-logo-width)$
+\setlength{\MCLawLogoWidth}{$mclaw-logo-width$}
+$else$
+\setlength{\MCLawLogoWidth}{1.10in}
+$endif$
+
+%% The horizontal lockup's protected area uses one sixth of its visible width.
+%% This remains conservative relative to the official M-space exclusion zone
+%% while keeping the first-page masthead compact like letterhead.
+\newlength{\MCLawClearSpace}
+\setlength{\MCLawClearSpace}{\dimexpr\MCLawLogoWidth/6\relax}
+
+\newcommand{\MCLawMasthead}{%
+  \noindent\makebox[\textwidth][l]{%
+    \includegraphics[alt={Mississippi Christian University School of Law},width=\MCLawLogoWidth]{\mylogo}%
+  }\par\nobreak
+  \vspace{\MCLawClearSpace}%
+}
+
+\begin{document}
+
+%% Unicode-engine font choices (LuaLaTeX preferred; XeLaTeX supported).
+\defaultfontfeatures{}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+\ifmclawidentity
+  %% Official Mississippi Christian University families (guidelines pp. 28-29).
+  %% Use the installed font files directly so XeLaTeX does not depend on a
+  %% writable fontconfig cache.
+  \setromanfont[
+    Path=/Users/aplm/Library/Fonts/,
+    Extension=.otf,
+    UprightFont=PSFournierStd-Regular,
+    ItalicFont=PSFournierStd-Italic,
+    BoldFont=PSFournierStd-Bold,
+    BoldItalicFont=PSFournierStd-BoldItalic
+  ]{PSFournierStd-Regular}
+  \setsansfont[
+    Path=/Users/aplm/Library/Fonts/,
+    Extension=.otf,
+    UprightFont=NewAtten-Regular,
+    ItalicFont=NewAtten-RegularItalic,
+    BoldFont=NewAtten-Bold,
+    BoldItalicFont=NewAtten-BoldItalic
+  ]{NewAtten-Regular}
+  %% PS Fournier Standard has no OpenType small-caps feature. Preserve it as
+  %% the body face, but render Pandoc/CSL SmallCaps spans with Minion Pro's
+  %% genuine smcp glyphs at a matched lowercase scale.
+  \newfontfamily\mclawsmallcapsfont[
+    Path=/Library/Fonts/,
+    Extension=.otf,
+    UprightFont=MinionPro-Regular,
+    ItalicFont=MinionPro-It,
+    BoldFont=MinionPro-Bold,
+    BoldItalicFont=MinionPro-BoldIt,
+    Scale=MatchLowercase
+  ]{MinionPro-Regular}
+  \renewcommand{\textsc}[1]{{\mclawsmallcapsfont\scshape #1}}
+\else
+  %% Original Yale-oriented choices.
+  \setromanfont[
+    Path=/Library/Fonts/,
+    Extension=.otf,
+    UprightFont=MinionPro-Regular,
+    ItalicFont=MinionPro-It,
+    BoldFont=MinionPro-Bold,
+    BoldItalicFont=MinionPro-BoldIt
+  ]{MinionPro-Regular}
+  \setsansfont[
+    Path=/Users/aplm/Library/Fonts/,
+    Extension=.otf,
+    UprightFont=MyriadPro-Regular,
+    ItalicFont=MyriadPro-It,
+    BoldFont=MyriadPro-Bold,
+    BoldItalicFont=MyriadPro-BoldIt
+  ]{MyriadPro-Regular}
+\fi
+$if(monofont)$
+\setmonofont[Scale=0.8]{$monofont$}
+$else$
+\setmonofont[Scale=0.8]{Menlo}
+$endif$
+
+\chapterstyle{syllabus}
+
+\ifmclawidentity
+  %% New Atten carries the display hierarchy; PS Fournier remains the body face.
+  \setsecheadstyle{\Large\sffamily\bfseries\color{MCBlue}}
+  \setsubsecheadstyle{\normalsize\sffamily\bfseries\color{MCBlue}}
+  \setsubsubsecheadstyle{\normalsize\sffamily\itshape\color{MCBlue}}
+  \pretitle{\MCLawMasthead\begin{flushleft}\sffamily\bfseries\color{MCBlue}}
+  \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
+  \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize\sffamily}
+  \postdate{\end{flushleft}\par\vskip 2em}
+  \setlength{\droptitle}{-1.4in}
+  \hypersetup{urlcolor=MCBlue,citecolor=MCBlue,linkcolor=MCBlue}
+\fi
+
+%% Identity-aware schedule-table styling. The Lua filter emits native Pandoc
+%% tables; Pandoc writes them as longtable for clean multipage output.
+\definecolor{YaleBlue}{HTML}{00356B}
+\ifmclawidentity
+  \colorlet{SyllabusAccent}{MCBlue}
+\else
+  \colorlet{SyllabusAccent}{YaleBlue}
+\fi
+%% Unit styling remains local; the filter keeps a regular four-cell row for
+%% accessible tagged tables and places the label in the Class column. Mark the
+%% row so its terminating longtable break is treated like \\*: this prevents a
+%% unit heading from being stranded at the foot of a page.
+\makeatletter
+\newif\ifSyllabusUnitRow
+\let\SyllabusOriginalLTTabularCr\LT@tabularcr
+\protected\def\LT@tabularcr{%
+  \ifSyllabusUnitRow
+    \global\SyllabusUnitRowfalse
+    \SyllabusOriginalLTTabularCr*%
+  \else
+    \SyllabusOriginalLTTabularCr
+  \fi
+}
+\makeatother
+\newcommand{\SyllabusUnit}[1]{%
+  \global\SyllabusUnitRowtrue
+  {\sffamily\bfseries\color{SyllabusAccent}#1}%
+}
+\newcommand{\SyllabusOnDeck}[1]{{\sffamily\footnotesize\mdseries #1}}
+\setlength{\LTpre}{0.7em}
+\setlength{\LTpost}{0.7em}
+%% Session rows use the serif body face. The filter applies sans serif locally
+%% to column headers, while \SyllabusUnit keeps unit headings in sans serif.
+\AtBeginEnvironment{longtable}{%
+  \small
+  \rmfamily
+  \renewcommand{\arraystretch}{1.16}%
+  \setlength{\tabcolsep}{4pt}%
+  \arrayrulecolor{SyllabusAccent}%
+}
+
+%% First-page styles
+\makepagestyle{yalelogo}
+\makeoddhead{yalelogo}{\includegraphics[alt={Institutional logo},height=1cm]{\mylogo}}{}{}
+
+\makepagestyle{mclawtitle}
+\makeoddhead{mclawtitle}{}{}{}
+\makeoddfoot{mclawtitle}{}{}{}
+
+%% memoir patches the kernel's \title/\author/\date commands in a way that is
+%% incompatible with LaTeX's PDF-tagging layer. Set the same internal values
+%% directly so memoir's existing \maketitle layout remains byte-for-byte in
+%% control of the visible title block.
+\makeatletter
+\def\@title{\LARGE \mytitle}
+\ifmclawidentity
+  \def\@author{\Large\sffamily\myauthor \newline \footnotesize\sffamily\noindent\myemail}
+  \def\@date{\sffamily $term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $address$, $officehours$$endif$}
+\else
+  \def\@author{\Large\myauthor \newline \footnotesize\texttt{\noindent\myemail}}
+  \def\@date{$term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $address$, $officehours$$endif$}
+\fi
+\makeatother
+
+\published{\,}
+
+\maketitle
+
+\ifmclawidentity
+  \thispagestyle{mclawtitle}
+\else
+  \thispagestyle{yalelogo}
+\fi
+
+%% Main content
+$body$
+
+\end{document}

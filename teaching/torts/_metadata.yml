@@ -1,0 +1,17 @@
+course-site: true
+course-logo: false
+global-template: mc-law
+sidebar: torts
+body-classes: course-page
+course-source: syllabus.md
+course-source-dir: "../obsidian/teaching/MC Law/Torts"
+resource-path:
+  - .
+  - teaching/torts
+  - "../obsidian/teaching/MC Law/Torts"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    filters:
+      - aplm/course

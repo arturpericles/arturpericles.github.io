@@ -1,11 +1,13 @@
 [
   {
-    "listing": "/teaching/index.html",
+    "listing": "/teaching/torts/classes/index.html",
     "items": [
-      "/teaching/torts/index.html",
-      "/teaching/technology-security-power/index.html",
-      "/teaching/global-law-policy-ai/index.html"
+      "/teaching/torts/classes/introduction.html"
     ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": []
   },
   {
     "listing": "/publications/index.html",
@@ -29,7 +31,11 @@
     ]
   },
   {
-    "listing": "/talks/index.html",
-    "items": []
+    "listing": "/teaching/index.html",
+    "items": [
+      "/teaching/torts/index.html",
+      "/teaching/technology-security-power/index.html",
+      "/teaching/global-law-policy-ai/index.html"
+    ]
   }
 ]

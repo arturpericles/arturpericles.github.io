@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.arturpericles.art/teaching/torts/index.html</loc>
-    <lastmod>2026-08-12T05:13:54.225Z</lastmod>
+    <loc>https://www.arturpericles.art/teaching/torts/syllabus.pdf.html</loc>
+    <lastmod>2026-08-18T07:11:09.329Z</lastmod>
   </url>
   <url>
-    <loc>https://www.arturpericles.art/teaching/index.html</loc>
-    <lastmod>2026-07-29T14:08:35.333Z</lastmod>
+    <loc>https://www.arturpericles.art/teaching/torts/schedule.html</loc>
+    <lastmod>2026-08-18T07:36:49.696Z</lastmod>
   </url>
   <url>
-    <loc>https://www.arturpericles.art/index.html</loc>
-    <lastmod>2026-07-29T14:08:34.345Z</lastmod>
+    <loc>https://www.arturpericles.art/teaching/torts/classes/index.html</loc>
+    <lastmod>2026-08-15T22:05:02.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/teaching/technology-security-power/index.html</loc>
+    <lastmod>2026-07-29T01:52:51.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/teaching/global-law-policy-ai/index.html</loc>
+    <lastmod>2026-07-28T23:48:41.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/talks/index.html</loc>
+    <lastmod>2026-07-29T14:08:35.201Z</lastmod>
   </url>
   <url>
     <loc>https://www.arturpericles.art/publications/armadilhas-moderacao/index.html</loc>
@@ -46,7 +58,7 @@
   </url>
   <url>
     <loc>https://www.arturpericles.art/publications/platform-federalism/index.html</loc>
-    <lastmod>2026-07-29T01:52:51.128Z</lastmod>
+    <lastmod>2026-08-16T16:41:07.392Z</lastmod>
   </url>
   <url>
     <loc>https://www.arturpericles.art/bio/index.html</loc>
@@ -70,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.arturpericles.art/publications/index.html</loc>
-    <lastmod>2026-07-29T14:08:35.068Z</lastmod>
+    <lastmod>2026-08-15T22:10:12.509Z</lastmod>
   </url>
   <url>
     <loc>https://www.arturpericles.art/publications/fotn-2023/index.html</loc>
@@ -85,15 +97,27 @@
     <lastmod>2026-07-29T01:52:28.411Z</lastmod>
   </url>
   <url>
-    <loc>https://www.arturpericles.art/talks/index.html</loc>
-    <lastmod>2026-07-29T14:08:35.201Z</lastmod>
+    <loc>https://www.arturpericles.art/accessibility.html</loc>
+    <lastmod>2026-08-15T22:27:37.869Z</lastmod>
   </url>
   <url>
-    <loc>https://www.arturpericles.art/teaching/global-law-policy-ai/index.html</loc>
-    <lastmod>2026-07-28T23:48:41.106Z</lastmod>
+    <loc>https://www.arturpericles.art/index.html</loc>
+    <lastmod>2026-07-29T14:08:34.345Z</lastmod>
   </url>
   <url>
-    <loc>https://www.arturpericles.art/teaching/technology-security-power/index.html</loc>
-    <lastmod>2026-07-29T01:52:51.126Z</lastmod>
+    <loc>https://www.arturpericles.art/teaching/index.html</loc>
+    <lastmod>2026-08-15T22:05:02.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/teaching/torts/classes/introduction.html</loc>
+    <lastmod>2026-08-18T07:36:49.623Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/teaching/torts/policies.html</loc>
+    <lastmod>2026-08-18T07:11:09.541Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.arturpericles.art/teaching/torts/index.html</loc>
+    <lastmod>2026-08-18T10:34:28.610Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,18 @@
+title: APLM Course Components
+author: Artur Pericles L. Monteiro
+version: 0.4.1
+quarto-required: ">=1.5.0"
+contributes:
+  filters:
+    - course.lua
+  formats:
+    pdf:
+      pdf-engine: lualatex
+      template: mc-law-syllabus.tex
+      filters:
+        - syllabus-schedule.lua
+      citeproc: true
+      toc: false
+      number-sections: false
+      global-template: mc-law
+      mclaw-logo: MC-Law-CMYK_horizontal_blue.pdf

@@ -24,7 +24,7 @@ item.citation.type === 'paper-conference'
 Research Articles
 ======================
 -->
-<h2>Research Articles</h2>
+<h3 class="listing-category-heading">Research Articles</h3>
 
 <% if (researchArticles.length > 0) { %>
 ::: {.list .quarto-listing-default}
@@ -32,7 +32,7 @@ Research Articles
 ::: {.quarto-post .image-right}
 ::: {.body}
 <% if (item.title) { %>
-<h5 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h5>
+<h4 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h4>
 <% if (item.title_en) { %>
 <div class="listing-subtitle"><a href="<%- item.path %>" class="no-external"><%= item.title_en %></a></div>
 <% } %>
@@ -74,7 +74,7 @@ if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.
 Book Chapters
 ======================
 -->
-<h2>Book Chapters</h2>
+<h3 class="listing-category-heading">Book Chapters</h3>
 
 <% if (bookChapters.length > 0) { %>
 ::: {.list .quarto-listing-default}
@@ -82,7 +82,7 @@ Book Chapters
 ::: {.quarto-post .image-right}
 ::: {.body}
 <% if (item.title) { %>
-<h5 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h5>
+<h4 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h4>
 <% if (item.title_en) { %>
 <div class="listing-subtitle"><a href="<%- item.path %>" class="no-external"><%= item.title_en %></a></div>
 <% } %>
@@ -124,7 +124,7 @@ if (item.citation?.publisher && (item.citation.type === 'book' || item.citation.
 Policy Reports and Other Writing
 =====================================
 -->
-<h2>Policy Reports and Other Writing</h2>
+<h3 class="listing-category-heading">Policy Reports and Other Writing</h3>
 
 <% if (policyReports.length > 0) { %>
 ::: {.list .quarto-listing-default}
@@ -132,7 +132,7 @@ Policy Reports and Other Writing
 ::: {.quarto-post .image-right}
 ::: {.body}
 <% if (item.title) { %>
-<h5 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h5>
+<h4 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h4>
 <% if (item.title_en) { %>
 <div class="listing-subtitle"><a href="<%- item.path %>" class="no-external"><%= item.title_en %></a></div>
 <% } %>

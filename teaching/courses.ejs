@@ -1,0 +1,14 @@
+<% for (const item of items) { %>
+::: {.quarto-post .image-right}
+::: {.body}
+<% if (item.title) { %>
+<h2 class="no-anchor listing-title course-listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h2>
+<% } %>
+:::
+<% if (item.school) { %>
+::: {.metadata}
+<a href="<%- item.path %>" class="no-external"><div class="metadata-value listing-school"><%= item.school %></div></a>
+:::
+<% } %>
+:::
+<% } %>

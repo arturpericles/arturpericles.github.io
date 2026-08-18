@@ -6,6 +6,7 @@ author:
    family: Lima Monteiro
    affiliations:
      - name: 'Mississippi Christian University School of Law'
+     - name: 'Information Society Projet, Yale Law School'
 date: 2026-05-01
 citation:
   author:

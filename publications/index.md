@@ -50,12 +50,14 @@ format:
 
 
 
-# Highlights
+<h1 class="visually-hidden">Publications</h1>
+
+## Highlights {.listing-section-heading}
 
 :::{#featured}
 :::
 
-# Publications
+## Publications {.listing-section-heading}
 
 :::{#publications}
 :::

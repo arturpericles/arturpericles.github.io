@@ -12,3 +12,5 @@ docs/CNAME
 # Other
 aplm-bluebook-law-review.csl
 
+# Machine-local citation styles
+.local/

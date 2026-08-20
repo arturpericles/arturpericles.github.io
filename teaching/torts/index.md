@@ -40,3 +40,6 @@ course's ordinary distribution channel.
 
 ::: {.course-section source="syllabus-revisions"}
 :::
+
+::: {.course-section source="acknowledgements"}
+:::

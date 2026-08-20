@@ -30,6 +30,9 @@ course goals and learning outcomes, required materials, assessment and grading,
 professional engagement, and syllabus revisions. Website-only material does
 not interrupt that sequence.
 
+The `acknowledgements` shared section appears at the end of the PDF syllabus
+and at the end of the website Overview. Edit its prose only in `syllabus.md`.
+
 Long fields stay in Markdown rather than YAML. The semantic fenced Divs in
 `syllabus.md` tell the extension how to reuse them:
 

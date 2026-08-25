@@ -91,6 +91,20 @@ The PDF unwraps the same section and prints it in source order. Add
 `.website-only` to a shared section that should be available to the website but
 omitted from the PDF.
 
+## Course facts
+
+An HTML page can render the canonical course metadata as a compact grid:
+
+```markdown
+::: {.course-facts}
+:::
+```
+
+The grid reads practical logistics from `course:` YAML: meeting information,
+location, office, and office hours. Fields that are not set are omitted. The
+`office` field is optional; when the office location is already included in
+`office-hours`, it may be left unset without leaving punctuation in the PDF.
+
 ## Materials
 
 Materials are declared semantically in Markdown, not YAML:

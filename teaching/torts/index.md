@@ -12,6 +12,9 @@ toc: true
 Welcome to Torts! This website is the online version of the course syllabus.
 :::
 
+::: {.course-facts}
+:::
+
 ::: {.course-section source="course-description"}
 :::
 

@@ -81,6 +81,10 @@
   padding: 1rem 1.2rem;
 }
 
+.course-fact:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .course-fact p {
   margin: 0;
 }
@@ -228,6 +232,10 @@ section.course-policy {
   .course-facts-grid,
   .course-meeting-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .course-fact:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 
   section.course-policy {

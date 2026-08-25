@@ -1025,11 +1025,9 @@ local function render_facts()
   local course = state.meta.course
   if course == nil then fail("course metadata is required") end
   local candidates = {
-    {"School", course.school},
-    {"Term", course.term},
-    {"Instructor", course.instructor},
     {"Meetings", course.meetings},
     {"Location", course.location},
+    {"Office", course.office},
     {"Office hours", course["office-hours"]},
   }
   local blocks = pandoc.Blocks({})

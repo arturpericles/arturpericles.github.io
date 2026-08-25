@@ -326,10 +326,10 @@ $endif$
 \def\@title{\LARGE \mytitle}
 \ifmclawidentity
   \def\@author{\Large\sffamily\myauthor \newline \footnotesize\sffamily\noindent\myemail}
-  \def\@date{\sffamily $term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $address$, $officehours$$endif$}
+  \def\@date{\sffamily $term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $if(address)$$address$, $endif$$officehours$$endif$}
 \else
   \def\@author{\Large\myauthor \newline \footnotesize\texttt{\noindent\myemail}}
-  \def\@date{$term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $address$, $officehours$$endif$}
+  \def\@date{$term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $if(address)$$address$, $endif$$officehours$$endif$}
 \fi
 \makeatother
 

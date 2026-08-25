@@ -24,6 +24,12 @@ The canonical course files live outside this repository:
    content from the external source. `syllabus-render.md` is a thin PDF
    adapter and should not contain course prose.
 
+The Overview's `.course-facts` placeholder renders practical logistics from
+the canonical `course:` YAML: meeting information when set, classroom
+location, office, and office hours. Edit those values only in `syllabus.md`.
+The `office` field is optional. If the office location is written directly in
+`office-hours`, leave `office` unset; the PDF will omit the address separator.
+
 On the website Overview, keep shared sections in the same relative order as
 they appear in the PDF: course description, programmatic learning outcomes,
 course goals and learning outcomes, required materials, assessment and grading,

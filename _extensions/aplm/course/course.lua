@@ -1021,25 +1021,90 @@ local function render_shared_section(section_id)
   })
 end
 
+local function append_course_fact(blocks, label, value_blocks, extra_classes)
+  if value_blocks == nil or #value_blocks == 0 then return end
+  local content = pandoc.Blocks({pandoc.Para({pandoc.Str(label)})})
+  content:extend(value_blocks)
+  local classes = {"course-fact"}
+  for _, class_name in ipairs(extra_classes or {}) do
+    table.insert(classes, class_name)
+  end
+  blocks:insert(pandoc.Div(content, pandoc.Attr("", classes)))
+end
+
+local function teaching_assistant_names(value)
+  local names = pandoc.List({})
+  if value == nil then return names end
+  local is_list = ptype(value) == "List"
+  if not is_list and meta_string(value) == "" then return names end
+  local declared = is_list and value or {value}
+  for index, item in ipairs(declared) do
+    local item_type = ptype(item)
+    if item_type == "List" or item_type == "Map" or item_type == "Blocks" then
+      fail("course.teaching-assistants item " .. index .. " must be a name")
+    end
+    local blocks = markdown_blocks(item)
+    if #blocks ~= 1 or (blocks[1].t ~= "Para" and blocks[1].t ~= "Plain") then
+      fail("course.teaching-assistants item " .. index .. " must be a single-line name")
+    end
+    local name = clone_inlines(blocks[1].content)
+    if meta_string(name) == "" then
+      fail("course.teaching-assistants item " .. index .. " must not be empty")
+    end
+    names:insert(name)
+  end
+  return names
+end
+
+local function teaching_assistant_blocks(names)
+  if #names == 0 then return nil end
+  local inlines = pandoc.Inlines({})
+  for index, name in ipairs(names) do
+    if index > 1 then
+      inlines:insert(pandoc.Space())
+      inlines:insert(pandoc.Str("·"))
+      inlines:insert(pandoc.Space())
+    end
+    inlines:extend(clone_inlines(name))
+  end
+  return pandoc.Blocks({pandoc.Para(inlines)})
+end
+
 local function render_facts()
   local course = state.meta.course
   if course == nil then fail("course metadata is required") end
-  local candidates = {
+  local compact_candidates = {
     {"Meetings", course.meetings},
     {"Location", course.location},
     {"Office", course.office},
-    {"Office hours", course["office-hours"]},
   }
   local blocks = pandoc.Blocks({})
-  for _, candidate in ipairs(candidates) do
+  for _, candidate in ipairs(compact_candidates) do
     local value = meta_string(candidate[2])
     if value ~= "" then
-      blocks:insert(pandoc.Div({
-        pandoc.Para({pandoc.Str(candidate[1])}),
-        pandoc.Para(markdown_blocks(candidate[2])[1].content),
-      }, pandoc.Attr("", {"course-fact"})))
+      append_course_fact(blocks, candidate[1], markdown_blocks(candidate[2]))
     end
   end
+
+  local assistants = teaching_assistant_names(course["teaching-assistants"])
+  local assistant_label = #assistants == 1 and "Teaching assistant" or "Teaching assistants"
+  append_course_fact(
+    blocks,
+    assistant_label,
+    teaching_assistant_blocks(assistants),
+    {"course-fact-wide", "course-fact-compact"}
+  )
+
+  local office_hours = course["office-hours"]
+  if meta_string(office_hours) ~= "" then
+    append_course_fact(
+      blocks,
+      "Office hours",
+      markdown_blocks(office_hours),
+      {"course-fact-wide", "course-fact-compact"}
+    )
+  end
+
   return pandoc.Div(blocks, pandoc.Attr("", {"course-facts-grid"}))
 end
 
@@ -1120,7 +1185,7 @@ local function initialize(meta)
   if meta_boolean(meta["course-site"], false) and state.is_html then
     quarto.doc.add_html_dependency({
       name = "aplm-course",
-      version = "0.4.1",
+      version = "0.4.2",
       stylesheets = {"course.css"},
     })
   end

@@ -13,6 +13,8 @@ output-file: syllabus.pdf
 global-template: mc-law
 syllabus-policy-display: full
 syllabus-schedule-new-page: false
+syllabus-page-break-before:
+  - grading
 course-source: syllabus.md
 course-source-dir: "../obsidian/teaching/MC Law/Torts"
 ---

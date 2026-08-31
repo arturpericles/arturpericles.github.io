@@ -85,8 +85,20 @@
   grid-column: 1 / -1;
 }
 
+.course-fact-wide {
+  grid-column: 1 / -1;
+}
+
 .course-fact p {
   margin: 0;
+}
+
+.course-fact-compact {
+  align-items: baseline;
+  column-gap: 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr);
+  padding-block: 0.8rem;
 }
 
 .course-fact > p:first-child {
@@ -236,6 +248,18 @@ section.course-policy {
 
   .course-fact:last-child:nth-child(odd) {
     grid-column: auto;
+  }
+
+  .course-fact-wide {
+    grid-column: auto;
+  }
+
+  .course-fact-compact {
+    display: block;
+  }
+
+  .course-fact-compact > p:first-child {
+    margin-bottom: 0.2rem;
   }
 
   section.course-policy {

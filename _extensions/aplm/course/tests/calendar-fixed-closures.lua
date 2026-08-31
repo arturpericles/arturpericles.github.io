@@ -14,6 +14,7 @@ local function test_config()
       pandoc.MetaString("wed"),
       pandoc.MetaString("fri"),
     }),
+    ["meeting-time"] = pandoc.MetaString("1:15–2:30 p.m."),
   }, fail)
 end
 
@@ -41,6 +42,10 @@ function Pandoc(doc)
   assert(calendar.is_fixed_closure_type("canceled"))
   assert(calendar.is_fixed_closure_type("cancelled"))
   assert(not calendar.is_fixed_closure_type("schedule-note"))
+
+  local summaries = test_config()
+  assert(summaries.summary == "Monday, Wednesday, and Friday, 1:15–2:30 p.m")
+  assert(summaries.short_summary == "M, W, F, 1:15–2:30 p.m.")
 
   expect_error("missing fixed date", "requires an explicit date", function()
     local allocator = calendar.new_allocator(test_config(), fail)

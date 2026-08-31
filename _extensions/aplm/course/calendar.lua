@@ -179,14 +179,21 @@ function calendar.configure(course, fail)
   end
 
   local day_names = {}
+  local short_day_names = {}
   for _, weekday in ipairs(ordered_days) do
     table.insert(day_names, WEEKDAYS[weekday].name)
+    table.insert(short_day_names, WEEKDAYS[weekday].short)
   end
   local summary = natural_join(day_names)
-  -- The PDF template supplies sentence punctuation after the summary. Keeping
-  -- the derived fact unpunctuated also reads naturally in the website grid.
-  local meeting_time = text(course["meeting-time"]):gsub("%.$", "")
-  if meeting_time ~= "" then summary = summary .. ", " .. meeting_time end
+  local short_summary = table.concat(short_day_names, ", ")
+  -- Keep the website fact unpunctuated, while preserving the authored time's
+  -- terminal punctuation in the compact summary used by the PDF title block.
+  local authored_meeting_time = text(course["meeting-time"])
+  local meeting_time = authored_meeting_time:gsub("%.$", "")
+  if meeting_time ~= "" then
+    summary = summary .. ", " .. meeting_time
+    short_summary = short_summary .. ", " .. authored_meeting_time
+  end
   course.meetings = summary
 
   return {
@@ -196,6 +203,7 @@ function calendar.configure(course, fail)
     slots = slots,
     slot_positions = slot_positions,
     summary = summary,
+    short_summary = short_summary,
   }
 end
 

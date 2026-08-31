@@ -277,6 +277,66 @@ $endif$
 \else
   \colorlet{SyllabusAccent}{YaleBlue}
 \fi
+
+%% Keep first-page logistics easy to scan without turning them into a ruled
+%% table. The fixed-width label box aligns every value, while the paragraph
+%% indent keeps wrapped value lines aligned with the value rather than the
+%% left edge of the label.
+\newlength{\SyllabusFactLabelWidth}
+\setlength{\SyllabusFactLabelWidth}{1.42in}
+\newcommand{\SyllabusFactLabel}[1]{%
+  \makebox[\SyllabusFactLabelWidth][l]{%
+    \sffamily\footnotesize\bfseries\color{SyllabusAccent}\MakeUppercase{#1}%
+  }%
+}
+\newcommand{\SyllabusFactLabelText}[1]{%
+  \sffamily\footnotesize\bfseries\color{SyllabusAccent}\MakeUppercase{#1}%
+}
+\newcommand{\SyllabusFact}[2]{%
+  \par\begingroup
+  \setlength{\parindent}{0pt}%
+  \leftskip=\SyllabusFactLabelWidth
+  \noindent\llap{\SyllabusFactLabel{#1}}#2\par
+  \endgroup
+  \vspace{0.32em}%
+}
+\newlength{\SyllabusPairFirstLabelWidth}
+\newlength{\SyllabusPairFirstValueWidth}
+\newlength{\SyllabusPairSecondLabelWidth}
+\setlength{\SyllabusPairFirstLabelWidth}{0.82in}
+\setlength{\SyllabusPairFirstValueWidth}{1.78in}
+\setlength{\SyllabusPairSecondLabelWidth}{1.02in}
+%% Paired facts are reserved for compact values (term/date and meeting/location)
+%% so the first value cannot collide with the second label.
+\newcommand{\SyllabusFactPair}[4]{%
+  \par\begingroup
+  \setlength{\parindent}{0pt}%
+  \noindent
+  \makebox[\SyllabusPairFirstLabelWidth][l]{\SyllabusFactLabelText{#1}}%
+  \makebox[\SyllabusPairFirstValueWidth][l]{#2}%
+  \makebox[\SyllabusPairSecondLabelWidth][l]{\SyllabusFactLabelText{#3}}%
+  #4\par
+  \endgroup
+  \vspace{0.32em}%
+}
+\newcommand{\SyllabusTitleFacts}{%
+$if(updated)$
+  \SyllabusFactPair{Term}{$term$}{Last updated}{$updated$}%
+$else$
+  \SyllabusFact{Term}{$term$}%
+$endif$
+$if(classroom)$
+  \SyllabusFactPair{Meetings}{$if(meetingsshort)$$meetingsshort$$else$$time$$endif$}{Location}{$classroom$}%
+$else$
+  \SyllabusFact{Meetings}{$if(meetingsshort)$$meetingsshort$$else$$time$$endif$}%
+$endif$
+$if(teachingassistants)$
+  \SyllabusFact{$teachingassistantslabel$}{$for(teachingassistants)$$it$$sep$; $endfor$}%
+$endif$
+$if(officehours)$
+  \SyllabusFact{Office hours}{$if(address)$$address$, $endif$$officehours$}%
+$endif$
+}
 %% Unit styling remains local; the filter keeps a regular four-cell row for
 %% accessible tagged tables and places the label in the Class column. Mark the
 %% row so its terminating longtable break is treated like \\*: this prevents a
@@ -326,10 +386,10 @@ $endif$
 \def\@title{\LARGE \mytitle}
 \ifmclawidentity
   \def\@author{\Large\sffamily\myauthor \newline \footnotesize\sffamily\noindent\myemail}
-  \def\@date{\sffamily $term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $if(address)$$address$, $endif$$officehours$$endif$}
+  \def\@date{\sffamily\SyllabusTitleFacts}
 \else
   \def\@author{\Large\myauthor \newline \footnotesize\texttt{\noindent\myemail}}
-  \def\@date{$term$. $if(updated)$\emph{Last updated:} $updated$.\newline$endif$ $time$. $if(classroom)$$classroom$.$endif$ $if(officehours)$ \newline Office hours: $if(address)$$address$, $endif$$officehours$$endif$}
+  \def\@date{\SyllabusTitleFacts}
 \fi
 \makeatother
 

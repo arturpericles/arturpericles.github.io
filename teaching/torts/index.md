@@ -1,5 +1,7 @@
 ---
 title: Torts
+pagetitle: &course-pagetitle '{{< meta course-display-title >}}'
+title-prefix: *course-pagetitle
 order: 1
 school:
   - MC Law

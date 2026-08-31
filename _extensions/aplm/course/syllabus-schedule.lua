@@ -431,7 +431,14 @@ local function policy_full_blocks(div)
     fail("every course-policy needs an id, heading, and {.syllabus-summary}")
   end
 
-  local output = pandoc.Blocks({title})
+  -- Reserve enough room for the policy heading, summary, and its concise
+  -- operational statement. Policies without a detail block need less room.
+  -- A rationale remains outside this reservation and may flow independently.
+  local required_space = #detail > 0 and "12\\baselineskip" or "5\\baselineskip"
+  local output = pandoc.Blocks({
+    pandoc.RawBlock("latex", "\\Needspace{" .. required_space .. "}"),
+    title,
+  })
   for _, block in ipairs(summary) do
     if block.t == "Plain" or block.t == "Para" then
       block.content = pandoc.Inlines({pandoc.Emph(clone_inlines(block.content))})
@@ -483,16 +490,72 @@ local function replace_course_policy_sources(blocks, display)
   return walked, replacements
 end
 
-local function prepare_shared_blocks(blocks)
-  return blocks:walk({
+local function prepare_shared_blocks(blocks, meta)
+  local configured = meta["syllabus-page-break-before"]
+  local targets = {}
+  if configured ~= nil and FORMAT:match("latex") then
+    local configured_type = ptype(configured)
+    if configured_type == "Map" or configured_type == "Blocks" then
+      fail("syllabus-page-break-before must be a shared-section id or a list of ids")
+    end
+    local declared = configured_type == "List" and configured or {configured}
+    for index, value in ipairs(declared) do
+      local identifier = normalize(meta_string(value):gsub("^#", ""))
+      if identifier == "" then
+        fail("syllabus-page-break-before item " .. index .. " must not be empty")
+      end
+      if targets[identifier] ~= nil then
+        fail("duplicate syllabus-page-break-before target: #" .. identifier)
+      end
+      targets[identifier] = false
+    end
+  end
+
+  local walked = blocks:walk({
     Div = function(div)
       if has_class(div.attr, "website-only") then return {} end
-      if has_class(div.attr, "course-share") then return div.content end
+      if not has_class(div.attr, "course-share") then return nil end
+      local identifier = normalize(div.identifier)
+      if targets[identifier] == nil then return div.content end
+      targets[identifier] = true
+      local output = pandoc.Blocks({pandoc.RawBlock("latex", "\\clearpage")})
+      output:extend(div.content)
+      return output
     end,
   })
+  for identifier, found in pairs(targets) do
+    if not found then
+      fail("syllabus-page-break-before shared section not found: #" .. identifier)
+    end
+  end
+  return walked
 end
 
-local function apply_course_template_metadata(meta)
+local function normalize_teaching_assistants(value)
+  local names = pandoc.MetaList({})
+  if value == nil then return names end
+  local is_list = ptype(value) == "List"
+  if not is_list and meta_string(value) == "" then return names end
+  local declared = is_list and value or {value}
+  for index, item in ipairs(declared) do
+    local item_type = ptype(item)
+    if item_type == "List" or item_type == "Map" or item_type == "Blocks" then
+      fail("course.teaching-assistants item " .. index .. " must be a name")
+    end
+    local blocks = markdown_blocks(item)
+    if #blocks ~= 1 or (blocks[1].t ~= "Para" and blocks[1].t ~= "Plain") then
+      fail("course.teaching-assistants item " .. index .. " must be a single-line name")
+    end
+    local name = clone_inlines(blocks[1].content)
+    if meta_string(name) == "" then
+      fail("course.teaching-assistants item " .. index .. " must not be empty")
+    end
+    names:insert(pandoc.MetaInlines(name))
+  end
+  return names
+end
+
+local function apply_course_template_metadata(meta, calendar_config)
   local course = meta.course
   if course == nil then return meta end
   local mappings = {
@@ -504,6 +567,7 @@ local function apply_course_template_metadata(meta)
     {"term", "term"},
     {"website", "website"},
     {"time", "meetings"},
+    {"meetingsshort", "meetings-short"},
     {"classroom", "location"},
     {"address", "office"},
     {"officehours", "office-hours"},
@@ -512,6 +576,25 @@ local function apply_course_template_metadata(meta)
     if meta[mapping[1]] == nil and course[mapping[2]] ~= nil then
       meta[mapping[1]] = course[mapping[2]]
     end
+  end
+
+  if meta.meetingsshort == nil
+      and calendar_config ~= nil
+      and calendar_config.short_summary ~= "" then
+    meta.meetingsshort = pandoc.MetaString(calendar_config.short_summary)
+  end
+
+  local assistant_source = meta.teachingassistants
+    or course["teaching-assistants"]
+  local assistants = normalize_teaching_assistants(assistant_source)
+  if #assistants > 0 then
+    meta.teachingassistants = assistants
+    if meta.teachingassistantslabel == nil then
+      local label = #assistants == 1 and "Teaching assistant" or "Teaching assistants"
+      meta.teachingassistantslabel = pandoc.MetaString(label)
+    end
+  elseif meta.teachingassistants ~= nil then
+    meta.teachingassistants = nil
   end
   return meta
 end
@@ -1281,7 +1364,7 @@ end
 function Pandoc(doc)
   doc = merge_source_document(doc, load_course_source(doc.meta))
   local calendar_config = calendar.configure(doc.meta.course, fail)
-  doc.meta = apply_course_template_metadata(doc.meta)
+  doc.meta = apply_course_template_metadata(doc.meta, calendar_config)
   local schedule_new_page_value = doc.meta["syllabus-schedule-new-page"]
   if schedule_new_page_value == nil then
     schedule_new_page_value = doc.meta["schedule-new-page"]
@@ -1293,7 +1376,7 @@ function Pandoc(doc)
     fail("syllabus-policy-display must be summary or full")
   end
   local blocks = strip_source_positions(doc.blocks)
-  blocks = prepare_shared_blocks(blocks)
+  blocks = prepare_shared_blocks(blocks, doc.meta)
   local semantic_replacements
   local materials
   local materials_by_shorthand

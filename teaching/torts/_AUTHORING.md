@@ -13,8 +13,9 @@ The canonical course files live outside this repository:
 ## What to edit
 
 1. Edit the YAML front matter in the Obsidian `syllabus.md` for short facts:
-   course number, term, instructor, contact information, calendar bounds,
-   regular meeting days and time, location, bibliography, and CSL alias.
+   course number, term, instructor, teaching-assistant names, contact
+   information, calendar bounds, regular meeting days and time, location,
+   bibliography, and CSL alias.
 2. Edit its Markdown body for the description, programmatic and course learning outcomes, grading,
    materials, policy summaries/details/rationales, and other shared prose.
 3. Edit `_schedule.md` for modules, meeting topics, readings, assignments,
@@ -24,9 +25,18 @@ The canonical course files live outside this repository:
    content from the external source. `syllabus-render.md` is a thin PDF
    adapter and should not contain course prose.
 
+The shared course title used in the browser tab and social preview lives in
+`teaching/torts/_metadata.yml` as `course-display-title`.
+Update that single value alongside the canonical `course.term` when the year
+changes. The course Overview uses the shared title alone; every other course
+page automatically appends its page title after ` | `.
+
 The Overview's `.course-facts` placeholder renders practical logistics from
 the canonical `course:` YAML: meeting information when set, classroom
-location, office, and office hours. Edit those values only in `syllabus.md`.
+location, office, `teaching-assistants`, and office hours. Enter one teaching
+assistant as a scalar or several as a YAML list. The field is omitted from the
+Overview when it is absent or empty. The PDF repeats the same names in its
+first-page course-information block. Edit those values only in `syllabus.md`.
 The `office` field is optional. If the office location is written directly in
 `office-hours`, leave `office` unset; the PDF will omit the address separator.
 
@@ -89,8 +99,15 @@ syntax. Set `syllabus-policy-display: summary` to convert each
 policy's italicized summary, details, and rationale. Torts currently uses
 `full`. Full mode prints each policy's italicized summary followed directly by
 its operational text and, when present, a **Why this policy exists** heading.
+The renderer reserves enough room to keep each policy heading, summary, and
+operational statement together; its rationale may continue separately.
 `syllabus-schedule-new-page: false` lets the schedule follow the full policies
 without creating a mostly empty page.
+
+The `syllabus-page-break-before` list in `syllabus-render.md` includes the
+shared-section id `grading`, so Assessment and Grading starts on a fresh PDF
+page while the website remains unchanged. The setting accepts one named
+`.course-share` id or a YAML list of ids.
 
 ## Schedule introduction
 
@@ -164,6 +181,9 @@ course:
   meeting-time: "1:15–2:30 p.m."
   on-deck-groups: 5
 ```
+
+The Overview spells out these days; the PDF derives the compact form `M, W,
+F, 1:15–2:30 p.m.` from the same fields.
 
 Dates are inclusive and generated in chronological order. The Fall 2026 dates
 are based on the [MC Law 2026–2027 Academic Calendar](https://law.mc.edu/application/files/7017/7886/5714/MC_Law_2026-2027_Academic_Calendar_04.06.26.pdf).

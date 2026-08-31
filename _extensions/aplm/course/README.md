@@ -42,6 +42,8 @@ format: course-pdf
 output-file: syllabus.pdf
 syllabus-policy-display: full
 syllabus-schedule-new-page: false
+syllabus-page-break-before:
+  - grading
 course-source: syllabus.md
 course-source-dir: "../obsidian/teaching/MC Law/Torts"
 ---
@@ -62,6 +64,10 @@ course:
   meeting-time: "1:15–2:30 p.m."
   on-deck-groups: 5
 ```
+
+The website spells out the meeting days in its course facts. The PDF derives a
+compact meeting value from the same fields (for example, `M, W, F,
+1:15–2:30 p.m.`), so no second schedule string is needed.
 
 The bounds are inclusive. The extension generates every matching date and
 derives the human-readable meeting summary used in the site and PDF.
@@ -101,9 +107,23 @@ An HTML page can render the canonical course metadata as a compact grid:
 ```
 
 The grid reads practical logistics from `course:` YAML: meeting information,
-location, office, and office hours. Fields that are not set are omitted. The
-`office` field is optional; when the office location is already included in
-`office-hours`, it may be left unset without leaving punctuation in the PDF.
+location, office, teaching-assistant names, and office hours. Fields that are
+not set are omitted. The `office` field is optional; when the office location
+is already included in `office-hours`, it may be left unset without leaving
+punctuation in the PDF.
+
+List teaching assistants in the canonical course metadata:
+
+```yaml
+course:
+  teaching-assistants:
+    - First TA Name
+    - Second TA Name
+```
+
+A single scalar name is also accepted. The Overview uses a singular label for
+one name and a plural label and compact inline list for multiple names. The PDF
+syllabus repeats the names in its first-page course-information block.
 
 ## Materials
 
@@ -148,10 +168,18 @@ The Course Policies webpage renders each summary with its detail and rationale.
 For the PDF, `syllabus-policy-display: summary` converts the summaries into a
 compact bulleted list. `syllabus-policy-display: full` instead prints every
 policy heading, an unlabelled italic summary, its operational text without an
-extra heading, and its rationale under **Why this policy exists**.
+extra heading, and its rationale under **Why this policy exists**. The policy
+renderer reserves enough page room to keep each concise policy heading,
+summary, and operational statement together; its rationale may continue
+separately.
 The canonical policy syntax is identical in both modes. When the full mode
 would leave a mostly empty page before the schedule, set
 `syllabus-schedule-new-page: false` in the PDF adapter.
+
+To start selected shared sections on a fresh PDF page without changing the
+website, set `syllabus-page-break-before` to a named `.course-share` id or YAML
+list of ids in the PDF adapter. A configured id that is not found fails the
+render rather than silently omitting the requested break.
 
 ## Schedule
 

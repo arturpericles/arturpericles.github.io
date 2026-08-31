@@ -3,6 +3,9 @@ course-logo: false
 global-template: mc-law
 sidebar: torts
 body-classes: course-page
+course-display-title: Torts 2026
+pagetitle: &course-pagetitle '{{< meta course-display-title >}} | {{< meta title >}}'
+title-prefix: *course-pagetitle
 course-source: syllabus.md
 course-source-dir: "../obsidian/teaching/MC Law/Torts"
 resource-path:

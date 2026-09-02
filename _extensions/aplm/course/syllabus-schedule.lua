@@ -20,6 +20,7 @@ local RESERVED_FIELDS = {
   ["activity"] = true,
   ["additional"] = true,
   ["assignment"] = true,
+  ["attendance"] = true,
   ["counts-as-class"] = true,
   ["date"] = true,
   ["note"] = true,
@@ -39,6 +40,7 @@ local NONCOUNTING_TYPES = {
   ["holiday"] = true,
   ["no-class"] = true,
   ["schedule-note"] = true,
+  ["ta-session"] = true,
 }
 
 local function trim(value)
@@ -742,10 +744,41 @@ local function field_text(meeting, name)
   return normalize(stringify(fields[1].blocks))
 end
 
+local function attendance_label(meeting)
+  local fields = meeting.by_name.attendance
+  if fields == nil then return "" end
+  if #fields ~= 1 then
+    fail("attendance may appear only once under " .. stringify(meeting.topic))
+  end
+  local attendance = normalize(stringify(fields[1].blocks))
+  if attendance == "optional" then return "Optional" end
+  if attendance == "required" then return "Required" end
+  fail("attendance must be optional or required under " .. stringify(meeting.topic))
+end
+
+local function validate_meeting(meeting)
+  local entry_type = field_text(meeting, "type")
+  local attendance = attendance_label(meeting)
+  if entry_type ~= "ta-session" then return end
+  if attendance ~= "Optional" then
+    fail("ta-session entries require attendance: optional under " .. stringify(meeting.topic))
+  end
+  if field_text(meeting, "time") == "" then
+    fail("ta-session entries require time under " .. stringify(meeting.topic))
+  end
+  if field_text(meeting, "room") == "" then
+    fail("ta-session entries require room under " .. stringify(meeting.topic))
+  end
+end
+
 local function meeting_counts(meeting)
+  local entry_type = field_text(meeting, "type")
   local explicit = field_text(meeting, "counts-as-class")
   if explicit ~= "" then
     if explicit == "yes" or explicit == "true" or explicit == "1" then
+      if entry_type == "ta-session" then
+        fail("ta-session entries cannot count as class sessions under " .. stringify(meeting.topic))
+      end
       return true
     elseif explicit == "no" or explicit == "false" or explicit == "0" then
       return false
@@ -753,7 +786,7 @@ local function meeting_counts(meeting)
       fail("counts-as-class must be yes/no or true/false under " .. stringify(meeting.date))
     end
   end
-  return not NONCOUNTING_TYPES[field_text(meeting, "type")]
+  return not NONCOUNTING_TYPES[entry_type]
 end
 
 local function on_deck_group_count(course)
@@ -887,6 +920,7 @@ end
 
 local function meeting_date_blocks(meeting)
   local result = pandoc.Blocks({pandoc.Plain(clone_inlines(meeting.date))})
+  if field_text(meeting, "type") == "ta-session" then return result end
   local details = pandoc.Inlines({})
   local function add_detail(name)
     local fields = meeting.by_name[name]
@@ -907,8 +941,18 @@ local function meeting_date_blocks(meeting)
   return result
 end
 
-local function meeting_topic_blocks(meeting)
+local function meeting_topic_blocks(meeting, keep_with_next)
   local result = clone_blocks(meeting.topic)
+  local entry_type = field_text(meeting, "type")
+  if keep_with_next and FORMAT:match("latex") then
+    local first = result[1]
+    local marker = pandoc.RawInline("latex", "\\SyllabusKeepWithNextRow{}")
+    if first and (first.t == "Plain" or first.t == "Para") then
+      first.content:insert(1, marker)
+    else
+      result:insert(1, pandoc.Plain({marker}))
+    end
+  end
   if meeting.on_deck_group ~= nil then
     local on_deck = pandoc.Inlines({})
     if FORMAT:match("latex") then
@@ -925,6 +969,31 @@ local function meeting_topic_blocks(meeting)
       on_deck:insert(pandoc.RawInline("latex", "}"))
     end
     result:insert(pandoc.Plain(on_deck))
+  end
+  local attendance = attendance_label(meeting)
+  if attendance ~= "" then
+    local flag = pandoc.Inlines({})
+    if FORMAT:match("latex") then
+      flag:insert(pandoc.RawInline("latex", "\\SyllabusScheduleFlag{"))
+    end
+    flag:insert(pandoc.Str(attendance))
+    if FORMAT:match("latex") then
+      flag:insert(pandoc.RawInline("latex", "}"))
+    end
+    if entry_type == "ta-session" then
+      local function add_detail(name)
+        local fields = meeting.by_name[name]
+        if fields == nil then return end
+        local value = first_block_inlines(fields[1].blocks)
+        if #value == 0 then return end
+        flag:insert(pandoc.Str(" ·"))
+        flag:insert(pandoc.Space())
+        flag:insert(pandoc.Emph(value))
+      end
+      add_detail("time")
+      add_detail("room")
+    end
+    result:insert(pandoc.Plain(flag))
   end
   local assignments_rendered = false
   for _, field in ipairs(meeting.fields) do
@@ -1128,7 +1197,7 @@ local function resolve_schedule_region(blocks, meta)
 end
 
 local function parse_schedule_region(blocks, materials_by_shorthand, calendar_config, course)
-  local rows = {}
+  local row_specs = {}
   local class_number = 0
   local on_deck_index = 0
   local on_deck_groups = on_deck_group_count(course)
@@ -1140,14 +1209,14 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
     if block.t == "Header" and block.level == 3 then
       local numbered = not has_class(block.attr, "unnumbered")
       if numbered then unit_number = unit_number + 1 end
-      rows[#rows + 1] = pandoc.Row({
+      row_specs[#row_specs + 1] = {kind = "unit", row = pandoc.Row({
         cell({pandoc.Plain({})}, pandoc.AlignLeft),
         cell({pandoc.Plain({})}, pandoc.AlignLeft),
         cell({pandoc.Plain(unit_inlines(
           unit_title(block.content, numbered and unit_number or nil)
         ))}, pandoc.AlignLeft),
         cell({pandoc.Plain({})}, pandoc.AlignLeft),
-      }, pandoc.Attr("", {"syllabus-unit-row"}))
+      }, pandoc.Attr("", {"syllabus-unit-row"}))}
       index = index + 1
     elseif block.t == "Header" and block.level == 4 then
       local meeting_blocks = pandoc.Blocks({})
@@ -1166,6 +1235,8 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
         materials_by_shorthand,
         date_allocator ~= nil
       )
+      validate_meeting(meeting)
+      local date_key = nil
       if date_allocator ~= nil then
         local entry_type = field_text(meeting, "type")
         local assigned = date_allocator:assign(
@@ -1177,6 +1248,9 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
           }
         )
         meeting.date = calendar.compact_inlines(assigned)
+        date_key = assigned.iso
+      else
+        date_key = normalize(stringify(meeting.date))
       end
       local number = ""
       if meeting_counts(meeting) then
@@ -1190,21 +1264,55 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
       local row_type = field_text(meeting, "type")
       local classes = {"syllabus-meeting-row"}
       if row_type ~= "" then table.insert(classes, "syllabus-" .. row_type) end
-      rows[#rows + 1] = pandoc.Row({
-        cell(class_number_blocks(number), pandoc.AlignRight),
-        cell(meeting_date_blocks(meeting), pandoc.AlignLeft),
-        cell(meeting_topic_blocks(meeting), pandoc.AlignLeft),
-        cell(meeting_reading_blocks(meeting), pandoc.AlignLeft),
-      }, pandoc.Attr("", classes))
+      row_specs[#row_specs + 1] = {
+        kind = "meeting",
+        meeting = meeting,
+        date_key = date_key,
+        number = number,
+        classes = classes,
+      }
       index = cursor
     else
       fail("Schedule content must begin with a level-three unit heading or level-four meeting; found " .. block.t)
     end
   end
-  if #rows == 0 then
+  if #row_specs == 0 then
     fail("Schedule contains no entries")
   end
   if date_allocator ~= nil then date_allocator:finish() end
+
+  -- Apply the nonbreaking row terminator to the earlier entry in each
+  -- same-date run. Unit rows are skipped for comparison because they already
+  -- keep with their following row through \SyllabusUnit.
+  local next_meeting = nil
+  for row_index = #row_specs, 1, -1 do
+    local spec = row_specs[row_index]
+    if spec.kind == "meeting" then
+      spec.keep_with_next = spec.date_key ~= nil
+        and spec.date_key ~= ""
+        and next_meeting ~= nil
+        and spec.date_key == next_meeting.date_key
+      next_meeting = spec
+    end
+  end
+
+  local rows = {}
+  for _, spec in ipairs(row_specs) do
+    if spec.kind == "unit" then
+      rows[#rows + 1] = spec.row
+    else
+      local meeting = spec.meeting
+      rows[#rows + 1] = pandoc.Row({
+        cell(class_number_blocks(spec.number), pandoc.AlignRight),
+        cell(meeting_date_blocks(meeting), pandoc.AlignLeft),
+        cell(
+          meeting_topic_blocks(meeting, spec.keep_with_next),
+          pandoc.AlignLeft
+        ),
+        cell(meeting_reading_blocks(meeting), pandoc.AlignLeft),
+      }, pandoc.Attr("", spec.classes))
+    end
+  end
   return schedule_table(rows)
 end
 
@@ -1235,6 +1343,14 @@ local function replace_schedule(blocks, materials_by_shorthand, schedule_new_pag
         if candidate.t == "Header" and candidate.level <= block.level then
           break
         end
+        local following = blocks[cursor + 1]
+        local page_break_before_following_heading = candidate.t == "RawBlock"
+          and candidate.format == "latex"
+          and candidate.text:match("\\clearpage") ~= nil
+          and following ~= nil
+          and following.t == "Header"
+          and following.level <= block.level
+        if page_break_before_following_heading then break end
         region:insert(candidate)
         cursor = cursor + 1
       end

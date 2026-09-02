@@ -35,6 +35,10 @@ local FIXED_CLOSURE_TYPES = {
   ["no-class"] = true,
 }
 
+local PARALLEL_EVENT_TYPES = {
+  ["ta-session"] = true,
+}
+
 local function trim(value)
   return (value or ""):gsub("^%s+", ""):gsub("%s+$", "")
 end
@@ -50,6 +54,10 @@ end
 
 function calendar.is_fixed_closure_type(value)
   return FIXED_CLOSURE_TYPES[normalized_token(value)] == true
+end
+
+function calendar.is_parallel_event_type(value)
+  return PARALLEL_EVENT_TYPES[normalized_token(value)] == true
 end
 
 local function is_leap_year(year)
@@ -210,7 +218,7 @@ end
 function calendar.new_allocator(config, fail)
   if config == nil then return nil end
   local next_slot = 1
-  local used = {}
+  local used_by_date_and_role = {}
   local last_date = nil
 
   local allocator = {}
@@ -219,9 +227,15 @@ function calendar.new_allocator(config, fail)
     options = options or {}
     local fixed_regular_date = options.fixed_regular_date == true
     local entry_type = trim(options.entry_type or "closure")
+    local parallel_event = calendar.is_parallel_event_type(entry_type)
+    local date_role = parallel_event and normalized_token(entry_type) or "primary"
     local override = text(override_value)
     if fixed_regular_date and override == "" then
       fail(label .. " is a fixed " .. entry_type
+        .. " entry and requires an explicit date in YYYY-MM-DD form")
+    end
+    if parallel_event and override == "" then
+      fail(label .. " is a parallel " .. entry_type
         .. " entry and requires an explicit date in YYYY-MM-DD form")
     end
     local date
@@ -239,7 +253,13 @@ function calendar.new_allocator(config, fail)
           .. " is not a regular meeting date; fixed " .. entry_type
           .. " entries must use a generated course date")
       end
-      if position ~= nil then
+      if parallel_event and position ~= nil then
+        if position > next_slot then
+          fail("parallel date override " .. date.iso .. " under " .. label
+            .. " skips generated date " .. config.slots[next_slot].iso
+            .. "; add the intervening meeting or no-class entry first")
+        end
+      elseif position ~= nil then
         if position < next_slot then
           fail("date override " .. date.iso .. " under " .. label .. " is duplicate or out of order")
         elseif position > next_slot then
@@ -254,11 +274,13 @@ function calendar.new_allocator(config, fail)
       fail("schedule date " .. date.iso .. " under " .. label
         .. " is earlier than the preceding entry on " .. last_date.iso)
     end
-    if used[date.iso] ~= nil then
-      fail("duplicate schedule date " .. date.iso .. " under " .. label
-        .. "; already used by " .. used[date.iso])
+    local used_roles = used_by_date_and_role[date.iso] or {}
+    if used_roles[date_role] ~= nil then
+      fail("duplicate " .. date_role .. " schedule date " .. date.iso .. " under " .. label
+        .. "; already used by " .. used_roles[date_role])
     end
-    used[date.iso] = label
+    used_roles[date_role] = label
+    used_by_date_and_role[date.iso] = used_roles
     last_date = date
     return date
   end

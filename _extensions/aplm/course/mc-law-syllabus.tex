@@ -338,25 +338,27 @@ $if(officehours)$
 $endif$
 }
 %% Unit styling remains local; the filter keeps a regular four-cell row for
-%% accessible tagged tables and places the label in the Class column. Mark the
-%% row so its terminating longtable break is treated like \\*: this prevents a
-%% unit heading from being stranded at the foot of a page.
+%% accessible tagged tables and places the label in the Class column. A shared
+%% keep-with-next hook makes unit headings and same-day auxiliary sessions use
+%% a nonbreaking longtable row terminator rather than becoming stranded.
 \makeatletter
-\newif\ifSyllabusUnitRow
+\newif\ifSyllabusKeepWithNextRow
 \let\SyllabusOriginalLTTabularCr\LT@tabularcr
 \protected\def\LT@tabularcr{%
-  \ifSyllabusUnitRow
-    \global\SyllabusUnitRowfalse
+  \ifSyllabusKeepWithNextRow
+    \global\SyllabusKeepWithNextRowfalse
     \SyllabusOriginalLTTabularCr*%
   \else
     \SyllabusOriginalLTTabularCr
-  \fi
+\fi
 }
 \makeatother
+\newcommand{\SyllabusKeepWithNextRow}{\global\SyllabusKeepWithNextRowtrue}
 \newcommand{\SyllabusUnit}[1]{%
-  \global\SyllabusUnitRowtrue
+  \SyllabusKeepWithNextRow
   {\sffamily\bfseries\color{SyllabusAccent}#1}%
 }
+\newcommand{\SyllabusScheduleFlag}[1]{{\sffamily\footnotesize\bfseries\color{SyllabusAccent}#1}}
 \newcommand{\SyllabusOnDeck}[1]{{\sffamily\footnotesize\mdseries #1}}
 \setlength{\LTpre}{0.7em}
 \setlength{\LTpost}{0.7em}

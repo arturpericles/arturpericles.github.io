@@ -195,7 +195,8 @@ section.course-policy {
   text-transform: uppercase;
 }
 
-.course-meeting-on-deck {
+.course-meeting-on-deck,
+.course-meeting-flag {
   display: block;
   font-weight: 600;
   margin-top: 0.15rem;
@@ -220,6 +221,16 @@ section.course-policy {
 .course-meeting-noncounting {
   background: rgb(105 179 231 / 8%);
   border-style: dashed;
+}
+
+.course-meeting-ta-session {
+  background: var(--course-blue-soft);
+  border-left: 0.25rem solid var(--course-gold);
+  border-style: solid;
+}
+
+.course-meeting-ta-session h3 {
+  font-size: 1.2rem;
 }
 
 .class-preparation-rendered {

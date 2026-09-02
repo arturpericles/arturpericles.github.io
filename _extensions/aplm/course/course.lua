@@ -25,6 +25,7 @@ local RESERVED_FIELDS = {
   ["activity"] = true,
   ["additional"] = true,
   ["assignment"] = true,
+  ["attendance"] = true,
   ["counts-as-class"] = true,
   ["date"] = true,
   ["note"] = true,
@@ -44,9 +45,11 @@ local NONCOUNTING_TYPES = {
   ["holiday"] = true,
   ["no-class"] = true,
   ["schedule-note"] = true,
+  ["ta-session"] = true,
 }
 
 local HIDDEN_SCHEDULE_FIELDS = {
+  ["attendance"] = true,
   ["counts-as-class"] = true,
   ["date"] = true,
   ["on-deck"] = true,
@@ -573,14 +576,47 @@ local function field_text(meeting, name)
   return trim(stringify(fields[1].blocks))
 end
 
+local function attendance_label(meeting)
+  local fields = meeting.by_name.attendance
+  if fields == nil then return "" end
+  if #fields ~= 1 then
+    fail("attendance may appear only once under " .. stringify(meeting.topic))
+  end
+  local attendance = normalize(stringify(fields[1].blocks))
+  if attendance == "optional" then return "Optional" end
+  if attendance == "required" then return "Required" end
+  fail("attendance must be optional or required under " .. stringify(meeting.topic))
+end
+
+local function validate_meeting(meeting)
+  local entry_type = normalize(field_text(meeting, "type"))
+  local attendance = attendance_label(meeting)
+  if entry_type ~= "ta-session" then return end
+  if attendance ~= "Optional" then
+    fail("ta-session entries require attendance: optional under " .. stringify(meeting.topic))
+  end
+  if field_text(meeting, "time") == "" then
+    fail("ta-session entries require time under " .. stringify(meeting.topic))
+  end
+  if field_text(meeting, "room") == "" then
+    fail("ta-session entries require room under " .. stringify(meeting.topic))
+  end
+end
+
 local function meeting_counts(meeting)
+  local entry_type = normalize(field_text(meeting, "type"))
   local explicit = normalize(field_text(meeting, "counts-as-class"))
   if explicit ~= "" then
-    if explicit == "yes" or explicit == "true" or explicit == "1" then return true end
+    if explicit == "yes" or explicit == "true" or explicit == "1" then
+      if entry_type == "ta-session" then
+        fail("ta-session entries cannot count as class sessions under " .. stringify(meeting.topic))
+      end
+      return true
+    end
     if explicit == "no" or explicit == "false" or explicit == "0" then return false end
     fail("counts-as-class must be yes/no or true/false for " .. stringify(meeting.date))
   end
-  return not NONCOUNTING_TYPES[normalize(field_text(meeting, "type"))]
+  return not NONCOUNTING_TYPES[entry_type]
 end
 
 local function on_deck_group_count(course)
@@ -722,6 +758,7 @@ local function load_schedule()
     if current_heading == nil then return end
     if current_unit == nil then fail("meeting appears before its level-three unit heading") end
     local meeting = parse_meeting(current_heading, current_blocks, date_allocator ~= nil)
+    validate_meeting(meeting)
     if date_allocator ~= nil then
       local entry_type = field_text(meeting, "type")
       local assigned = date_allocator:assign(
@@ -920,6 +957,13 @@ local function render_meeting(meeting)
       pandoc.Str(tostring(meeting.on_deck_group)),
     }, pandoc.Attr("", {"course-meeting-on-deck"})))
   end
+  local attendance = attendance_label(meeting)
+  if attendance ~= "" then
+    kicker:insert(pandoc.Span(
+      {pandoc.Str(attendance)},
+      pandoc.Attr("", {"course-meeting-flag"})
+    ))
+  end
   blocks:insert(pandoc.Div(
     {pandoc.Para(kicker)},
     pandoc.Attr("", {"course-meeting-kicker"})
@@ -941,7 +985,7 @@ local function render_meeting(meeting)
   end
 
   local meeting_type = normalize(field_text(meeting, "type"))
-  if meeting_type ~= "" then
+  if meeting_type ~= "" and meeting_type ~= "ta-session" then
     local status = meeting_type:gsub("%-", " ")
     status = status:gsub("^%l", string.upper)
     blocks:insert(pandoc.Div(
@@ -954,6 +998,7 @@ local function render_meeting(meeting)
   if fields ~= nil then blocks:insert(fields) end
   local classes = {"course-meeting"}
   if meeting.class_number == nil then table.insert(classes, "course-meeting-noncounting") end
+  if meeting_type ~= "" then table.insert(classes, "course-meeting-" .. meeting_type) end
   return pandoc.Div(blocks, pandoc.Attr(meeting.id, classes))
 end
 
@@ -1185,7 +1230,7 @@ local function initialize(meta)
   if meta_boolean(meta["course-site"], false) and state.is_html then
     quarto.doc.add_html_dependency({
       name = "aplm-course",
-      version = "0.4.2",
+      version = "0.4.3",
       stylesheets = {"course.css"},
     })
   end

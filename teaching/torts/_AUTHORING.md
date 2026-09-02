@@ -105,9 +105,10 @@ operational statement together; its rationale may continue separately.
 without creating a mostly empty page.
 
 The `syllabus-page-break-before` list in `syllabus-render.md` includes the
-shared-section id `grading`, so Assessment and Grading starts on a fresh PDF
-page while the website remains unchanged. The setting accepts one named
-`.course-share` id or a YAML list of ids.
+shared-section ids `grading` and `acknowledgements`, so Assessment and Grading
+and the closing Acknowledgements each start on a fresh PDF page while the
+website remains unchanged. The setting accepts one named `.course-share` id or
+a YAML list of ids.
 
 ## Schedule introduction
 
@@ -298,6 +299,30 @@ An override that coincides with a generated meeting date consumes that slot;
 an off-pattern override adds a meeting without consuming one. To record a
 cancellation and makeup, keep the dated no-class entry for the canceled regular
 date and add a later dated makeup entry. Keep all entries chronological.
-Rendering fails on duplicate dates, skipped regular dates, out-of-order
+Rendering fails on duplicate primary dates, skipped regular dates, out-of-order
 entries, or a schedule whose ordinary entries do not exactly cover the
 generated calendar.
+
+### Optional TA sessions
+
+Write an optional TA session as its own level-four entry in chronological
+order. It is a distinct schedule event, not a class activity or note:
+
+```markdown
+#### TA session #1 {#ta-session-1}
+
+- type: ta-session
+- date: 2026-08-31
+- time: 12:00–1:00 p.m.
+- room: Room 251
+- attendance: optional
+```
+
+A `ta-session` may share a date with one primary entry, but it does not require
+a same-date class partner. When it shares a date, place the entries together
+for readability. It does not consume the regular calendar slot, receives no
+class number, and does not advance the on-deck rotation. An off-pattern TA
+session may stand alone. Its `attendance: optional` value appears as a visual flag
+in both the website and PDF. Number the TA session headings in source order and
+keep every entry chronological. Do not use `optional:` for a session; that label
+is reserved for optional readings.

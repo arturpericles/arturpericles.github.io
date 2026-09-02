@@ -208,11 +208,11 @@ unnumbered heading does not advance the counter:
 ### Intentional Torts
 ```
 
-Reserved labels are `activity`, `assignment`, `counts-as-class`, `note`,
-`additional`, `date`, `on-deck`, `optional`, `page`, `rescheduled-to`, `room`,
-`time`, and `type`. The filter numbers counting meetings automatically. `cancelled`,
-`canceled`, `holiday`, `no-class`, and `schedule-note` do not count unless the
-entry sets `counts-as-class: yes`.
+Reserved labels are `activity`, `assignment`, `attendance`, `counts-as-class`,
+`note`, `additional`, `date`, `on-deck`, `optional`, `page`, `rescheduled-to`,
+`room`, `time`, and `type`. The filter numbers counting meetings automatically.
+`cancelled`, `canceled`, `holiday`, `no-class`, `schedule-note`, and `ta-session`
+do not count. A `ta-session` cannot opt into the class count.
 
 `course.on-deck-groups` generates a repeating On Deck panel rotation for counted
 meetings in both outputs. Set `on-deck: no` on a review, practice session,
@@ -292,8 +292,35 @@ calendar bounds. `time:` overrides the displayed meeting time for that entry;
 An override matching a generated date consumes that date. An off-pattern
 override is an additional meeting and does not consume a regular date. Thus a
 dated canceled class and its later dated makeup should be separate entries.
-Entries must remain chronological, identifiers and dates must be unique, and
-every regular date must be represented by either a meeting or a fixed closure.
+Entries must remain chronological, identifiers must be unique, and every regular
+date must be represented by either a meeting or a fixed closure.
+
+### Optional TA sessions
+
+In a generated-date schedule, a TA session is a distinct, noncounting schedule
+event rather than an activity or note attached to a class. Give it a stable
+identifier, an authored session number, an explicit date, time, room, and
+attendance status:
+
+```markdown
+#### TA session #1 {#ta-session-1}
+
+- type: ta-session
+- date: 2026-08-31
+- time: 12:00–1:00 p.m.
+- room: Room 251
+- attendance: optional
+```
+
+Place TA-session entries in chronological source order. A `ta-session` may share
+a date with one primary entry, but it does not require a same-date class
+partner. When it shares a date, place the entries together for readability. The
+TA session does not consume the regular calendar slot; a regular date must
+still be covered by an ordinary meeting or fixed closure. An off-pattern TA
+session may stand alone. At most one TA session may use a date. A TA session
+receives no class number and does not advance the on-deck rotation. Its
+`attendance: optional` value renders as a visual flag in both outputs. Do not use
+`optional:` for a session; that field is reserved for optional readings.
 
 ## Rendering
 

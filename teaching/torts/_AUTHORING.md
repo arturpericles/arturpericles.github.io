@@ -104,11 +104,10 @@ operational statement together; its rationale may continue separately.
 `syllabus-schedule-new-page: false` lets the schedule follow the full policies
 without creating a mostly empty page.
 
-The `syllabus-page-break-before` list in `syllabus-render.md` includes the
-shared-section ids `grading` and `acknowledgements`, so Assessment and Grading
-and the closing Acknowledgements each start on a fresh PDF page while the
-website remains unchanged. The setting accepts one named `.course-share` id or
-a YAML list of ids.
+The `syllabus-page-break-before` list in `syllabus-render.md` includes only
+`grading`, so Assessment and Grading starts on a fresh PDF page. Acknowledgements
+follows the schedule without a forced page break. The setting accepts one named
+`.course-share` id or a YAML list of ids.
 
 ## Schedule introduction
 
@@ -217,6 +216,13 @@ display a panel nor advance the rotation:
 ```
 
 Ordinary meetings need no `on-deck` field.
+
+To preserve an already assigned panel after a cancellation or schedule change,
+set `on-deck-panel: 5` (or another valid panel number) on that meeting. This
+explicit panel replaces the automatic choice; subsequent automatic meetings
+continue from the following panel. It cannot be combined with `on-deck: no`
+or a noncounting event. Use `on-deck: no` where the original date had no panel,
+and keep existing student role assignments tied to their dates.
 
 Use `additional:` for an assigned reading that has no declared material
 shorthand. The reading appears without an `Additional` prefix. Use `optional:`

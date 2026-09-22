@@ -30,6 +30,7 @@ local RESERVED_FIELDS = {
   ["date"] = true,
   ["note"] = true,
   ["on-deck"] = true,
+  ["on-deck-panel"] = true,
   ["optional"] = true,
   ["page"] = true,
   ["rescheduled-to"] = true,
@@ -53,6 +54,7 @@ local HIDDEN_SCHEDULE_FIELDS = {
   ["counts-as-class"] = true,
   ["date"] = true,
   ["on-deck"] = true,
+  ["on-deck-panel"] = true,
   ["page"] = true,
   ["topic"] = true,
   ["type"] = true,
@@ -640,6 +642,26 @@ local function meeting_is_on_deck(meeting)
   fail("on-deck must be yes/no or true/false for " .. stringify(meeting.date))
 end
 
+local function assign_on_deck(meeting, index, groups)
+  local explicit = field_text(meeting, "on-deck-panel")
+  if explicit ~= "" then
+    local panel = tonumber(explicit)
+    if panel == nil or panel ~= math.floor(panel) or panel < 1 or panel > groups then
+      fail("on-deck-panel must be a panel number from 1 to course.on-deck-groups")
+    end
+    if not meeting_is_on_deck(meeting) then
+      fail("on-deck-panel requires a counted meeting with on-deck enabled")
+    end
+    meeting.on_deck_group = panel
+    return panel
+  end
+  if groups > 0 and meeting_is_on_deck(meeting) then
+    index = index + 1
+    meeting.on_deck_group = ((index - 1) % groups) + 1
+  end
+  return index
+end
+
 local function parse_meeting(heading, blocks, generated_dates)
   local meeting = {
     id = heading.identifier,
@@ -811,10 +833,7 @@ local function load_schedule()
         class_number = class_number + 1
         meeting.class_number = class_number
       end
-      if on_deck_groups > 0 and meeting_is_on_deck(meeting) then
-        on_deck_index = on_deck_index + 1
-        meeting.on_deck_group = ((on_deck_index - 1) % on_deck_groups) + 1
-      end
+      on_deck_index = assign_on_deck(meeting, on_deck_index, on_deck_groups)
     end
   end
   state.schedule = units

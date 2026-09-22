@@ -25,6 +25,7 @@ local RESERVED_FIELDS = {
   ["date"] = true,
   ["note"] = true,
   ["on-deck"] = true,
+  ["on-deck-panel"] = true,
   ["optional"] = true,
   ["page"] = true,
   ["rescheduled-to"] = true,
@@ -810,6 +811,26 @@ local function meeting_is_on_deck(meeting)
   fail("on-deck must be yes/no or true/false under " .. stringify(meeting.date))
 end
 
+local function assign_on_deck(meeting, index, groups)
+  local explicit = field_text(meeting, "on-deck-panel")
+  if explicit ~= "" then
+    local panel = tonumber(explicit)
+    if panel == nil or panel ~= math.floor(panel) or panel < 1 or panel > groups then
+      fail("on-deck-panel must be a panel number from 1 to course.on-deck-groups")
+    end
+    if not meeting_is_on_deck(meeting) then
+      fail("on-deck-panel requires a counted meeting with on-deck enabled")
+    end
+    meeting.on_deck_group = panel
+    return panel
+  end
+  if groups > 0 and meeting_is_on_deck(meeting) then
+    index = index + 1
+    meeting.on_deck_group = ((index - 1) % groups) + 1
+  end
+  return index
+end
+
 local function first_block_inlines(blocks)
   if blocks == nil or #blocks == 0 then
     return pandoc.Inlines({})
@@ -1257,10 +1278,7 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
         class_number = class_number + 1
         number = tostring(class_number)
       end
-      if on_deck_groups > 0 and meeting_is_on_deck(meeting) then
-        on_deck_index = on_deck_index + 1
-        meeting.on_deck_group = ((on_deck_index - 1) % on_deck_groups) + 1
-      end
+      on_deck_index = assign_on_deck(meeting, on_deck_index, on_deck_groups)
       local row_type = field_text(meeting, "type")
       local classes = {"syllabus-meeting-row"}
       if row_type ~= "" then table.insert(classes, "syllabus-" .. row_type) end

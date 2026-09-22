@@ -220,6 +220,13 @@ examination, or other counted meeting to omit it without advancing the
 rotation. No-class entries are omitted automatically; ordinary meetings need
 no field.
 
+To preserve an already assigned panel after a cancellation or schedule change,
+set `on-deck-panel: 5` (or another valid panel number) on that meeting. This
+explicit panel replaces the automatic choice; subsequent automatic meetings
+continue from the following panel. It cannot be combined with `on-deck: no`
+or a noncounting event. Use `on-deck: no` where the original date had no panel,
+and keep existing student role assignments tied to their dates.
+
 Use `additional:` for a reading that is assigned without a book shorthand. It
 renders as a reading with no category prefix. Use `optional:` only for material
 that students may choose whether to read. The former `supplemental:` field is

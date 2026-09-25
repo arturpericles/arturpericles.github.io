@@ -62,6 +62,9 @@ $endif$
 \usepackage[babel]{csquotes}
 \usepackage[svgnames,table]{xcolor}
 \usepackage{soul}
+\usepackage{luacolor,lua-ul}
+% Native underlining preserves PDF/UA paragraph tagging; soul breaks the hooks.
+\renewcommand{\ul}[1]{\underline{#1}}
 \usepackage{etoolbox}
 \usepackage{longtable,booktabs,array,calc}
 \usepackage{ragged2e}
@@ -162,6 +165,8 @@ $endif$
 \fi
 
 \definecolor{MCBlue}{HTML}{0C2340}
+% MC University Brand Guidelines (May 2026), p. 25: official accent color.
+\definecolor{MCCelestialBlue}{HTML}{69B3E7}
 \definecolor{MCGold}{HTML}{C99700}
 
 %% MC Law masthead dimensions. The logo PDF is tightly cropped to its visible
@@ -266,8 +271,36 @@ $endif$
   \predate{\begin{flushleft}\normalsize\sffamily}
   \postdate{\end{flushleft}\par\vskip 2em}
   \setlength{\droptitle}{-1.4in}
-  \hypersetup{urlcolor=MCBlue,citecolor=MCBlue,linkcolor=MCBlue}
+  \hypersetup{
+    urlcolor=MCBlue,citecolor=MCBlue,linkcolor=MCBlue,
+    pdfborder={0 0 0},
+    pdfborderstyle={}
+  }
 \fi
+
+% The MC faces lack native small caps. Time suffixes use reduced capitals
+% in the current family, preserving sans-serif headers and serif body text.
+\makeatletter
+\newcommand{\SyllabusTimeSuffix}[1]{{%
+  \upshape
+  \ifmclawidentity
+    \fontsize{\fpeval{\f@size * 0.78}}{\f@baselineskip}\selectfont
+    \MakeUppercase{#1}%
+  \else
+    \scshape #1%
+  \fi
+}}
+\makeatother
+
+% Draw hyperlink underlines in the page content rather than annotation borders,
+% which some PDF viewers display as rectangles despite an underline border style.
+\newcommand{\SyllabusHyperlinkUnderline}[1]{%
+  \ifmclawidentity
+    \underLine[color=MCCelestialBlue,top=-0.45ex,height=0.35pt]{#1}%
+  \else
+    #1%
+  \fi
+}
 
 %% Identity-aware schedule-table styling. The Lua filter emits native Pandoc
 %% tables; Pandoc writes them as longtable for clean multipage output.

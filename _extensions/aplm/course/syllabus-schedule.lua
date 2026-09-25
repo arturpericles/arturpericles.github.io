@@ -587,6 +587,17 @@ local function apply_course_template_metadata(meta, calendar_config)
     meta.meetingsshort = pandoc.MetaString(calendar_config.short_summary)
   end
 
+  -- Calendar summaries are plain strings; parse their time suffix styling
+  -- before passing them to the PDF header.
+  for _, key in ipairs({"time", "meetingsshort"}) do
+    local value = meta_string(meta[key])
+    if value ~= "" then
+      value = value:gsub("([ap])%.m%.", "[%1.m.]{.smallcaps}")
+      local parsed = markdown_blocks(value)
+      meta[key] = pandoc.MetaInlines(parsed[1].content)
+    end
+  end
+
   local assistant_source = meta.teachingassistants
     or course["teaching-assistants"]
   local assistants = normalize_teaching_assistants(assistant_source)
@@ -957,7 +968,7 @@ local function meeting_date_blocks(meeting)
   add_detail("time")
   add_detail("room")
   if #details > 0 then
-    result:insert(pandoc.Plain({pandoc.Emph(details)}))
+    result:insert(pandoc.Plain(details))
   end
   return result
 end
@@ -1009,7 +1020,11 @@ local function meeting_topic_blocks(meeting, keep_with_next)
         if #value == 0 then return end
         flag:insert(pandoc.Str(" ·"))
         flag:insert(pandoc.Space())
-        flag:insert(pandoc.Emph(value))
+        if name == "time" then
+          flag:extend(value)
+        else
+          flag:insert(pandoc.Emph(value))
+        end
       end
       add_detail("time")
       add_detail("room")
@@ -1540,5 +1555,21 @@ function Pandoc(doc)
     fail("course materials are declared but no materials source or placeholder was found")
   end
   doc.blocks = blocks
+  if FORMAT:match("latex") then
+    doc = doc:walk({
+      Link = function(link)
+        link.content:insert(1, pandoc.RawInline("latex", "\\SyllabusHyperlinkUnderline{"))
+        link.content:insert(pandoc.RawInline("latex", "}"))
+        return link
+      end,
+      SmallCaps = function(inline)
+        local suffix = stringify(inline):lower():gsub("%.", "")
+        if suffix ~= "pm" and suffix ~= "am" then return nil end
+        -- Preserve the surrounding font family as well as upright styling.
+        return pandoc.RawInline("latex",
+          "\\SyllabusTimeSuffix{" .. stringify(inline) .. "}")
+      end,
+    })
+  end
   return doc
 end

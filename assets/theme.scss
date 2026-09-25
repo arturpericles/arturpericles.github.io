@@ -448,28 +448,25 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
     justify-content: center !important;
   }
 
-  // navigation footer
+  // Stack footer groups with positive spacing, including when credits wrap.
   .nav-footer {
-      flex-direction: row;
-    }
-
-  .nav-footer-center {
-    order: 1 !important;
-    flex-basis: 100%;
-    margin: 0 0 -1.2em 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
   }
 
-  .nav-footer-right {
-    order: 2 !important;
-    flex-basis: 100%;
-    text-align: center;
-  }
-
+  .nav-footer-center,
+  .nav-footer-right,
   .nav-footer-left {
-    order: 3 !important;
-    flex-basis: 100%;
+    flex-basis: auto;
+    margin: 0;
     text-align: center;
   }
+
+  .nav-footer-center { order: 1 !important; }
+  .nav-footer-right { order: 2 !important; }
+  .nav-footer-left { order: 3 !important; }
+  .nav-footer-left:empty { display: none; }
 
   .navbar .quarto-navbar-tools {
     text-align: left;
@@ -537,4 +534,21 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
 
 .talks-table .talk-links a:hover {
   text-decoration: none;
+}
+
+// Legible navigation labels and adequately spaced course-menu targets.
+.page-navigation .nav-page-text,
+.page-navigation .bi {
+  color: #59626b;
+}
+
+.sidebar-navigation .sidebar-item-text {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  color: #404040;
+}
+
+.sidebar-navigation .sidebar-item-text.active {
+  color: #0c2340;
 }

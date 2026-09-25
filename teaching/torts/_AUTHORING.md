@@ -332,3 +332,18 @@ session may stand alone. Its `attendance: optional` value appears as a visual fl
 in both the website and PDF. Number the TA session headings in source order and
 keep every entry chronological. Do not use `optional:` for a session; that label
 is reserved for optional readings.
+
+## Current-class navigation
+
+The website Schedule uses machine-readable dates emitted from the shared
+calendar. On a fresh visit without an anchor, it opens at today's counted class
+or the next counted class, using `America/Chicago` from the schedule navigation
+placeholder. Holidays, cancellations, and optional TA sessions are excluded.
+The target receives a text label and a subtle highlight; a link returns to the
+schedule overview and updates. Direct anchors, reloads, and browser history keep
+the reader's destination. After the final class, the overview stays visible.
+The PDF is unaffected. Date and navigation checks run with:
+
+```sh
+node --test _extensions/aplm/course/tests/course-current-class.cjs
+```

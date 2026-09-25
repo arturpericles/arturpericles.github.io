@@ -26,7 +26,7 @@ resources:
 
 <p class="home-subtitle">Law Professor, AI &amp; Technology</p>
 
-::: {.home-socials aria-label="Social links"}
+::: {.home-socials role="group" aria-label="Social links"}
 
 [{{< fa brands mastodon >}}](https://mastodon.social/@artp){.home-social-link aria-label="Mastodon" rel="me"}
 [{{< fa brands bluesky >}}](https://bsky.app/profile/arturpericles.art){.home-social-link aria-label="Bluesky"}

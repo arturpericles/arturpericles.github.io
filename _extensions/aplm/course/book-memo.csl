@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>Course book tooltips — Bluebook memorandum style</title>
+    <id>https://arturpericles.art/styles/course-book-memo</id>
+    <updated>2026-09-25T00:00:00+00:00</updated>
+  </info>
+  <locale xml:lang="en-US">
+    <terms>
+      <term name="ordinal-02">d</term>
+      <term name="ordinal-03">d</term>
+    </terms>
+  </locale>
+  <macro name="book">
+    <group delimiter=", ">
+      <names variable="author"><name and="symbol" delimiter=", " delimiter-precedes-last="never"/></names>
+      <group delimiter=" ">
+        <text variable="title" font-style="italic"/>
+        <group prefix="(" suffix=")" delimiter=" ">
+          <group delimiter=" "><number variable="edition" form="ordinal"/><text term="edition" form="short"/></group>
+          <date variable="issued"><date-part name="year"/></date>
+        </group>
+      </group>
+    </group>
+  </macro>
+  <citation><layout><text macro="book"/></layout></citation>
+  <bibliography><layout suffix="."><text macro="book"/></layout></bibliography>
+</style>

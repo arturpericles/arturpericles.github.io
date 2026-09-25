@@ -3,7 +3,7 @@
   --course-gold: #c99700;
   --course-celestial: #69b3e7;
   --course-blue-soft: rgb(105 179 231 / 14%);
-  --course-muted: var(--bs-secondary-color);
+  --course-muted: #4b5560;
   --course-rule: var(--bs-border-color);
 }
 
@@ -203,6 +203,21 @@ section.course-policy {
   white-space: nowrap;
 }
 
+.course-meeting-time {
+  display: block;
+  margin-top: 0.2rem;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: var(--course-celestial);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.2em;
+}
+
+/* Metadata uses one upright style; the underline supplies the emphasis. */
+.course-meeting-time em {
+  font-style: normal;
+}
+
 .course-meeting-status {
   color: var(--course-muted);
   font-size: 0.76rem;
@@ -276,4 +291,65 @@ section.course-policy {
   section.course-policy {
     padding: 1rem;
   }
+}
+
+/* Citation controls retain the reading-label typography. */
+.course-material-abbr {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: help;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--course-celestial);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.2em;
+}
+
+.course-material-abbr:focus-visible {
+  outline: 2px solid var(--course-celestial);
+  outline-offset: 3px;
+}
+
+.tippy-box[data-theme~="course-citation"] {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.tippy-box[data-theme~="course-citation"] p {
+  margin: 0;
+}
+
+.course-schedule-navigation:not(:empty) {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.course-meeting-current {
+  background: rgb(105 179 231 / 7%);
+  border-color: rgb(12 35 64 / 30%);
+  box-shadow: inset 3px 0 var(--course-blue);
+  scroll-margin-top: 8rem;
+}
+
+.course-meeting-current:focus-visible {
+  outline: 2px solid var(--course-blue);
+  outline-offset: 3px;
+}
+
+.course-meeting-current-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.course-schedule-return {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.78rem;
 }

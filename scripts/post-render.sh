@@ -39,6 +39,10 @@ find "$OUTPUT_DIR" -type f -name '*.html' -exec perl -pi -e 's/[ \t]+$//' {} +
 # visual sidebar-title text adjacent to the real toggle button, not a second
 # navigation landmark or control.
 find "$OUTPUT_DIR" -type f -name '*.html' -exec perl -0pi -e '
+  s{(<nav\b[^>]*\bclass="navbar\s[^"]*")(?![^>]*\baria-label=)}{$1 aria-label="Main navigation"}g;
+  s{(<nav\b[^>]*\bclass="quarto-secondary-nav")(?![^>]*\baria-label=)}{$1 aria-label="Course navigation controls"}g;
+  s{(<nav\b[^>]*\bid="quarto-sidebar")(?![^>]*\baria-label=)}{$1 aria-label="Course navigation"}g;
+  s{(<nav\b[^>]*\bclass="page-navigation")(?![^>]*\baria-label=)}{$1 aria-label="Previous and next pages"}g;
   s/ role="menu"//g;
   s{<a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target="\.quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if \(window\.quartoToggleHeadroom\) \{ window\.quartoToggleHeadroom\(\); \}">(.*?)</a>}{<span class="flex-grow-1">$1</span>}gs;
   s{\s*<a class="skip-link" href="#quarto-document-content">Skip to main content</a>\s*}{}g;

@@ -538,6 +538,39 @@ local function material_blocks(material)
   return blocks
 end
 
+-- Tooltip citations reuse the bibliography records with memo-style typography.
+local function material_tooltip(material)
+  if material.tooltip_html ~= nil then return material.tooltip_html end
+  local meta = {}
+  for key, value in pairs(state.source_doc and state.source_doc.meta or state.meta) do
+    meta[key] = value
+  end
+  meta.csl = pandoc.MetaString(script_dir .. "/book-memo.csl")
+  local blocks = #material.citekeys > 0
+    and bibliography_blocks(material.citekeys, meta)
+    or markdown_blocks(material.citation)
+  material.tooltip_html = pandoc.write(pandoc.Pandoc(blocks), "html")
+  return material.tooltip_html
+end
+
+local function html_attribute(value)
+  return value:gsub("&", "&amp;"):gsub('"', "&quot;")
+    :gsub("<", "&lt;"):gsub(">", "&gt;")
+end
+
+local function material_abbreviation(inline)
+  if not state.is_html then return nil end
+  local label = stringify(inline)
+  local shorthand = label:gsub(":$", "")
+  local material = state.materials_by_shorthand[shorthand]
+  if material == nil then return nil end
+  return pandoc.RawInline("html",
+    '<button type="button" class="course-material-abbr" aria-label="'
+    .. html_attribute(shorthand .. ": full citation")
+    .. '" data-course-citation="' .. html_attribute(material_tooltip(material))
+    .. '">' .. html_attribute(label) .. '</button>')
+end
+
 local function render_materials()
   if #state.materials == 0 then
     fail("course-materials shortcode found, but course-materials metadata is empty")
@@ -792,6 +825,7 @@ local function load_schedule()
         }
       )
       meeting.date = calendar.website_inlines(assigned)
+      meeting.iso_date = assigned.iso
     end
     if meetings_by_id[meeting.id] ~= nil then fail("duplicate meeting id: " .. meeting.id) end
     table.insert(current_unit.meetings, meeting)
@@ -922,12 +956,13 @@ local function assignment_field_item(fields)
   })
 end
 
-local function render_fields(meeting)
+local function render_fields(meeting, omit_time)
   local items = {}
   local optional_rendered = false
   local assignment_rendered = false
   for _, field in ipairs(meeting.fields) do
-    if not HIDDEN_SCHEDULE_FIELDS[field.normalized] then
+    if not HIDDEN_SCHEDULE_FIELDS[field.normalized]
+      and not (omit_time and field.normalized == "time") then
       if field.normalized == "additional" then
         table.insert(items, clone_blocks(field.blocks))
       elseif field.normalized == "optional" then
@@ -983,6 +1018,16 @@ local function render_meeting(meeting)
       pandoc.Attr("", {"course-meeting-flag"})
     ))
   end
+  -- Special class times belong with the date and panel, above the title.
+  local time_in_kicker = meeting.class_number ~= nil and meeting.by_name.time ~= nil
+  if time_in_kicker then
+    for _, field in ipairs(meeting.by_name.time) do
+      kicker:insert(pandoc.Span(
+        pandoc.utils.blocks_to_inlines(clone_blocks(field.blocks)),
+        pandoc.Attr("", {"course-meeting-time"})
+      ))
+    end
+  end
   blocks:insert(pandoc.Div(
     {pandoc.Para(kicker)},
     pandoc.Attr("", {"course-meeting-kicker"})
@@ -1013,12 +1058,16 @@ local function render_meeting(meeting)
     ))
   end
 
-  local fields = render_fields(meeting)
+  local fields = render_fields(meeting, time_in_kicker)
   if fields ~= nil then blocks:insert(fields) end
   local classes = {"course-meeting"}
   if meeting.class_number == nil then table.insert(classes, "course-meeting-noncounting") end
   if meeting_type ~= "" then table.insert(classes, "course-meeting-" .. meeting_type) end
-  return pandoc.Div(blocks, pandoc.Attr(meeting.id, classes))
+  local attributes = {}
+  if meeting.class_number ~= nil and meeting.iso_date ~= nil then
+    attributes["data-class-date"] = meeting.iso_date
+  end
+  return pandoc.Div(blocks, pandoc.Attr(meeting.id, classes, attributes))
 end
 
 local function render_schedule()
@@ -1146,7 +1195,10 @@ local function render_facts()
   for _, candidate in ipairs(compact_candidates) do
     local value = meta_string(candidate[2])
     if value ~= "" then
-      append_course_fact(blocks, candidate[1], markdown_blocks(candidate[2]))
+      if candidate[1] == "Meetings" then
+        value = value:gsub("([ap]%.m%.?)", "[%1]{.smallcaps}")
+      end
+      append_course_fact(blocks, candidate[1], markdown_blocks(value))
     end
   end
 
@@ -1251,6 +1303,7 @@ local function initialize(meta)
       name = "aplm-course",
       version = "0.4.3",
       stylesheets = {"course.css"},
+      scripts = {"course.js", "course-current.js"},
     })
   end
   local context = course_context(meta)
@@ -1275,4 +1328,5 @@ end
 return {
   { Meta = initialize },
   { Div = replace_placeholder },
+  { Strong = material_abbreviation },
 }

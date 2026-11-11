@@ -1,3 +1,7 @@
+- venue: XLVI Annual Seminar, Mississippi Bankruptcy Conference
+  talk: 'AI Regulation, An Overview'
+  type: talk
+  date: 2026-11-20
 - venue: Virginia Military Institute
   type: talk
   event: 'The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism'
@@ -6,6 +10,11 @@
   type: panel
   event: 'A Global Look at Tech “Deregulation”'
   date: 2026-04-14
+- venue: 'Digital Life Initiative Seminar, Cornell Tech'
+  talk: 'Countervailing Platform Power'
+  type: talk
+  date: 2025-03-13
+  review: 'invited'
 - venue: Freedom House
   event: 2024 Freedom on the Net Report Launch
   date: 2024-10-16

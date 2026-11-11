@@ -7,7 +7,12 @@
   },
   {
     "listing": "/talks/index.html",
-    "items": []
+    "items": [
+      "/publications/security-not-enough/index.html",
+      "/publications/platform-federalism/index.html",
+      "/publications/scalable-oversight-ai-regulation/index.html",
+      "/publications/anonymity-identity-lies/index.html"
+    ]
   },
   {
     "listing": "/publications/index.html",

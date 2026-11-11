@@ -1,36 +1,52 @@
-<table class="talks-table  table-borderless">
-  <tbody>
-    <% for (const item of items) { %>
-      <%
-        // QUARTO FIX: Regex to strip the <p>...</p> tags
-        const re = /^<p>|<\/p>$/g;
-
-        // Clean the date
-        const cleanDate = (item.display_date || item.date).replace(re, '');
-
-        // Clean the title field
-        const title = (item.talk || item.event).replace(re, '');
-
-        // Prepare the details array, cleaning each part
-        const details = [];
-        if (item.talk && item.event) {
-          details.push(item.event.replace(re, ''));
-        }
-        if (item.venue) {
-          details.push(item.venue.replace(re, ''));
-        }
-        const detailsString = details.join(', ');
-      %>
-
-      <tr>
-        <td class="talk-date align-top">
-          <span class="talk-date-text"><%- cleanDate %></span><% if (item.type == 'panel') { %><br><span class="talk-details">panel</span><% } %><% if (item.video) { %><br><span class="talk-details"><a href="<%- item.video %>" target="_blank" rel="noopener">video</a></span><% } %>
-        </td>
-
-        <td class="talk-info align-top">
-          <span class="talk-title"><%- title %></span><% if (detailsString) { %><br><span class="talk-details"><%- detailsString %></span><% } %>
-        </td>
-      </tr>
-    <% } %>
-  </tbody>
-  </table>
+<%
+// Appearance records and publication pages share the listing input. Titles are
+// resolved from Publications, so historical presentation titles remain intact.
+const plain = value => String(value || '').replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
+const appearances = items.filter(item => item.appearance_id).sort((a, b) => plain(b.date).localeCompare(plain(a.date)));
+const publications = items.filter(item => !item.appearance_id);
+const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+const years = [...new Set(appearances.map(item => plain(item.date).slice(0, 4)))];
+const venueLed = templateParams && templateParams.layout === 'venue-led';
+function paperFor(item) {
+  if (!item.paper) return null;
+  const paper = publications.find(pub => String(pub.path).split('/').includes(plain(item.paper)));
+  if (!paper) throw new Error('Missing publication for paper: ' + item.paper);
+  return { title: plain(paper.title), short: plain(paper['title-short'] || paper.title), url: '/publications/' + plain(item.paper) + '/' };
+}
+function dateLabel(iso) {
+  const parts = iso.split('-').map(Number);
+  if (parts.length !== 3 || !months[parts[1] - 1]) throw new Error('Invalid appearance date: ' + iso);
+  return months[parts[1] - 1] + ' ' + parts[2];
+}
+%>
+```{=html}
+<nav class="appearances-years" aria-label="Years">
+<% for (const year of years) { %>
+<a href="#appearances-<%- year %>"><%- year %></a>
+<% } %>
+</nav>
+<% for (const year of years) { %>
+<section class="appearances-year<% if (venueLed) { %> venue-led<% } %>" aria-labelledby="appearances-<%- year %>">
+<h2 id="appearances-<%- year %>"><%- year %></h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in <%- year %></caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+<% for (const item of appearances.filter(item => plain(item.date).startsWith(year))) {
+ const iso = plain(item.date);
+ const paper = paperFor(item);
+ const details = [item.host, item.location, item.attendance].map(plain).filter(Boolean);
+ const title = paper ? paper.short : plain(item.presentation_title).replace(/_/g, '');
+%>
+<tr data-appearance-id="<%- plain(item.appearance_id) %>">
+<td class="appearance-venue"><div class="appearance-venue-name"><%- plain(item.venue) %></div><% if (details.length) { %><div class="appearance-details"><%- details.join(' · ') %></div><% } %></td>
+<td class="appearance-contribution"><span class="appearance-kind"><%- plain(item.contribution_type) %></span><% if (title) { %> · <% if (paper) { %><a class="appearance-paper" href="<%- paper.url %>" title="<%- paper.title %>" aria-label="<%- paper.title %> — publication page"><%- paper.short %></a><% } else { %><span<% if (item.contribution_type === 'Paper presentation') { %> class="appearance-paper"<% } %>><%- title %></span><% } %><% } %><% if (item.resource_url) { %><div class="appearance-resource"><a href="<%- plain(item.resource_url) %>" aria-label="<%- plain(item.resource_label) + ' — ' + plain(item.venue) + ', ' + iso %>"><%- plain(item.resource_label) %></a></div><% } %></td>
+<td class="appearance-date"><time datetime="<%- iso %>"><%- dateLabel(iso) %></time></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+</section>
+<% } %>
+```

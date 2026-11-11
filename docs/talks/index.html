@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +45,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-cad3c076bfcc671fc53733afef69da86.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c9192926232ad4bba132221a2b7482f8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-97cbd97c4cf8f7aa6a4dca26b76665de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-aea0f800c74cd009dd85097a98ad6485.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -79,48 +82,21 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-talks .list');
+    const listingTargetEl = window.document.querySelector('#listing-appearances .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return;
     }
 
     const options = {
-      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date','listing-display_date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
-
-      searchColumns: ["listing-venue","listing-type","listing-event","listing-date","listing-video","listing-talk"],
+      valueNames: ['listing-appearance_id','listing-date','listing-venue','listing-contribution_type','listing-presentation_title','listing-location','listing-attendance','listing-paper','listing-review','listing-host','listing-resource_url','listing-resource_label','listing-unit','listing-project','listing-website','listing-format','listing-csl','listing-engines','listing-language','listing-date-format','listing-include-back-link','listing-title','listing-title-short','listing-author','listing-citation','listing-slug','listing-css-class','listing-google-scholar','listing-featured','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-fulltext',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-appearance_id","listing-date","listing-venue","listing-contribution_type","listing-presentation_title","listing-location","listing-attendance","listing-paper","listing-review","listing-host","listing-resource_url","listing-resource_label","listing-unit","listing-project","listing-website","listing-format","listing-csl","listing-engines","listing-language","listing-date-format","listing-include-back-link","listing-title","listing-title-short","listing-author","listing-citation","listing-slug","listing-css-class","listing-google-scholar","listing-featured","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-fulltext"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-talks'] = new List('listing-talks', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-conferences .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return;
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-talk','listing-event','listing-venue','listing-type','listing-date','listing-display_date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-event-sort'] },{ data: ['listing-date-sort'] }],
-
-      searchColumns: ["listing-venue","listing-event","listing-date","listing-display_date","listing-type","listing-review","listing-video"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-conferences'] = new List('listing-conferences', options);
+    window['quarto-listings']['listing-appearances'] = new List('listing-appearances', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -136,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="navbar-short-title" content="A.P.L. Monteiro">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -165,6 +141,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="talks.css">
 <meta property="og:title" content="Talks — Artur Pericles L. Monteiro">
 <meta property="og:description" content="Law Professor, AI &amp; Technology">
 <meta property="og:image" content="https://www.arturpericles.art/media/seymour-march-sm.webp">
@@ -177,7 +154,7 @@ window.Quarto = {
 <link rel="canonical" href="https://www.arturpericles.art/talks/">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 <a class="skip-link" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
@@ -219,299 +196,331 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
 
 <!-- main -->
-<main class="content column-page" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Talks &amp; Presentations</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
 
 
 
 
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div id="first-column" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<section id="paper-presentations" class="level2">
-<h2 class="anchored" data-anchor-id="paper-presentations">Paper Presentations</h2>
-<div id="listing-conferences" class="quarto-listing quarto-listing-container-custom">
-<table class="talks-table  table-borderless">
+  </div>
+
+
+
+</header>
+
+
+<div id="listing-appearances" class="quarto-listing quarto-listing-container-custom">
+<nav class="appearances-years" aria-label="Years">
+
+<a href="#appearances-2026">2026</a>
+
+<a href="#appearances-2025">2025</a>
+
+<a href="#appearances-2024">2024</a>
+
+<a href="#appearances-2023">2023</a>
+
+<a href="#appearances-2022">2022</a>
+
+<a href="#appearances-2021">2021</a>
+
+<a href="#appearances-2020">2020</a>
+
+</nav>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2026">
+<h2 id="appearances-2026" class="anchored">2026</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2026</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
 <tbody>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Platform Interoperability and the First Amendment</span><br><span class="talk-details">XVII Annual Constitutional Law Colloquium</span>
-</td>
+
+<tr data-appearance-id="2026-11-20-0">
+<td class="appearance-venue"><div class="appearance-venue-name">XLVI Annual Seminar, Mississippi Bankruptcy Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>AI Regulation, An Overview</span></td>
+<td class="appearance-date"><time datetime="2026-11-20">Nov. 20</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;24, 2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Platform Interoperability and the First Amendment</span><br><span class="talk-details">XIV Freedom of Expression Scholars Conference</span>
-</td>
+
+<tr data-appearance-id="2026-04-27-1">
+<td class="appearance-venue"><div class="appearance-venue-name">Virginia Military Institute</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism</span></td>
+<td class="appearance-date"><time datetime="2026-04-27">Apr. 27</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Mar.&nbsp;7, 2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Countervailing Platform Power</span><br><span class="talk-details">Internet Law Works in Progress</span>
-</td>
+
+<tr data-appearance-id="2026-04-24-16">
+<td class="appearance-venue"><div class="appearance-venue-name">XIV Freedom of Expression Scholars Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <span class="appearance-paper">Platform Interoperability and the First Amendment</span></td>
+<td class="appearance-date"><time datetime="2026-04-24">Apr. 24</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Mar.&nbsp;4, 2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols</span><br><span class="talk-details">Symposium on Computer Science &amp; Law (CS&amp;Law)</span>
-</td>
+
+<tr data-appearance-id="2026-04-14-2">
+<td class="appearance-venue"><div class="appearance-venue-name">Université de Bretagne Occidentale</div><div class="appearance-details">France · Remote</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span> · <span>A Global Look at Tech “Deregulation”</span></td>
+<td class="appearance-date"><time datetime="2026-04-14">Apr. 14</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Feb.&nbsp;6, 2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Scalable Oversight for Regulators</span><br><span class="talk-details"> Accountable AI Research Conference</span>
-</td>
+
+<tr data-appearance-id="2026-03-07-17">
+<td class="appearance-venue"><div class="appearance-venue-name">Internet Law Works in Progress</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2026-03-07">Mar. 7</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Sep.&nbsp;26, 2025</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Countervailing Platform Power</span><br><span class="talk-details">New England IP Works in Progress Roundtable</span>
-</td>
+
+<tr data-appearance-id="2026-03-04-18">
+<td class="appearance-venue"><div class="appearance-venue-name">Symposium on Computer Science &amp; Law (CS&amp;Law)</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/security-not-enough/" title="Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols" aria-label="Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols — publication page">Security Is Not Enough</a></td>
+<td class="appearance-date"><time datetime="2026-03-04">Mar. 4</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Jul.&nbsp;29, 2025</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Social Media Governance in Brazil and Institutional Debt</span><br><span class="talk-details">Annual Conference, International Society of Public Law (ICON-S)</span>
-</td>
+
+<tr data-appearance-id="2026-02-06-19">
+<td class="appearance-venue"><div class="appearance-venue-name">Accountable AI Research Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/scalable-oversight-ai-regulation/" title="Scalable Oversight for AI Regulation" aria-label="Scalable Oversight for AI Regulation — publication page">Scalable Oversight for AI Regulation</a></td>
+<td class="appearance-date"><time datetime="2026-02-06">Feb. 6</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">May. 30, 2025</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Countervailing Platform Power</span><br><span class="talk-details">Privacy Law Scholars Conference</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Mar.&nbsp;13, 2025</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Countervailing Platform Power</span><br><span class="talk-details">Digital Life Initiative Seminar, Cornell Tech</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Jul.&nbsp;9, 2024</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Social Media Federalism</span><br><span class="talk-details">Annual Conference, International Society of Public Law (ICON-S)</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;29, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Social Media Federalism</span><br><span class="talk-details">Lab-LEX Workshop, University of Western Brittany, France</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;29, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Social Media Federalism</span><br><span class="talk-details">XI Freedom of Expression Scholars Conference</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;4, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Social Media Federalism</span><br><span class="talk-details">Platform Governance Research Network Conference</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;23, 2022</span><br><span class="talk-details"><a href="https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">The Plurality of Anonymity and Identification on Social Media</span><br><span class="talk-details">Digital Governance Research Colloquium, Hertie School</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;8, 2022</span><br><span class="talk-details"><a href="https://youtu.be/D7MLqq6cGyY?t=2100" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Anonymity, Identity, and Lies</span><br><span class="talk-details">Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;13, 2021</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Online Anonymity as Expressive</span><br><span class="talk-details">XII Annual Constitutional Law Colloquium</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;30, 2021</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Curtailing Anonymity</span><br><span class="talk-details">IX Freedom of Expression Scholars Conference, closing plenary</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Oct.&nbsp;24, 2020</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Online Anonymity as Expressive</span><br><span class="talk-details">VIII Freedom of Expression Scholars Conference</span>
-</td>
-</tr>
+
 </tbody>
 </table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 </section>
-</div>
-<div id="second-column" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<section id="talks-panels" class="level2">
-<h2 class="anchored" data-anchor-id="talks-panels">Talks &amp; Panels</h2>
-<div id="listing-talks" class="quarto-listing quarto-listing-container-custom">
-<table class="talks-table  table-borderless">
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2025">
+<h2 id="appearances-2025" class="anchored">2025</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2025</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
 <tbody>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;27, 2026</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">The Power Dilemma: Social Media, Free Speech, and Structural Constitutionalism</span><br><span class="talk-details">Virginia Military Institute</span>
-</td>
+
+<tr data-appearance-id="2025-09-26-20">
+<td class="appearance-venue"><div class="appearance-venue-name">New England IP Works in Progress Roundtable</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2025-09-26">Sept. 26</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;14, 2026</span><br><span class="talk-details">panel</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">A Global Look at Tech “Deregulation”</span><br><span class="talk-details">Université de Bretagne Occidentale, France (remote)</span>
-</td>
+
+<tr data-appearance-id="2025-07-29-21">
+<td class="appearance-venue"><div class="appearance-venue-name">Annual Conference, International Society of Public Law (ICON-S)</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <span class="appearance-paper">Social Media Governance in Brazil and Institutional Debt</span></td>
+<td class="appearance-date"><time datetime="2025-07-29">July 29</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Oct.&nbsp;16, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/yf3ttfcl3Ww?t=2054" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">2024 Freedom on the Net Report Launch</span><br><span class="talk-details">Freedom House</span>
-</td>
+
+<tr data-appearance-id="2025-05-30-22">
+<td class="appearance-venue"><div class="appearance-venue-name">Privacy Law Scholars Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2025-05-30">May 30</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Sep.&nbsp;19, 2024</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/_X6rUoB1V9g?t=6984" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Book Launch, <em>Disinformation, Misinformation, and Democracy</em> (Ronald Krotoszynski, Jr., András Koltay &amp; Charlotte Garden eds., 2025)</span><br><span class="talk-details">Columbia Global Freedom of Expression</span>
-</td>
+
+<tr data-appearance-id="2025-03-13-3">
+<td class="appearance-venue"><div class="appearance-venue-name">Digital Life Initiative Seminar</div><div class="appearance-details">Cornell Tech</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2025-03-13">Mar. 13</time></td>
 </tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Apr.&nbsp;16, 2024</span><br><span class="talk-details">panel</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">AI Ethics &amp; Rules</span><br><span class="talk-details">Yale U.S.–China Distinguished Colloquium</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Dec.&nbsp;7, 2023</span><br><span class="talk-details">panel</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Making Platforms Safe</span><br><span class="talk-details">Université Paris Cité</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Dec.&nbsp;4, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Online Freedom of Speech in the U.S. and Brazil</span><br><span class="talk-details">guest lecture, Université de Bretagne Occidentale, France</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Dec.&nbsp;1, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">U.S. Views on EU Tech Regulation</span><br><span class="talk-details">guest lecture, Université de Bretagne Occidentale, France</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;23, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Career &amp; Research Talk</span><br><span class="talk-details">Lab-LEX Workshop, Université de Bretagne Occidentale, France</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Nov.&nbsp;3, 2023</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">AI Governance: An Overview</span><br><span class="talk-details">Annual Conference, United States District Court for the District of Connecticut</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Feb.&nbsp;21, 2023</span><br><span class="talk-details">panel</span><br><span class="talk-details"><a href="https://youtu.be/B36x3ZtMTEU?t=1466" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Information as a Public Good</span><br><span class="talk-details">UNESCO Internet Conference Day 0</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Feb.&nbsp;21, 2023</span><br><span class="talk-details">panel</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Symposium on Data Privacy and the Pandemic</span><br><span class="talk-details">Fordham International Law Journal</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Mar.&nbsp;10, 2022</span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">Briefing Series on Social Media</span><br><span class="talk-details">Mediation Support Unit, Department of Political and Peacebuilding Affairs, United Nations</span>
-</td>
-</tr>
-<tr>
-<td class="talk-date align-top">
-<span class="talk-date-text">Sep.&nbsp;10, 2021</span><br><span class="talk-details"><a href="https://youtu.be/HLLWkGq9-NU" target="_blank" rel="noopener">video</a></span>
-</td>
-<td class="talk-info align-top">
-<span class="talk-title">A Conversation on Content Moderation</span><br><span class="talk-details">Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights</span>
-</td>
-</tr>
+
 </tbody>
 </table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 </section>
-</div>
-</div>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2024">
+<h2 id="appearances-2024" class="anchored">2024</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2024</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+
+<tr data-appearance-id="2024-10-16-4">
+<td class="appearance-venue"><div class="appearance-venue-name">2024 Freedom on the Net Report Launch</div><div class="appearance-details">Freedom House</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span><div class="appearance-resource"><a href="https://youtu.be/yf3ttfcl3Ww?t=2054" aria-label="Recording — 2024 Freedom on the Net Report Launch, 2024-10-16">Recording</a></div></td>
+<td class="appearance-date"><time datetime="2024-10-16">Oct. 16</time></td>
+</tr>
+
+<tr data-appearance-id="2024-09-19-5">
+<td class="appearance-venue"><div class="appearance-venue-name">Columbia Global Freedom of Expression</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span> · <span>Book Launch, Disinformation, Misinformation, and Democracy (Ronald Krotoszynski, Jr., András Koltay &amp; Charlotte Garden eds., 2025)</span><div class="appearance-resource"><a href="https://youtu.be/_X6rUoB1V9g?t=6984" aria-label="Recording — Columbia Global Freedom of Expression, 2024-09-19">Recording</a></div></td>
+<td class="appearance-date"><time datetime="2024-09-19">Sept. 19</time></td>
+</tr>
+
+<tr data-appearance-id="2024-07-09-23">
+<td class="appearance-venue"><div class="appearance-venue-name">Annual Conference, International Society of Public Law (ICON-S)</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2024-07-09">July 9</time></td>
+</tr>
+
+<tr data-appearance-id="2024-04-16-6">
+<td class="appearance-venue"><div class="appearance-venue-name">Yale U.S.–China Distinguished Colloquium</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span> · <span>AI Ethics &amp; Rules</span></td>
+<td class="appearance-date"><time datetime="2024-04-16">Apr. 16</time></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2023">
+<h2 id="appearances-2023" class="anchored">2023</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2023</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+
+<tr data-appearance-id="2023-12-07-7">
+<td class="appearance-venue"><div class="appearance-venue-name">Université Paris Cité</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span> · <span>Making Platforms Safe</span></td>
+<td class="appearance-date"><time datetime="2023-12-07">Dec. 7</time></td>
+</tr>
+
+<tr data-appearance-id="2023-12-04-8">
+<td class="appearance-venue"><div class="appearance-venue-name">Université de Bretagne Occidentale</div><div class="appearance-details">France</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Guest lecture</span> · <span>Online Freedom of Speech in the U.S. and Brazil</span></td>
+<td class="appearance-date"><time datetime="2023-12-04">Dec. 4</time></td>
+</tr>
+
+<tr data-appearance-id="2023-12-01-9">
+<td class="appearance-venue"><div class="appearance-venue-name">Université de Bretagne Occidentale</div><div class="appearance-details">France</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Guest lecture</span> · <span>U.S. Views on EU Tech Regulation</span></td>
+<td class="appearance-date"><time datetime="2023-12-01">Dec. 1</time></td>
+</tr>
+
+<tr data-appearance-id="2023-11-29-24">
+<td class="appearance-venue"><div class="appearance-venue-name">Lab-LEX Workshop, University of Western Brittany</div><div class="appearance-details">France</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2023-11-29">Nov. 29</time></td>
+</tr>
+
+<tr data-appearance-id="2023-11-23-10">
+<td class="appearance-venue"><div class="appearance-venue-name">Lab-LEX Workshop</div><div class="appearance-details">Université de Bretagne Occidentale · France</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>Career &amp; Research Talk</span></td>
+<td class="appearance-date"><time datetime="2023-11-23">Nov. 23</time></td>
+</tr>
+
+<tr data-appearance-id="2023-11-03-11">
+<td class="appearance-venue"><div class="appearance-venue-name">Annual Conference, United States District Court for the District of Connecticut</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>AI Governance: An Overview</span></td>
+<td class="appearance-date"><time datetime="2023-11-03">Nov. 3</time></td>
+</tr>
+
+<tr data-appearance-id="2023-04-29-25">
+<td class="appearance-venue"><div class="appearance-venue-name">XI Freedom of Expression Scholars Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2023-04-29">Apr. 29</time></td>
+</tr>
+
+<tr data-appearance-id="2023-04-04-26">
+<td class="appearance-venue"><div class="appearance-venue-name">Platform Governance Research Network Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/platform-federalism/" title="Platform Federalism: How to Countervail Platform Power" aria-label="Platform Federalism: How to Countervail Platform Power — publication page">Platform Federalism</a></td>
+<td class="appearance-date"><time datetime="2023-04-04">Apr. 4</time></td>
+</tr>
+
+<tr data-appearance-id="2023-02-21-15">
+<td class="appearance-venue"><div class="appearance-venue-name">Symposium on Data Privacy and the Pandemic</div><div class="appearance-details">Fordham International Law Journal</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span></td>
+<td class="appearance-date"><time datetime="2023-02-21">Feb. 21</time></td>
+</tr>
+
+<tr data-appearance-id="2023-02-21-12">
+<td class="appearance-venue"><div class="appearance-venue-name">UNESCO Internet Conference Day 0</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Panel</span> · <span>Information as a Public Good</span><div class="appearance-resource"><a href="https://youtu.be/B36x3ZtMTEU?t=1466" aria-label="Recording — UNESCO Internet Conference Day 0, 2023-02-21">Recording</a></div></td>
+<td class="appearance-date"><time datetime="2023-02-21">Feb. 21</time></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2022">
+<h2 id="appearances-2022" class="anchored">2022</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2022</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+
+<tr data-appearance-id="2022-11-23-27">
+<td class="appearance-venue"><div class="appearance-venue-name">Digital Governance Research Colloquium, Hertie School</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/anonymity-identity-lies/" title="Anonymity, Identity, and Lies" aria-label="Anonymity, Identity, and Lies — publication page">Anonymity, Identity, and Lies</a><div class="appearance-resource"><a href="https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/" aria-label="Event page — Digital Governance Research Colloquium, Hertie School, 2022-11-23">Event page</a></div></td>
+<td class="appearance-date"><time datetime="2022-11-23">Nov. 23</time></td>
+</tr>
+
+<tr data-appearance-id="2022-04-08-28">
+<td class="appearance-venue"><div class="appearance-venue-name">Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/anonymity-identity-lies/" title="Anonymity, Identity, and Lies" aria-label="Anonymity, Identity, and Lies — publication page">Anonymity, Identity, and Lies</a><div class="appearance-resource"><a href="https://youtu.be/D7MLqq6cGyY?t=2100" aria-label="Recording — Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University, 2022-04-08">Recording</a></div></td>
+<td class="appearance-date"><time datetime="2022-04-08">Apr. 8</time></td>
+</tr>
+
+<tr data-appearance-id="2022-03-10-13">
+<td class="appearance-venue"><div class="appearance-venue-name">United Nations, Department of Political and Peacebuilding Affairs</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>Briefing Series on Social Media</span></td>
+<td class="appearance-date"><time datetime="2022-03-10">Mar. 10</time></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2021">
+<h2 id="appearances-2021" class="anchored">2021</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2021</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+
+<tr data-appearance-id="2021-11-13-29">
+<td class="appearance-venue"><div class="appearance-venue-name">XII Annual Constitutional Law Colloquium</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <span class="appearance-paper">Online Anonymity as Expressive</span></td>
+<td class="appearance-date"><time datetime="2021-11-13">Nov. 13</time></td>
+</tr>
+
+<tr data-appearance-id="2021-09-10-14">
+<td class="appearance-venue"><div class="appearance-venue-name">Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Talk</span> · <span>A Conversation on Content Moderation</span><div class="appearance-resource"><a href="https://youtu.be/HLLWkGq9-NU" aria-label="Recording — Office of the Special Rapporteur on Freedom of Expression, Inter-American Commission on Human Rights, 2021-09-10">Recording</a></div></td>
+<td class="appearance-date"><time datetime="2021-09-10">Sept. 10</time></td>
+</tr>
+
+<tr data-appearance-id="2021-04-30-30">
+<td class="appearance-venue"><div class="appearance-venue-name">IX Freedom of Expression Scholars Conference, closing plenary</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <a class="appearance-paper" href="../publications/anonymity-identity-lies/" title="Anonymity, Identity, and Lies" aria-label="Anonymity, Identity, and Lies — publication page">Anonymity, Identity, and Lies</a></td>
+<td class="appearance-date"><time datetime="2021-04-30">Apr. 30</time></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="appearances-year venue-led" aria-labelledby="appearances-2020">
+<h2 id="appearances-2020" class="anchored">2020</h2>
+<table class="appearances-register">
+<caption class="visually-hidden">Talks and presentations in 2020</caption>
+<colgroup><col class="appearance-venue-column"><col class="appearance-contribution-column"><col class="appearance-date-column"></colgroup>
+<thead class="visually-hidden"><tr><th scope="col">Venue</th><th scope="col">Contribution</th><th scope="col">Date</th></tr></thead>
+<tbody>
+
+<tr data-appearance-id="2020-10-24-31">
+<td class="appearance-venue"><div class="appearance-venue-name">VIII Freedom of Expression Scholars Conference</div></td>
+<td class="appearance-contribution"><span class="appearance-kind">Paper presentation</span> · <span class="appearance-paper">Online Anonymity as Expressive</span></td>
+<td class="appearance-date"><time datetime="2020-10-24">Oct. 24</time></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<div class="listing-no-matching d-none">No matching items</div>
+<nav id="appearances-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -524,6 +533,16 @@ window.Quarto = {
 
 
 </main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Native title remains the fallback; Bootstrap also exposes it on focus.
+  if (window.bootstrap && window.bootstrap.Tooltip) {
+    document.querySelectorAll('.appearance-paper[title]').forEach(function (link) {
+      new bootstrap.Tooltip(link, { trigger: 'hover focus', container: 'body' });
+    });
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

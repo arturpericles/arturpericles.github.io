@@ -1,0 +1,15 @@
+listing:
+  id: appearances
+  contents:
+    - appearances.yml
+    - ../publications/platform-federalism/index.md
+    - ../publications/security-not-enough/index.md
+    - ../publications/scalable-oversight-ai-regulation/index.md
+    - ../publications/anonymity-identity-lies/index.md
+  sort: "date desc"
+  template: talks.ejs
+  template-params:
+    layout: venue-led
+  date-format: YYYY-MM-DD
+  sort-ui: false
+  filter-ui: false

@@ -1,35 +1,21 @@
 ---
+title: Talks & Presentations
+html-table-processing: none
 listing:
-  - id: talks
-    contents:
-        - talks.yml
-    sort: "date desc"
-    template: talks.ejs
-    date-format: MMM. D, YYYY
-    sort-ui: false
-    filter-ui: false
-    field-display-names:
-        venue: "Venue"
-        type: "Type"
-        event: "Event"
-        talk: "Talk"
-    fields: [title, talk, event, venue, type, date, display_date]
-    field-links: [event]
-  - id: conferences
-    contents:
-        - conferences.yml
-    sort: "date desc"
-    template: talks.ejs
-    date-format: MMM. D, YYYY
-    sort-ui: false
-    filter-ui: false
-    field-display-names:
-        venue: "Venue"
-        type: "Type"
-        event: "Event"
-        talk: "Talk"
-    fields: [title, talk, event, venue, type, date, display_date]
-    field-links: [event]
+  id: appearances
+  contents:
+    - appearances.yml
+    - ../publications/platform-federalism/index.md
+    - ../publications/security-not-enough/index.md
+    - ../publications/scalable-oversight-ai-regulation/index.md
+    - ../publications/anonymity-identity-lies/index.md
+  sort: "date desc"
+  template: talks.ejs
+  template-params:
+    layout: venue-led
+  date-format: YYYY-MM-DD
+  sort-ui: false
+  filter-ui: false
 open-graph:
   title: "Talks — Artur Pericles L. Monteiro"
   description: "Law Professor, AI & Technology"
@@ -38,37 +24,13 @@ twitter-card:
   description: "Law Professor, AI & Technology"
 format:
   html:
-    page-layout: full
     pagetitle: Talks
+    css: talks.css
+    include-after-body: titles.html
 ---
 
 
-::::: {layout-ncol=2}
-
-::: {#first-column}
-
-## Paper Presentations
-
-:::{#conferences}
+::: {#appearances}
 :::
-
-:::
-
-::: {#second-column}
-
-## Talks & Panels
-
-
-:::{#talks}
-:::
-
-:::
-:::::
 
 ![Sybil Andrews, *The New Cable*, 1931, Internet Archive](/media/andrews-new-cable.webp){fig-alt="LLM-created description verified by Art: A dynamic, stylized print of three muscular workers, rendered in reddish-brown, hauling a thick, massive cable. Their bodies are bent in unison along a strong diagonal line, conveying a powerful sense of rhythmic, collective labor."}
-
-
-
-
-
-

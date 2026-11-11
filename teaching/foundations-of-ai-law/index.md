@@ -1,6 +1,7 @@
 ---
 title: Foundations of AI Law
-subtitle: MC Law, Spring 2027
+subtitle: MC Law · Professor Monteiro · Spring 2027
+body-classes: course-page
 order: 0
 school:
   - MC Law

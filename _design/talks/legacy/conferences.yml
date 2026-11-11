@@ -1,27 +1,27 @@
-- venue: XVII Annual Constitutional Law Colloquium
-  event: Platform Interoperability and the First Amendment
-  date: 2026-11-01
-  display_date: Nov. 2026
 - venue: XIV Freedom of Expression Scholars Conference
   event: Platform Interoperability and the First Amendment
   date: Apr. 24, 2026
 - venue: 'Internet Law Works in Progress'
   event: 'Countervailing Platform Power'
+  paper: platform-federalism
   date: Mar. 7, 2026
   type: workshop
   review: 'peer review'
 - venue: 'Symposium on Computer Science & Law (CS&Law)'
   event: 'Security Is Not Enough: Privacy in Encryption Regulation and Lawful-Surveillance Protocols'
+  paper: security-not-enough
   date: 'Mar. 4, 2026'
   type: workshop
   review: 'blind peer review'
 - venue: ' Accountable AI Research Conference'
   event: 'Scalable Oversight for Regulators'
+  paper: scalable-oversight-ai-regulation
   date: Feb. 6, 2026
   type: workshop
   review: 'peer review'
 - venue: 'New England IP Works in Progress Roundtable'
   event: 'Countervailing Platform Power'
+  paper: platform-federalism
   date: 'Sept. 26, 2025'
   type: workshop
   review: 'peer review'
@@ -32,16 +32,13 @@
   review: 'peer review'
 - venue: 'Privacy Law Scholars Conference'
   event: 'Countervailing Platform Power'
+  paper: platform-federalism
   date: 'May 30, 2025'
   type: workshop
   review: 'blind peer review'
-- venue: 'Digital Life Initiative Seminar, Cornell Tech'
-  event: 'Countervailing Platform Power'
-  date: 'March 13, 2025'
-  type: workshop
-  review: 'invited'
 - venue: 'Annual Conference, International Society of Public Law (ICON-S)'
   event: 'Social Media Federalism'
+  paper: platform-federalism
   date: 'July 9, 2024'
   type: workshop
   review: 'blind peer review'
@@ -52,27 +49,32 @@
 #   review: 'invited'
 - venue: 'Lab-LEX Workshop, University of Western Brittany, France'
   event: 'Social Media Federalism'
+  paper: platform-federalism
   date: 'Nov. 29, 2023'
   type: workshop
   review: 'invited'
 - venue: 'XI Freedom of Expression Scholars Conference'
   event: 'Social Media Federalism'
+  paper: platform-federalism
   date: 'Apr. 29, 2023'
   type: workshop
   review: 'peer review'
 - venue: 'Platform Governance Research Network Conference'
   event: 'Social Media Federalism'
+  paper: platform-federalism
   date: 'Apr. 4, 2023'
   type: workshop
   review: 'blind peer review'
 - venue: 'Digital Governance Research Colloquium, Hertie School'
   event: 'The Plurality of Anonymity and Identification on Social Media'
+  paper: anonymity-identity-lies
   date: 'Nov. 23, 2022'
   type: workshop
   review: 'talk'
   video: 'https://www.hertie-school.org/en/digitalgovernance/events/event-detail/event/the-plurality-of-anonymity-and-identification-on-social-media/'
 - venue: 'Lies, Free Speech and the Law Symposium, Knight First Amendment Institute at Columbia University'
   event: 'Anonymity, Identity, and Lies'
+  paper: anonymity-identity-lies
   date: 'Apr. 8, 2022'
   type: workshop
   review: 'peer review'
@@ -84,6 +86,7 @@
   review: 'peer review'
 - venue: 'IX Freedom of Expression Scholars Conference, closing plenary'
   event: 'Curtailing Anonymity'
+  paper: anonymity-identity-lies
   date: 'Apr. 30, 2021'
   type: workshop
   review: 'peer review'

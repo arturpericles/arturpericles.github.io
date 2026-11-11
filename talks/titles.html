@@ -1,0 +1,10 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Native title remains the fallback; Bootstrap also exposes it on focus.
+  if (window.bootstrap && window.bootstrap.Tooltip) {
+    document.querySelectorAll('.appearance-paper[title]').forEach(function (link) {
+      new bootstrap.Tooltip(link, { trigger: 'hover focus', container: 'body' });
+    });
+  }
+});
+</script>

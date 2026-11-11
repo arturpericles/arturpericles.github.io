@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,12 +43,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-cad3c076bfcc671fc53733afef69da86.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c9192926232ad4bba132221a2b7482f8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-97cbd97c4cf8f7aa6a4dca26b76665de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-aea0f800c74cd009dd85097a98ad6485.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-school',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-title','listing-institution',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
 
-      searchColumns: ["listing-project","listing-website","listing-format","listing-csl","listing-engines","listing-language","listing-course-site","listing-course-logo","listing-global-template","listing-sidebar","listing-body-classes","listing-course-display-title","listing-pagetitle","listing-title-prefix","listing-course-source","listing-course-source-dir","listing-resource-path","listing-title","listing-order","listing-school","listing-instructor","listing-course-overview","listing-toc","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-code"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-csl","listing-engines","listing-language","listing-title","listing-subtitle","listing-order","listing-school","listing-css","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-course-id","listing-institution","listing-term","listing-course-site","listing-course-logo","listing-global-template","listing-sidebar","listing-body-classes","listing-course-display-title","listing-pagetitle","listing-title-prefix","listing-course-source","listing-course-source-dir","listing-resource-path","listing-instructor","listing-course-overview","listing-toc","listing-affiliation","listing-co-instructor","listing-syllabi"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -105,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="navbar-short-title" content="A.P.L. Monteiro">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -201,48 +203,79 @@ window.Quarto = {
 <section id="teaching" class="level1">
 <h1>Teaching</h1>
 <div id="listing-courses" class="quarto-listing quarto-listing-container-custom">
-<div class="quarto-post image-right">
-<div class="body">
-<h2 class="no-anchor listing-title course-listing-title" data-anchor-id="teaching">
-<a href="../teaching/torts/index.html" class="no-external">Torts</a>
-</h2>
-</div>
-<div class="metadata">
-<a href="../teaching/torts/index.html" class="no-external">
-<div class="metadata-value listing-school">
-MC Law
-</div>
-</a><p><a href="../teaching/torts/index.html" class="no-external"></a></p>
-</div>
-</div>
-<div class="quarto-post image-right">
-<div class="body">
-<h2 class="no-anchor listing-title course-listing-title">
-<a href="../teaching/technology-security-power/index.html" class="no-external">Technology, Power, and Security: Political Challenges of the Computer Age</a>
-</h2>
-</div>
-<div class="metadata">
-<a href="../teaching/technology-security-power/index.html" class="no-external">
-<div class="metadata-value listing-school">
-Yale College, Department of Computer Science
-</div>
-</a><p><a href="../teaching/technology-security-power/index.html" class="no-external"></a></p>
-</div>
-</div>
-<div class="quarto-post image-right">
-<div class="body">
-<h2 class="no-anchor listing-title course-listing-title">
-<a href="../teaching/global-law-policy-ai/index.html" class="no-external">Global Law &amp; Policy of Artificial Intelligence</a>
-</h2>
-</div>
-<div class="metadata">
-<a href="../teaching/global-law-policy-ai/index.html" class="no-external">
-<div class="metadata-value listing-school">
-Yale Law School, Yale Jackson School of Global Affairs
-</div>
-</a><p><a href="../teaching/global-law-policy-ai/index.html" class="no-external"></a></p>
-</div>
-</div>
+
+<section class="mt-4 pb-4" aria-labelledby="school-mc-law">
+  <h2 id="school-mc-law" class="listing-section-heading mb-3" data-anchor-id="teaching">MC Law</h2>
+
+  <article id="foundations-of-ai-law" aria-labelledby="foundations-of-ai-law-heading">
+    <h3 id="foundations-of-ai-law-heading" class="course-listing-title mt-0 mb-1">Foundations of AI Law</h3>
+
+    <p class="metadata-value mb-2">
+      Spring 2027
+    </p>
+
+
+    <a href="../teaching/foundations-of-ai-law/index.html" class="btn btn-sm btn-secondary" aria-label="Course website for Foundations of AI Law">Course website <span aria-hidden="true">→</span></a>
+
+
+  </article>
+
+  <article id="torts" class="border-top mt-3 pt-3" aria-labelledby="torts-heading">
+    <h3 id="torts-heading" class="course-listing-title mt-0 mb-1">Torts</h3>
+
+    <p class="metadata-value mb-2">
+      Fall 2026
+    </p>
+
+
+    <a href="../teaching/torts/index.html" class="btn btn-sm btn-secondary" aria-label="Course website for Torts">Course website <span aria-hidden="true">→</span></a>
+
+
+  </article>
+
+</section>
+
+<section class="border-top pt-3 pb-4" aria-labelledby="school-yale">
+  <h2 id="school-yale" class="listing-section-heading mb-3">Yale</h2>
+
+  <article id="technology-security-power" aria-labelledby="technology-security-power-heading">
+    <h3 id="technology-security-power-heading" class="course-listing-title mt-0 mb-1">Technology, Power, and Security: Political Challenges of the Computer Age</h3>
+
+    <p class="metadata-value mb-2">
+      Yale College, Department of Computer Science<br>Co-taught with <a href="https://engineering.yale.edu/research-and-faculty/faculty-directory/joan-feigenbaum">Joan Feigenbaum</a>
+    </p>
+
+
+
+    <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+
+      <li><a href="syllabi/cpsc-3100-spring-2026.pdf" class="btn btn-sm btn-secondary text-start" aria-label="Spring 2026 syllabus for Technology, Power, and Security: Political Challenges of the Computer Age (PDF)"><i class="bi bi-file-earmark-pdf me-1" aria-hidden="true"></i>Spring 2026 syllabus</a></li>
+
+      <li><a href="syllabi/cpsc-310-spring-2025.pdf" class="btn btn-sm btn-secondary text-start" aria-label="Spring 2025 syllabus for Technology, Power, and Security: Political Challenges of the Computer Age (PDF)"><i class="bi bi-file-earmark-pdf me-1" aria-hidden="true"></i>Spring 2025 syllabus</a></li>
+
+    </ul>
+
+  </article>
+
+  <article id="global-law-policy-ai" class="border-top mt-3 pt-3" aria-labelledby="global-law-policy-ai-heading">
+    <h3 id="global-law-policy-ai-heading" class="course-listing-title mt-0 mb-1">The Global Law &amp; Policy of Artificial Intelligence</h3>
+
+    <p class="metadata-value mb-2">
+      Yale Jackson School of Global Affairs and Yale Law School
+    </p>
+
+
+
+    <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+
+      <li><a href="syllabi/global-law-policy-ai-spring-2024.pdf" class="btn btn-sm btn-secondary text-start" aria-label="Spring 2024 syllabus for The Global Law &amp; Policy of Artificial Intelligence (PDF)"><i class="bi bi-file-earmark-pdf me-1" aria-hidden="true"></i>Spring 2024 syllabus</a></li>
+
+    </ul>
+
+  </article>
+
+</section>
+
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 
@@ -253,13 +286,6 @@ Yale Law School, Yale Jackson School of Global Affairs
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {

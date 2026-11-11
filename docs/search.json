@@ -367,7 +367,7 @@
     "href": "teaching/index.html",
     "title": "Teaching",
     "section": "",
-    "text": "Teaching\n\n\n\n\nTorts\n\n\n\n\n\nMC Law\n\n\n\n\n\n\n\nTechnology, Power, and Security: Political Challenges of the Computer Age\n\n\n\n\n\nYale College, Department of Computer Science\n\n\n\n\n\n\n\nGlobal Law & Policy of Artificial Intelligence\n\n\n\n\n\nYale Law School, Yale Jackson School of Global Affairs\n\n\n\n\nNo matching items"
+    "text": "Teaching\n\n\n\n  MC Law\n  \n  \n    Foundations of AI Law\n    \n    \n      Spring 2027\n    \n    \n    \n    Course website →\n    \n    \n  \n  \n  \n    Torts\n    \n    \n      Fall 2026\n    \n    \n    \n    Course website →\n    \n    \n  \n  \n\n\n\n  Yale\n  \n  \n    Technology, Power, and Security: Political Challenges of the Computer Age\n    \n    \n      Yale College, Department of Computer ScienceCo-taught with Joan Feigenbaum\n    \n    \n    \n    \n    \n      \n      Spring 2026 syllabus\n      \n      Spring 2025 syllabus\n      \n    \n    \n  \n  \n  \n    The Global Law & Policy of Artificial Intelligence\n    \n    \n      Yale Jackson School of Global Affairs and Yale Law School\n    \n    \n    \n    \n    \n      \n      Spring 2024 syllabus\n      \n    \n    \n  \n  \n\n\nNo matching items"
   },
   {
     "objectID": "teaching/torts/classes/introduction.html",
@@ -554,5 +554,26 @@
       "Bio",
       "Overview"
     ]
+  },
+  {
+    "objectID": "teaching/foundations-of-ai-law/index.html",
+    "href": "teaching/foundations-of-ai-law/index.html",
+    "title": "Foundations of AI Law",
+    "section": "",
+    "text": "Meetings\nMondays and Wednesdays, 1:15–2:30 p.m.\n\n\nLocation\nTBD"
+  },
+  {
+    "objectID": "teaching/foundations-of-ai-law/index.html#course-description",
+    "href": "teaching/foundations-of-ai-law/index.html#course-description",
+    "title": "Foundations of AI Law",
+    "section": "Course Description",
+    "text": "Course Description\nA survey of doctrines, regulations, and issues concerning artificial intelligence (AI) across diverse areas of law, such as tort, First Amendment, copyright, anti-discrimination, and privacy law. This course explores how AI shapes established legal frameworks and how emerging frameworks seek to regulate AI at the local, state, and federal levels in the U.S. and in other jurisdictions. Through this trans-substantive survey, the course considers common themes and consistent challenges that are said to define AI law as its own area of law."
+  },
+  {
+    "objectID": "teaching/foundations-of-ai-law/index.html#course-materials",
+    "href": "teaching/foundations-of-ai-law/index.html#course-materials",
+    "title": "Foundations of AI Law",
+    "section": "Course Materials",
+    "text": "Course Materials\nMargot E. Kaminski, Paul Ohm, and Andrew D. Selbst, Artificial Intelligence Law (1st ed., Foundation Press). Print ISBN 9798887865645. West Academic"
   }
 ]

@@ -1,19 +1,15 @@
 ---
 listing:
   id: courses
-  contents:
-    - "torts/index.md"
-    - "technology-security-power/index.md"
-    - "global-law-policy-ai/index.md"
-#   type: grid
-  fields: [title,  school]
-  sort: "order asc"
+  contents: courses.yml
+  field-required: [title, institution, course-id]
+  fields: [title, institution]
+  sort: false
   sort-ui: false
   filter-ui: false
-  date-format: YYYY
   template: courses.ejs
-  field-display-names:
-    school: '–'
+resources:
+  - syllabi/*.pdf
 include-back-link: true
 open-graph:
   title: "Teaching — Artur Pericles L. Monteiro"
@@ -24,9 +20,10 @@ twitter-card:
 format:
   html:
     pagetitle: "Teaching"
+    anchor-sections: false
 ---
 
 # Teaching
 
-:::{#courses}
+::: {#courses}
 :::

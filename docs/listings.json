@@ -33,9 +33,8 @@
   {
     "listing": "/teaching/index.html",
     "items": [
-      "/teaching/torts/index.html",
-      "/teaching/technology-security-power/index.html",
-      "/teaching/global-law-policy-ai/index.html"
+      "/teaching/foundations-of-ai-law/index.html",
+      "/teaching/torts/index.html"
     ]
   }
 ]

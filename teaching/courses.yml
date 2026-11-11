@@ -1,0 +1,30 @@
+- course-id: foundations-of-ai-law
+  institution: MC Law
+  path: foundations-of-ai-law/index.md
+  term: Spring 2027
+
+- course-id: torts
+  institution: MC Law
+  path: torts/index.md
+  term: Fall 2026
+
+- course-id: technology-security-power
+  institution: Yale
+  title: 'Technology, Power, and Security: Political Challenges of the Computer Age'
+  affiliation: Yale College, Department of Computer Science
+  co-instructor:
+    name: Joan Feigenbaum
+    url: https://engineering.yale.edu/research-and-faculty/faculty-directory/joan-feigenbaum
+  syllabi:
+    - term: Spring 2026
+      pdf: syllabi/cpsc-3100-spring-2026.pdf
+    - term: Spring 2025
+      pdf: syllabi/cpsc-310-spring-2025.pdf
+
+- course-id: global-law-policy-ai
+  institution: Yale
+  title: The Global Law & Policy of Artificial Intelligence
+  affiliation: Yale Jackson School of Global Affairs and Yale Law School
+  syllabi:
+    - term: Spring 2024
+      pdf: syllabi/global-law-policy-ai-spring-2024.pdf

@@ -1,14 +1,34 @@
-<% for (const item of items) { %>
-::: {.quarto-post .image-right}
-::: {.body}
-<% if (item.title) { %>
-<h2 class="no-anchor listing-title course-listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h2>
+```{=html}
+<% const institutions = [...new Set(items.map(item => item.institution))]; %>
+<% for (const [index, institution] of institutions.entries()) {
+  const institutionId = 'school-' + institution.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+%>
+<section class="<%= index === 0 ? 'mt-4' : 'border-top pt-3' %> pb-4" aria-labelledby="<%= institutionId %>">
+  <h2 id="<%= institutionId %>" class="listing-section-heading mb-3"><%= institution %></h2>
+  <% for (const [courseIndex, course] of items.filter(item => item.institution === institution).entries()) {
+    const courseId = course['course-id'];
+    const coInstructor = course['co-instructor'];
+    const metadata = [course.term, course.affiliation].filter(Boolean).join(' · ');
+  %>
+  <article id="<%= courseId %>"<% if (courseIndex > 0) { %> class="border-top mt-3 pt-3"<% } %> aria-labelledby="<%= courseId %>-heading">
+    <h3 id="<%= courseId %>-heading" class="course-listing-title mt-0 mb-1"><%= course.title %></h3>
+    <% if (metadata || coInstructor) { %>
+    <p class="metadata-value mb-2">
+      <%= metadata %><% if (coInstructor) { %><% if (metadata) { %><br><% } %>Co-taught with <a href="<%= coInstructor.url %>"><%= coInstructor.name %></a><% } %>
+    </p>
+    <% } %>
+    <% if (course.path) { %>
+    <a href="<%= course.path %>" class="btn btn-sm btn-secondary" aria-label="Course website for <%= course.title %>">Course website <span aria-hidden="true">→</span></a>
+    <% } %>
+    <% if (course.syllabi?.length) { %>
+    <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+      <% for (const syllabus of course.syllabi) { %>
+      <li><a href="<%= syllabus.pdf %>" class="btn btn-sm btn-secondary text-start" aria-label="<%= syllabus.term %> syllabus for <%= course.title %> (PDF)"><i class="bi bi-file-earmark-pdf me-1" aria-hidden="true"></i><%= syllabus.term %> syllabus</a></li>
+      <% } %>
+    </ul>
+    <% } %>
+  </article>
+  <% } %>
+</section>
 <% } %>
-:::
-<% if (item.school) { %>
-::: {.metadata}
-<a href="<%- item.path %>" class="no-external"><div class="metadata-value listing-school"><%= item.school %></div></a>
-:::
-<% } %>
-:::
-<% } %>
+```

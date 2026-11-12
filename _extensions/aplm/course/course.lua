@@ -46,7 +46,6 @@ local NONCOUNTING_TYPES = {
   ["holiday"] = true,
   ["no-class"] = true,
   ["schedule-note"] = true,
-  ["ta-session"] = true,
 }
 
 local HIDDEN_SCHEDULE_FIELDS = {
@@ -626,15 +625,15 @@ end
 local function validate_meeting(meeting)
   local entry_type = normalize(field_text(meeting, "type"))
   local attendance = attendance_label(meeting)
-  if entry_type ~= "ta-session" then return end
-  if attendance ~= "Optional" then
+  if not calendar.is_parallel_event_type(entry_type) then return end
+  if entry_type == "ta-session" and attendance ~= "Optional" then
     fail("ta-session entries require attendance: optional under " .. stringify(meeting.topic))
   end
   if field_text(meeting, "time") == "" then
-    fail("ta-session entries require time under " .. stringify(meeting.topic))
+    fail(entry_type .. " entries require time under " .. stringify(meeting.topic))
   end
   if field_text(meeting, "room") == "" then
-    fail("ta-session entries require room under " .. stringify(meeting.topic))
+    fail(entry_type .. " entries require room under " .. stringify(meeting.topic))
   end
 end
 
@@ -643,15 +642,15 @@ local function meeting_counts(meeting)
   local explicit = normalize(field_text(meeting, "counts-as-class"))
   if explicit ~= "" then
     if explicit == "yes" or explicit == "true" or explicit == "1" then
-      if entry_type == "ta-session" then
-        fail("ta-session entries cannot count as class sessions under " .. stringify(meeting.topic))
+      if calendar.is_parallel_event_type(entry_type) then
+        fail(entry_type .. " entries cannot count as class sessions under " .. stringify(meeting.topic))
       end
       return true
     end
     if explicit == "no" or explicit == "false" or explicit == "0" then return false end
     fail("counts-as-class must be yes/no or true/false for " .. stringify(meeting.date))
   end
-  return not NONCOUNTING_TYPES[entry_type]
+  return not NONCOUNTING_TYPES[entry_type] and not calendar.is_parallel_event_type(entry_type)
 end
 
 local function on_deck_group_count(course)
@@ -963,7 +962,8 @@ local function render_fields(meeting, omit_time)
   for _, field in ipairs(meeting.fields) do
     if not HIDDEN_SCHEDULE_FIELDS[field.normalized]
       and not (omit_time and field.normalized == "time") then
-      if field.normalized == "additional" then
+      if field.normalized == "additional"
+        or (field.normalized == "room" and stringify(field.blocks):lower():match("^room%s")) then
         table.insert(items, clone_blocks(field.blocks))
       elseif field.normalized == "optional" then
         if not optional_rendered then
@@ -1018,8 +1018,10 @@ local function render_meeting(meeting)
       pandoc.Attr("", {"course-meeting-flag"})
     ))
   end
-  -- Special class times belong with the date and panel, above the title.
-  local time_in_kicker = meeting.class_number ~= nil and meeting.by_name.time ~= nil
+  local meeting_type = normalize(field_text(meeting, "type"))
+  -- Special class and essay times belong with the date, above the title.
+  local time_in_kicker = meeting.by_name.time ~= nil
+    and (meeting.class_number ~= nil or meeting_type == "practice-essay")
   if time_in_kicker then
     for _, field in ipairs(meeting.by_name.time) do
       kicker:insert(pandoc.Span(
@@ -1048,8 +1050,7 @@ local function render_meeting(meeting)
     end
   end
 
-  local meeting_type = normalize(field_text(meeting, "type"))
-  if meeting_type ~= "" and meeting_type ~= "ta-session" then
+  if meeting_type ~= "" and not calendar.is_parallel_event_type(meeting_type) then
     local status = meeting_type:gsub("%-", " ")
     status = status:gsub("^%l", string.upper)
     blocks:insert(pandoc.Div(

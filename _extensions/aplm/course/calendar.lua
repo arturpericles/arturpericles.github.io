@@ -36,6 +36,7 @@ local FIXED_CLOSURE_TYPES = {
 }
 
 local PARALLEL_EVENT_TYPES = {
+  ["practice-essay"] = true,
   ["ta-session"] = true,
 }
 

@@ -333,6 +333,10 @@ in both the website and PDF. Number the TA session headings in source order and
 keep every entry chronological. Do not use `optional:` for a session; that label
 is reserved for optional readings.
 
+### Practice essays alongside a class
+
+Use `type: practice-essay` for an essay session listed separately on a class date. Place it after the class and give it its own `date:`, `time:`, and `room:` fields. Use `note:` for independent-submission instructions. The essay receives no class number and does not advance the on-deck rotation.
+
 ## Current-class navigation
 
 The website Schedule uses machine-readable dates emitted from the shared

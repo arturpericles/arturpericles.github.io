@@ -41,7 +41,6 @@ local NONCOUNTING_TYPES = {
   ["holiday"] = true,
   ["no-class"] = true,
   ["schedule-note"] = true,
-  ["ta-session"] = true,
 }
 
 local function trim(value)
@@ -771,15 +770,15 @@ end
 local function validate_meeting(meeting)
   local entry_type = field_text(meeting, "type")
   local attendance = attendance_label(meeting)
-  if entry_type ~= "ta-session" then return end
-  if attendance ~= "Optional" then
+  if not calendar.is_parallel_event_type(entry_type) then return end
+  if entry_type == "ta-session" and attendance ~= "Optional" then
     fail("ta-session entries require attendance: optional under " .. stringify(meeting.topic))
   end
   if field_text(meeting, "time") == "" then
-    fail("ta-session entries require time under " .. stringify(meeting.topic))
+    fail(entry_type .. " entries require time under " .. stringify(meeting.topic))
   end
   if field_text(meeting, "room") == "" then
-    fail("ta-session entries require room under " .. stringify(meeting.topic))
+    fail(entry_type .. " entries require room under " .. stringify(meeting.topic))
   end
 end
 
@@ -788,8 +787,8 @@ local function meeting_counts(meeting)
   local explicit = field_text(meeting, "counts-as-class")
   if explicit ~= "" then
     if explicit == "yes" or explicit == "true" or explicit == "1" then
-      if entry_type == "ta-session" then
-        fail("ta-session entries cannot count as class sessions under " .. stringify(meeting.topic))
+      if calendar.is_parallel_event_type(entry_type) then
+        fail(entry_type .. " entries cannot count as class sessions under " .. stringify(meeting.topic))
       end
       return true
     elseif explicit == "no" or explicit == "false" or explicit == "0" then
@@ -798,7 +797,7 @@ local function meeting_counts(meeting)
       fail("counts-as-class must be yes/no or true/false under " .. stringify(meeting.date))
     end
   end
-  return not NONCOUNTING_TYPES[entry_type]
+  return not NONCOUNTING_TYPES[entry_type] and not calendar.is_parallel_event_type(entry_type)
 end
 
 local function on_deck_group_count(course)

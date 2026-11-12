@@ -949,25 +949,16 @@ local function assignment_blocks(fields)
   })
 end
 
-local function meeting_date_blocks(meeting)
-  local result = pandoc.Blocks({pandoc.Plain(clone_inlines(meeting.date))})
-  if field_text(meeting, "type") == "ta-session" then return result end
-  local details = pandoc.Inlines({})
-  local function add_detail(name)
-    local fields = meeting.by_name[name]
-    if fields == nil then return end
-    local value = first_block_inlines(fields[1].blocks)
-    if #value == 0 then return end
-    if #details > 0 then
-      details:insert(pandoc.Str(" ·"))
-      details:insert(pandoc.Space())
-    end
-    for _, inline in ipairs(value) do details:insert(inline) end
+local function meeting_date_blocks(meeting, omit_date)
+  local result = pandoc.Blocks({})
+  if not omit_date then
+    result:insert(pandoc.Plain(clone_inlines(meeting.date)))
   end
-  add_detail("time")
-  add_detail("room")
-  if #details > 0 then
-    result:insert(pandoc.Plain(details))
+  if field_text(meeting, "type") == "ta-session" then return result end
+  local fields = meeting.by_name.time
+  if fields ~= nil then
+    local time = first_block_inlines(fields[1].blocks)
+    if #time > 0 then result:insert(pandoc.Plain(time)) end
   end
   return result
 end
@@ -983,6 +974,11 @@ local function meeting_topic_blocks(meeting, keep_with_next)
     else
       result:insert(1, pandoc.Plain({marker}))
     end
+  end
+  local room_fields = meeting.by_name.room
+  if entry_type ~= "ta-session" and room_fields ~= nil then
+    local room = first_block_inlines(room_fields[1].blocks)
+    if #room > 0 then result:insert(pandoc.Plain(room)) end
   end
   if meeting.on_deck_group ~= nil then
     local on_deck = pandoc.Inlines({})
@@ -1329,14 +1325,18 @@ local function parse_schedule_region(blocks, materials_by_shorthand, calendar_co
   end
 
   local rows = {}
+  local previous_date = nil
   for _, spec in ipairs(row_specs) do
     if spec.kind == "unit" then
       rows[#rows + 1] = spec.row
     else
       local meeting = spec.meeting
+      local omit_date = field_text(meeting, "type") == "practice-essay"
+        and spec.date_key ~= nil and spec.date_key ~= "" and spec.date_key == previous_date
+      previous_date = spec.date_key
       rows[#rows + 1] = pandoc.Row({
         cell(class_number_blocks(spec.number), pandoc.AlignRight),
-        cell(meeting_date_blocks(meeting), pandoc.AlignLeft),
+        cell(meeting_date_blocks(meeting, omit_date), pandoc.AlignLeft),
         cell(
           meeting_topic_blocks(meeting, spec.keep_with_next),
           pandoc.AlignLeft

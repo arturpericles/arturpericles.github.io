@@ -976,7 +976,7 @@ local function meeting_topic_blocks(meeting, keep_with_next)
     end
   end
   local room_fields = meeting.by_name.room
-  if entry_type ~= "ta-session" and room_fields ~= nil then
+  if room_fields ~= nil then
     local room = first_block_inlines(room_fields[1].blocks)
     if #room > 0 then result:insert(pandoc.Plain(room)) end
   end
@@ -1008,21 +1008,15 @@ local function meeting_topic_blocks(meeting, keep_with_next)
       flag:insert(pandoc.RawInline("latex", "}"))
     end
     if entry_type == "ta-session" then
-      local function add_detail(name)
-        local fields = meeting.by_name[name]
-        if fields == nil then return end
-        local value = first_block_inlines(fields[1].blocks)
-        if #value == 0 then return end
-        flag:insert(pandoc.Str(" ·"))
-        flag:insert(pandoc.Space())
-        if name == "time" then
-          flag:extend(value)
-        else
-          flag:insert(pandoc.Emph(value))
+      local fields = meeting.by_name.time
+      if fields ~= nil then
+        local time = first_block_inlines(fields[1].blocks)
+        if #time > 0 then
+          flag:insert(pandoc.Str(" ·"))
+          flag:insert(pandoc.Space())
+          flag:extend(time)
         end
       end
-      add_detail("time")
-      add_detail("room")
     end
     result:insert(pandoc.Plain(flag))
   end
@@ -1145,8 +1139,8 @@ local function schedule_table(rows)
     pandoc.Caption(),
     {
       {pandoc.AlignRight, 0.05},
-      {pandoc.AlignLeft, 0.16},
-      {pandoc.AlignLeft, 0.49},
+      {pandoc.AlignLeft, 0.25},
+      {pandoc.AlignLeft, 0.40},
       {pandoc.AlignLeft, 0.30},
     },
     head,

@@ -1462,7 +1462,13 @@ margin-top: 0.2em;
 #the-eu-ai-act .eu-section-why p { margin: 0.18em 0 0; font-size: 3.1em; line-height: 1.1; }
 #gpai .gpai-standards-step > h4 { font-size: 0.96em; margin: 0.7em 0 0.3em; }
 #gpai > :is(.gpai-intro, .gpai-comparison, .gpai-threshold, .gpai-context) { transition: opacity 200ms ease; }
-@media screen { #gpai:has(> .gpai-standards-step.visible) > :is(.gpai-intro, .gpai-comparison, .gpai-threshold, .gpai-context) { opacity: 0.83; } }
+@media screen {
+#gpai:has(> .gpai-standards-step.visible) > :is(.gpai-intro, .gpai-comparison, .gpai-threshold, .gpai-context) { opacity: 0.65; }
+#gpai:has(> .gpai-standards-step.visible) :is(.gpai-intro, .gpai-comparison, .gpai-threshold, .gpai-context) a { color: #073641; }
+#gpai .gpai-standards-step.visible { background: #f3f7f8; border-left: 4px solid var(--mc-accent-blue); padding: 0.22em 0.55em 0.3em; }
+#gpai .gpai-standards-step.visible > h4 { margin-top: 0; color: var(--mc-navy); }
+#gpai .gpai-standards-step.visible blockquote { border-left: 0; padding-left: 0; }
+}
 @media (prefers-reduced-motion: reduce) { #gpai > :is(.gpai-intro, .gpai-comparison, .gpai-threshold, .gpai-context) { transition: none; } }
 </style>
   <style>
@@ -1476,42 +1482,46 @@ margin-top: 0.2em;
   <style>
 .reveal.has-parallax-background .backgrounds::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.70); pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .reveal.has-parallax-background .backgrounds { transition: none !important; } }
-#states .states-steps { display: grid; margin-top: 0.65em; }
-#states .state-step { grid-area: 1 / 1; width: 100%; }
-#states .state-step h4 { font-size: 1.12em; margin: 0 0 0.65em; color: var(--mc-navy); }
-#states:has(.state-step.fragment.visible) .state-frontier { visibility: hidden; }
-#states .state-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; gap: 40px; }
-#states .state-comparison table { width: 100%; font-size: 0.91em; line-height: 1.3; margin: 0; }
-#states .state-comparison th, #states .state-comparison td { padding: 0.29em 0.18em; }
-#states .state-comparison th { color: var(--mc-accent-blue); }
-#states .state-comparison > p { font-size: 0.77em; line-height: 1.35; margin: 0.8em 0 0; }
-#states .state-figure p { font-size: 0.76em; text-align: center; line-height: 1.35; margin: 0.4em 0; }
-#states .state-figure img { display: block; width: 100%; height: auto; margin: 0; }
-#states .state-policy > p { color: var(--mc-navy); font-size: 1.08em; line-height: 1.3; border-left: 4px solid var(--mc-gold); padding-left: 0.5em; }
-#states .state-policy ul { font-size: 0.94em; line-height: 1.35; }
-#states .state-policy li { margin: 0.65em 0; }
+#states-detail .states-steps { display: grid; margin-top: 0.65em; }
+#states-detail .state-step { grid-area: 1 / 1; width: 100%; }
+#states-detail .state-step h4 { font-size: 1.12em; margin: 0 0 0.65em; color: var(--mc-navy); }
+#states-detail:has(.state-step.fragment.visible) .state-frontier { visibility: hidden; }
+#states-detail .state-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; gap: 40px; }
+#states-detail .state-comparison table { width: 100%; font-size: 0.91em; line-height: 1.3; margin: 0; }
+#states-detail .state-comparison th, #states-detail .state-comparison td { padding: 0.29em 0.18em; }
+#states-detail .state-comparison th { color: var(--mc-accent-blue); }
+#states-detail .state-comparison > p { font-size: 0.77em; line-height: 1.35; margin: 0.8em 0 0; }
+#states-detail .state-figure p { font-size: 0.76em; text-align: center; line-height: 1.35; margin: 0.4em 0; }
+#states-detail .state-figure img { display: block; width: 100%; height: auto; margin: 0; }
+#states-detail .state-policy > p { color: var(--mc-navy); font-size: 1.08em; line-height: 1.3; border-left: 4px solid var(--mc-gold); padding-left: 0.5em; }
+#states-detail .state-policy ul { font-size: 0.94em; line-height: 1.35; }
+#states-detail .state-policy li { margin: 0.65em 0; }
 </style>
   <style>
-#federal-summary .fed-build { display: grid; align-items: start; margin-top: 25px; }
-#federal-summary .fed-panel { grid-area: 1 / 1; width: 100%; min-width: 0; text-align: left; transition: opacity 230ms ease, visibility 230ms ease; }
-#federal-summary .fed-panel h3 { margin: 0 0 24px; color: var(--mc-navy, #102542); font-size: 39px; font-style: normal; text-transform: none; line-height: 1.15; }
-#federal-summary .fed-spread { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 38px; align-items: start; }
-#federal-summary .fed-copy { font-size: 29px; line-height: 1.32; }
-#federal-summary .fed-copy p { margin: 0 0 0.7em; }
-#federal-summary .fed-panel figure { margin: 0; }
-#federal-summary .fed-panel figure img { display: block; width: 100%; max-width: 100%; height: auto; max-height: 365px; object-fit: contain; object-position: left top; margin: 0; border: 0; box-shadow: none; }
-#federal-summary .fed-panel figcaption { margin: 10px 0 0; font-size: 18px; font-style: normal; line-height: 1.25; color: #364b5e; text-align: left; }
-#federal-summary .fed-vote { border-top: 3px solid var(--mc-gold, #b1914c); padding: 36px 0 0; color: var(--mc-navy, #102542); }
-#federal-summary .fed-vote strong { display: block; font-size: 115px; line-height: 1; font-weight: 600; letter-spacing: -0.04em; }
-#federal-summary .fed-vote span { display: block; margin-top: 12px; font-size: 23px; }
-#federal-summary .fed-case { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px; font-size: 26px; line-height: 1.32; }
-#federal-summary .fed-case article { border-top: 3px solid var(--mc-gold, #b1914c); }
-#federal-summary .fed-case h4 { margin: 15px 0 10px; font-size: 29px; line-height: 1.15; }
-#federal-summary .fed-case p { margin: 0 0 0.55em; }
-#federal-summary .fed-nist figure img { height: 335px; width: auto; margin: 0 auto; }
-#federal-summary .fed-nist figcaption { text-align: center; }
-@media (prefers-reduced-motion: reduce) { #federal-summary .fed-panel { transition: none; } }
-#federal-summary .fed-choi { padding-left: 0.55em; border-left: 3px solid var(--mc-gold); font-size: 0.86em; }
+#federal-detail { font-size: 28px; }
+#states-detail { font-size: 0.9em; }
+#states-detail > aside:not(.notes) { font-size: 0.56em; line-height: 1.3; bottom: 0; }
+.reveal .slides a.overview-jump { position: absolute; top: 0.55em; right: 0; font-size: 17px; line-height: 1.3; color: var(--mc-accent-blue); text-decoration: underline; text-underline-offset: 0.15em; }
+#federal-detail .fed-build { display: grid; align-items: start; margin-top: 25px; }
+#federal-detail .fed-panel { grid-area: 1 / 1; width: 100%; min-width: 0; text-align: left; transition: opacity 230ms ease, visibility 230ms ease; }
+#federal-detail .fed-panel h3 { margin: 0 0 24px; color: var(--mc-navy, #102542); font-size: 39px; font-style: normal; text-transform: none; line-height: 1.15; }
+#federal-detail .fed-spread { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 38px; align-items: start; }
+#federal-detail .fed-copy { font-size: 29px; line-height: 1.32; }
+#federal-detail .fed-copy p { margin: 0 0 0.7em; }
+#federal-detail .fed-panel figure { margin: 0; }
+#federal-detail .fed-panel figure img { display: block; width: 100%; max-width: 100%; height: auto; max-height: 365px; object-fit: contain; object-position: left top; margin: 0; border: 0; box-shadow: none; }
+#federal-detail .fed-panel figcaption { margin: 10px 0 0; font-size: 18px; font-style: normal; line-height: 1.25; color: #364b5e; text-align: left; }
+#federal-detail .fed-vote { border-top: 3px solid var(--mc-gold, #b1914c); padding: 36px 0 0; color: var(--mc-navy, #102542); }
+#federal-detail .fed-vote strong { display: block; font-size: 115px; line-height: 1; font-weight: 600; letter-spacing: -0.04em; }
+#federal-detail .fed-vote span { display: block; margin-top: 12px; font-size: 23px; }
+#federal-detail .fed-case { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px; font-size: 26px; line-height: 1.32; }
+#federal-detail .fed-case article { border-top: 3px solid var(--mc-gold, #b1914c); }
+#federal-detail .fed-case h4 { margin: 15px 0 10px; font-size: 29px; line-height: 1.15; }
+#federal-detail .fed-case p { margin: 0 0 0.55em; }
+#federal-detail .fed-nist figure img { height: 335px; width: auto; margin: 0 auto; }
+#federal-detail .fed-nist figcaption { text-align: center; }
+@media (prefers-reduced-motion: reduce) { #federal-detail .fed-panel { transition: none; } }
+#federal-detail .fed-choi { padding-left: 0.55em; border-left: 3px solid var(--mc-gold); font-size: 0.86em; }
 </style>
 </head>
 <body class="quarto-light">
@@ -1855,6 +1865,124 @@ display:block!important;
 </section>
 <section id="federal-summary" class="slide level2">
 <h2>The Federal Level</h2>
+<h4 id="congress">Congress</h4>
+<div class="federal-congress">
+<p>Senate hearings &amp; AI Insight Forums → bipartisan roadmap (2024)</p>
+<p>TAKE IT DOWN Act (2025); <strong>no comprehensive AI statute</strong></p>
+</div>
+<h4 id="white-house">White House</h4>
+<div class="federal-commitments">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Biden admin.</th>
+<th style="text-align: left;">Trump admin.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>EO 14110 (2023)</strong><br>Chief AI Officers<br>Defense Production Act safety reporting<a href="#/footnotes" class="footnote-ref" id="fnref15" role="doc-noteref" data-footnote-href="#/fn15" onclick><sup>15</sup></a><br><strong>Voluntary commitments (2023)</strong><br>Testing · cybersecurity · transparency</td>
+<td style="text-align: left;"><strong>Rescinds</strong> EO 14110 but<br> Chief AI Officers retained<a href="#/footnotes" class="footnote-ref" id="fnref16" role="doc-noteref" data-footnote-href="#/fn16" onclick><sup>16</sup></a><br>EO 14365: <em>see next</em><br><strong>Voluntary safety accord (2026)</strong><br>Internal reviews · external audits</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="anthropic-case">
+<div class="anthropic-summary">
+<p><strong>Anthropic</strong> · Dept. of War: supply-chain risk<br>
+Commerce · Mythos / Fable export controls</p>
+</div>
+<div class="fragment fade-in-then-out anthropic-detail anthropic-comparison" data-fragment-index="1">
+<p><strong>Anthropic: two federal interventions</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dept. of War · Feb.–Mar. 2026</th>
+<th style="text-align: left;">Commerce · June–July 2026</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Context</strong><br>“All lawful uses” demand vs. Anthropic’s limits on mass domestic surveillance &amp; fully autonomous weapons</td>
+<td style="text-align: left;"><strong>Context</strong><br>Mythos 5 / Fable 5: national-security concerns over access by foreign persons</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Action</strong><br>Feb. 24: Defense Production Act threatened<br>Mar. 3–4: supply-chain risk designation</td>
+<td style="text-align: left;"><strong>Action</strong><br>June 12: export licensing → Anthropic suspends <strong>all users</strong><br>June 30–July 1: controls lifted; access restored<a href="#/footnotes" class="footnote-ref" id="fnref17" role="doc-noteref" data-footnote-href="#/fn17" onclick><sup>17</sup></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Authority invoked</strong><br>Procurement restrictions: <strong>10 U.S.C. § 3252</strong> and <strong>41 U.S.C. § 4713</strong></td>
+<td style="text-align: left;"><strong>Authority invoked</strong><br><strong>Export Control Reform Act</strong> and Export Administration Regulations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Challenges</strong><br>First Amendment retaliation; due process; statutory limits<a href="#/footnotes" class="footnote-ref" id="fnref18" role="doc-noteref" data-footnote-href="#/fn18" onclick><sup>18</sup></a></td>
+<td style="text-align: left;"><strong>Questions raised</strong><br>Is hosted access an “export” <span class="citation" data-cites="Zhao.2026export">(<a href="#/references" role="doc-biblioref" onclick>Zhao 2026</a>)</span>? Does the authority support worldwide restrictions?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="fragment anthropic-return" data-fragment-index="2" aria-hidden="true"></span></p>
+</div>
+<h4 id="nist-continuity-and-changing-priorities">NIST: Continuity and Changing Priorities</h4>
+<div class="federal-timeline">
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 26%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Trump I · 2019</th>
+<th style="text-align: left;">Biden · 2023</th>
+<th style="text-align: left;">Trump II · 2025–26</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AI standards plan</td>
+<td style="text-align: left;">RMF 1.0 + EO 14110</td>
+<td style="text-align: left;">Revision: omit misinformation, DEI, climate references</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="federal-nist-caveat">
+<p>Choi: broad scope, underdetermined requirements <span class="citation" data-cites="Choi.2025ns">(<a href="#/references" role="doc-biblioref" onclick>Choi 2025, 100</a>)</span></p>
+</div>
+<a class="overview-jump" href="#/states">State overview →</a>
+<aside class="notes">
+<p><strong>Congress.</strong> The Senate’s nine 2023 AI Insight Forums complemented formal committee hearings; the <a href="https://www.rounds.senate.gov/imo/media/doc/ai_roadmap.pdf">May 2024 roadmap</a> made legislative recommendations. “No comprehensive AI statute” leaves intact targeted enactments and existing generally applicable law. The <a href="https://www.whitehouse.gov/presidential-actions/2025/05/president-donald-j-trump-signed-s-146-into-law/">TAKE IT DOWN Act signing announcement</a> records enactment on May 19, 2025.</p>
+<p><strong>Biden’s executive order and voluntary commitments are separate instruments.</strong> <a href="https://www.govinfo.gov/content/pkg/DCPD-202300949/html/DCPD-202300949.htm">EO 14110</a>, Oct. 30, 2023, § 10.1(b)(i), directed OMB guidance requiring agency Chief AI Officers. Section 4.2(a), “Ensuring Safe and Reliable AI,” directed Commerce to require ongoing reports on covered dual-use foundation-model development, weight security, and red-team testing under the Defense Production Act. It was not a general model-release licensing regime. The <a href="https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies-to-manage-the-risks-posed-by-ai/">July 2023 commitments</a> were voluntary.</p>
+<p><strong>Trump.</strong> <a href="https://www.whitehouse.gov/presidential-actions/2025/01/initial-rescissions-of-harmful-executive-orders-and-actions/">EO 14148</a>, Jan. 20, 2025, revoked EO 14110; EO 14179 subsequently directed policy review. <a href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf">M-25-21</a>, Apr. 3, 2025, retained agency Chief AI Officers with revised responsibilities. <a href="https://www.whitehouse.gov/wp-content/uploads/2025/12/eo-14365.pdf">EO 14365</a>, Dec. 11, 2025, directs a DOJ litigation task force, evaluation of state AI laws, funding measures subject to legal limits, agency action, and legislative recommendations for federal preemption. The order itself does not automatically displace every state AI law. The Sept. 29, 2026 accord is separately voluntary.</p>
+<p><strong>Anthropic / Department of War (the earlier intervention).</strong> The dispute concerned DoW’s demand for all lawful uses and Anthropic’s restrictions on mass domestic surveillance and fully autonomous weapons. <span class="citation" data-cites="Amodei.2026dow">Amodei (<a href="#/references" role="doc-biblioref" onclick>2026</a>)</span> states the company’s position. The <a href="https://docs.justia.com/cases/federal/district-courts/california/candce/3%3A2026cv01996/465515/134/">March 26 preliminary-injunction opinion</a>, pp. 5–10, records the Feb. 24 DPA threat, the Feb. 27 public directives, and the March 3 designation letters received March 4. The DPA was threatened; the actual designations invoked two procurement statutes, 10 U.S.C. § 3252 and 41 U.S.C. § 4713. These are separate from the later Commerce export-control action.</p>
+<p><strong>DoW litigation: distinguish the statutes and rulings.</strong> In <span class="citation" data-cites="AnthropicDoW.2026summary">(<a href="#/references" role="doc-biblioref" onclick><em>Anthropic PBC v. U.S. Department of War</em> 2026</a>)</span> (Aug. 27), the Northern District of California ruled for Anthropic on the challenged § 3252 designation and associated actions, including First Amendment, due-process, and APA grounds. In <span class="citation" data-cites="AnthropicDoW.2026dc">(<a href="#/references" role="doc-biblioref" onclick><em>Anthropic PBC v. United States Department of War</em> 2026</a>)</span> (Sept. 25), the D.C. Circuit denied review of the separate § 4713 procurement action; its majority emphasized that statute’s broader definition of supply-chain risk and rejected the constitutional claims in that proceeding. The district-court outcome does not establish that every DoW restriction was invalidated. These are dated decisions, not a claim that all appellate proceedings are complete.</p>
+<p><strong>Anthropic authority.</strong> Commerce Secretary Lutnick’s June 12 letter cites ECRA § 1758(b)(1), codified at <a href="https://www.law.cornell.edu/uscode/text/50/4817">50 U.S.C. § 4817(b)(1)</a>; <a href="https://www.law.cornell.edu/uscode/text/50/4813">50 U.S.C. § 4813(a)(15)</a>; and <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-744/section-744.22">15 C.F.R. § 744.22(b)</a>. The letter’s reproduced text is cited as <span class="citation" data-cites="Lutnick.2026letter">Lutnick (<a href="#/references" role="doc-biblioref" onclick>2026</a>)</span>. It imposes licensing for exports, reexports, in-country transfers, and deemed exports/reexports to foreign persons. These are export-control authorities; the letter does not invoke the DPA or EO 14365 as a separate domestic shutdown power.</p>
+<p>The <a href="https://liccardo.house.gov/sites/evo-subsites/liccardo.house.gov/files/evo-media-document/6.18.26-letter-to-commerce-department-on-frontier-model-export-controls.pdf">June 18 bipartisan House letter</a>, pp. 1–2, corroborates this account while requesting confirmation and the full legal basis. Its introductory “14 C.F.R.” is a typographical error; question 1 correctly cites title 15. It asks about procedure, evidence, and the military-intelligence end-use basis. Invoked authority and lawful application must be distinguished: § 744.22 is tied to specified military-intelligence risks; ECRA’s emerging-technology controls have identification and process requirements. <span class="citation" data-cites="Zhao.2026export">Zhao (<a href="#/references" role="doc-biblioref" onclick>2026</a>)</span> analyzes whether hosted inference releases controlled technology and the breadth of the directive. No judicial resolution is asserted here.</p>
+<p><strong>Suspension versus restoration.</strong> <a href="https://www.anthropic.com/news/fable-mythos-access">Anthropic’s June 12 statement</a> describes the directive and its decision to disable access for everyone. Its <a href="https://www.anthropic.com/news/redeploying-fable-5">June 30 update</a>, updated July 1, explains that it could not reliably verify nationality immediately, records withdrawal of controls, and distinguishes Fable’s general availability from Mythos’s trusted-partner access. The episode is historical, not an ongoing suspension.</p>
+<p><strong>NIST.</strong> The 2019 <a href="https://www.nist.gov/publications/us-leadership-ai-plan-federal-engagement-developing-technical-standards-and-related">standards plan</a> preceded the AI RMF project. The <a href="https://www.nist.gov/itl/ai-risk-management-framework/ai-rmf-development">RMF development record</a> begins with a July 2021 RFI and records the Jan. 26, 2023 release; EO 14110 later supplied further direction. The July 2025 AI Action Plan, p. 4, directs the stated revision. NIST’s <a href="https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-engage">engagement page</a> reports revision of AI RMF 1.0. Choi’s concern is about the framework’s breadth and underdetermination, not a finding that it is mandatory law.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+<aside></aside></section>
+<section id="federal-detail" class="slide level2">
+<h2>Federal Developments</h2>
 <div class="fed-build">
   <div class="fed-panel fragment fade-out" data-fragment-index="0">
     <h3>Congress through 2024</h3>
@@ -1978,6 +2106,106 @@ display:block!important;
 </section>
 <section id="states" class="slide level2">
 <h2>States</h2>
+<h4 id="frontier-ai-regulation">Frontier AI Regulation</h4>
+<div class="frontier-comparison">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">CA</th>
+<th style="text-align: center;">NY</th>
+<th style="text-align: center;">CT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Report critical safety incidents</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Publish safety frameworks</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Whistleblower protections</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓*</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="states-qualification">
+<p>Enacted laws; NY’s RAISE duties begin Jan. 1, 2027. NY: general Labor Law § 740 protections.</p>
+</div>
+<h4 id="ai-companion-regulation">AI Companion Regulation</h4>
+<div class="companion-comparison">
+<table class="caption-top">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Requirement</th>
+<th style="text-align: left;">States / scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Identify bots as AI</td>
+<td style="text-align: left;">CA, CO, CT, GA, HI, IA, ID, NE, NY, OR, RI, WA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Self-harm / crisis protocols</td>
+<td style="text-align: left;">CA, CO, CT, GA, HI, IA, ID, NE, NY, OR, RI, WA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Extra safeguards for minors</td>
+<td style="text-align: left;">CA, CO, CT, GA, HI, IA, ID, NE, <del>NY</del>, OR, <del>RI</del>, WA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="states-qualification companion-source">
+<p>Enacted; effective dates vary.</p>
+</div>
+<h4 id="potus-eo-14365-national-policy-framework">POTUS EO 14365 &amp; National Policy Framework</h4>
+<ul>
+<li>“Minimally burdensome national policy framework for AI”</li>
+<li>AI Litigation Task Force</li>
+<li>Restrictions on State Funding</li>
+</ul>
+
+<a class="overview-jump" href="#/states-market">Rates and consumer protection →</a>
+<aside class="notes">
+<p><strong>Frontier AI comparison.</strong> Incident reporting means reporting to regulators; framework publication applies to large frontier developers. The table compares enacted requirements, including NY duties that begin January 1, 2027.</p>
+<ul>
+<li><strong>CA:</strong> SB 53, the Transparency in Frontier Artificial Intelligence Act: incident reporting (Bus. &amp; Prof. Code § 22757.13), publication of frameworks by large frontier developers (§ 22757.11), and employee protections (Labor Code § 1107.1). See the <a href="https://oag.ca.gov/sb53">California DOJ overview</a> and <a href="https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/">Governor’s signing announcement</a>. This is distinct from the California AI Transparency Act.</li>
+<li><strong>NY:</strong> RAISE Act, as amended by <a href="https://www.nysenate.gov/legislation/bills/2025/S8828">2026 Chapter 96 / S8828</a>, General Business Law §§ 1421–1422: published frontier AI frameworks and critical-safety-incident reports, effective January 1, 2027. RAISE itself does not supply the employee protection shown here; that check refers to the general whistleblower law, <a href="https://www.nysenate.gov/legislation/laws/LAB/740">Labor Law § 740</a>, subject to its statutory conditions.</li>
+<li><strong>CT:</strong> <a href="https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00015-R00SB-00005-PA.PDF">Public Act 26-15, § 2, pp. 3–8</a>, effective October 1, 2026, protects frontier-developer employees. It does not impose regulatory incident reporting or publication of safety frameworks. Large developers must establish an anonymous internal reporting process by January 1, 2027; internal reports and quarterly board reports are distinct from the first row of the table.</li>
+</ul>
+<p><strong>AI companion comparison.</strong> Source: Danny Tobey, Ashley Carr, and Michael Atleson, <a href="https://www.techpolicy.press/what-12-state-companion-bot-laws-demand-of-ai-providers/">“What 12 State ‘Companion Bot’ Laws Demand of AI Providers,” Tech Policy Press, September 1, 2026</a>. This is the article’s 12-state survey, not an exhaustive current census. It reports CA, HI, and NY laws already effective and the other nine taking effect in 2027. Product definitions, disclosure frequency, covered harms, minor safeguards, and enforcement differ. “Several” does not imply a complete state-by-state list of professional-claims restrictions. IL appears in the article’s separate group of therapy-focused statutes; its earlier example remains distinct from this companion-bot comparison.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+<aside><div>
+<p>Sources: <span class="citation" data-cites="Rubenstein.2025fa">Rubenstein (<a href="#/references" role="doc-biblioref" onclick>2025</a>)</span>, <span class="citation" data-cites="Tobey.2026companion">Tobey et al. (<a href="#/references" role="doc-biblioref" onclick>2026</a>)</span>, <span class="citation" data-cites="Brennen.2026states">Brennen (<a href="#/references" role="doc-biblioref" onclick>2026</a>)</span></p>
+</div></aside></section>
+<section id="states-detail" class="slide level2">
+<h2>State Developments</h2>
 <div class="states-steps">
 <div class="state-step state-frontier">
 <h4>
@@ -2234,7 +2462,7 @@ display:block!important;
 </div>
 </div>
 </div><div class="column winner-statement" style="width:35%;">
-<p>Winner<a href="#/footnotes" class="footnote-ref" id="fnref15" role="doc-noteref" data-footnote-href="#/fn15" onclick><sup>15</sup></a>: Certain technologies require or are “strongly compatible with” certain political arrangements—ex: nuclear energy and strict control.</p>
+<p>Winner<a href="#/footnotes" class="footnote-ref" id="fnref19" role="doc-noteref" data-footnote-href="#/fn19" onclick><sup>19</sup></a>: Certain technologies require or are “strongly compatible with” certain political arrangements—ex: nuclear energy and strict control.</p>
 </div></div>
 <aside></aside></section></section>
 <section id="thanks" class="title-slide slide level1 uncounted section-slide dark-background center">
@@ -2337,7 +2565,11 @@ Zhao, Alex. 2026. <span>“Is Access to Fable an Export?”</span> <em>Harvard L
 <li id="fn12"><p>Open-source models are exempted.</p></li>
 <li id="fn13"><p>‘[S]ystemic risk’ means a risk that is specific to the high-impact capabilities of general-purpose AI models, having a significant impact on the Union market due to their reach, or due to actual or reasonably foreseeable negative effects on public health, safety, public security, fundamental rights, or the society as a whole, that can be propagated at scale across the value chain.</p></li>
 <li id="fn14"><p>Recital 85.</p></li>
-<li id="fn15"><p>Often remembered for example of politics through technology in Robert Moses’ low overpasses thought to be deliberately excluding. (On the specific example, <a href="https://www.bloomberg.com/news/articles/2017-07-09/robert-moses-and-his-racist-parkway-explained">see</a>.)</p></li>
+<li id="fn15"><p>Ongoing reports on development, model-weight security, and red-team testing of covered dual-use foundation models.</p></li>
+<li id="fn16"><p>Under revised OMB guidance, M-25-21 (Apr. 3, 2025). Rescission of EO 14110 did not eliminate the role.</p></li>
+<li id="fn17"><p>Fable returned to general availability; Mythos remained limited to trusted partners. The all-user suspension was Anthropic’s compliance response, not an express ban on all domestic use.</p></li>
+<li id="fn18"><p>Separate statutory tracks: N.D. Cal. set aside the § 3252 designation on Aug. 27, 2026; the D.C. Circuit upheld the § 4713 procurement action on Sept. 25, 2026. See <span class="citation" data-cites="AnthropicDoW.2026summary">(<a href="#/references" role="doc-biblioref" onclick><em>Anthropic PBC v. U.S. Department of War</em> 2026</a>)</span> and <span class="citation" data-cites="AnthropicDoW.2026dc">(<a href="#/references" role="doc-biblioref" onclick><em>Anthropic PBC v. United States Department of War</em> 2026</a>)</span>.</p></li>
+<li id="fn19"><p>Often remembered for example of politics through technology in Robert Moses’ low overpasses thought to be deliberately excluding. (On the specific example, <a href="https://www.bloomberg.com/news/articles/2017-07-09/robert-moses-and-his-racist-parkway-explained">see</a>.)</p></li>
 </ol>
 </section>
     </div>

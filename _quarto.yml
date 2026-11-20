@@ -4,6 +4,7 @@ project:
   resources:
     - CNAME
     - media/talks/mbc-2026-fadd68e6ce44be3a.html
+    - mbc/index.html
   preview:
     port: 4200
     browser: false
